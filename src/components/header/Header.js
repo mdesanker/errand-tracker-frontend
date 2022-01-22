@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Hamburger from "../elements/Hamburger";
 import Logo from "../elements/Logo";
 
 const Header = () => {
@@ -6,6 +7,7 @@ const Header = () => {
     <Wrapper>
       <Container>
         <Logo size="50px" />
+        <Hamburger />
       </Container>
     </Wrapper>
   );
