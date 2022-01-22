@@ -18,6 +18,10 @@ const GlobalStyles = createGlobalStyle`
     position: relative;
     min-height: 100vh;
   }
+
+  h1 {
+    color: ${({ theme }) => theme.colors.medium};
+  }
 `;
 
 export default GlobalStyles;
