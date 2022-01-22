@@ -11,8 +11,11 @@ const Theme = {
     light: "#7ec8cb",
     accent: "#d81b29",
   },
+  gradients: {
+    primary: "linear-gradient(to bottom, #f29ca2, #e63946)",
+  },
   heights: {
-    header: "50px",
+    header: "60px",
     footer: "20px",
   },
   widths: {
