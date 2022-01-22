@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import Button from "../elements/Button";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -77,7 +78,7 @@ const Register = () => {
             value={password2}
             onChange={formChangeHandler}
           />
-          <button type="submit">Sign up</button>
+          <Button type="submit" text="Sign up" />
         </Form>
         <Text>
           Already have an account? <Link to="/">Log in.</Link>

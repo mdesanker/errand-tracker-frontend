@@ -6,6 +6,11 @@ const Theme = {
     faint: "#f1faee",
     accent: "#e63946",
   },
+  hover: {
+    medium: "#3a6885",
+    light: "#7ec8cb",
+    accent: "#d81b29",
+  },
   heights: {
     header: "50px",
     footer: "20px",
