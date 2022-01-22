@@ -81,7 +81,7 @@ const Register = () => {
           <Button type="submit" text="Sign up" />
         </Form>
         <Text>
-          Already have an account? <Link to="/">Log in.</Link>
+          Already have an account? <StyledLink to="/">Log in.</StyledLink>
         </Text>
       </Card>
     </Wrapper>
@@ -98,6 +98,7 @@ const Wrapper = styled.main`
 
 const Card = styled.div`
   width: 90%;
+  max-width: 800px;
   min-height: 50%;
   font-size: 1rem;
   padding: 16px 12px 20px;
@@ -133,8 +134,15 @@ const Input = styled.input`
 `;
 
 const Text = styled.p`
+  font-size: 0.9rem;
   text-align: center;
   margin: 15px 0 20px;
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  font-weight: bold;
+  color: ${({ theme }) => theme.colors.medium};
 `;
 
 export default Register;
