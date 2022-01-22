@@ -74,7 +74,6 @@ const Wrapper = styled.main`
 const Card = styled.div`
   width: 90%;
   max-width: 800px;
-  min-height: 50%;
   font-size: 1rem;
   padding: 16px 12px 20px;
   background-color: #fff;
