@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <Wrapper>
       <Container>
-        <Logo size="50px" />
+        <Logo size="45px" />
         <Hamburger />
       </Container>
     </Wrapper>
@@ -28,7 +28,7 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 1rem;
+  padding: 0 1.5rem;
 `;
 
 export default Header;

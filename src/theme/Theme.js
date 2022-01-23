@@ -12,7 +12,7 @@ const Theme = {
     accent: "#d81b29",
   },
   gradients: {
-    primary: "linear-gradient(to bottom, #f29ca2, #e63946)",
+    primary: "linear-gradient(to top, #a8dadc, #1d3557)",
   },
   heights: {
     header: "60px",
