@@ -22,7 +22,6 @@ export const registerUser = createAsyncThunk(
       console.log(res.data);
 
       if (res.status === 200) {
-        localStorage.setItem("token", res.data.token);
         return res.data.token;
       } else {
         return thunkAPI.rejectWithValue(res.data);
@@ -53,7 +52,20 @@ const userSlice = createSlice({
       state.user = null;
     },
   },
-  extraReducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(registerUser.fulfilled, (state, actions) => {
+      localStorage.setItem("token", actions.payload);
+      state.isAuthenticated = true;
+      state.loading = false;
+    });
+    builder.addCase(registerUser.rejected, (state, actions) => {
+      localStorage.removeItem("token");
+      state.token = null;
+      state.isAuthenticated = false;
+      state.loading = false;
+      state.user = null;
+    });
+  },
 });
 
 export const { logout } = userSlice.actions;
