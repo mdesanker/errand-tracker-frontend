@@ -1,4 +1,38 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
+
+export const registerUser = createAsyncThunk(
+  "user/register",
+  async ({ username, email, password }, thunkAPI) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const body = JSON.stringify({ username, email, password });
+
+    try {
+      const res = await axios.post(
+        "http://localhost:5000/api/user/register",
+        body,
+        config
+      );
+
+      console.log(res.data);
+
+      if (res.status === 200) {
+        localStorage.setItem("token", res.data.token);
+        return res.data.token;
+      } else {
+        return thunkAPI.rejectWithValue(res.data);
+      }
+    } catch (err) {
+      const errors = err.response.data.errors;
+      console.error(errors);
+    }
+  }
+);
 
 const initialState = {
   token: localStorage.getItem("token"),
@@ -21,5 +55,7 @@ const userSlice = createSlice({
   },
   extraReducers: {},
 });
+
+export const { logout } = userSlice.actions;
 
 export default userSlice.reducer;

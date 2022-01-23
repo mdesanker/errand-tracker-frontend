@@ -2,8 +2,12 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import Button from "../elements/Button";
+import { useDispatch } from "react-redux";
+import { registerUser } from "../../store/slices/userSlice";
 
 const Register = () => {
+  const dispatch = useDispatch();
+
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -30,7 +34,8 @@ const Register = () => {
     if (password !== password2) {
       console.log("Passwords do not match");
     } else {
-      console.log(formData);
+      console.log({ username, email, password });
+      dispatch(registerUser({ username, email, password }));
     }
   };
 
