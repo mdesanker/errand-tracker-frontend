@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import setAuthToken from "../../utils/setAuthToken";
 import { timedAlert } from "./alertSlice";
 
 export const registerUser = createAsyncThunk(
@@ -75,6 +76,27 @@ export const loginUser = createAsyncThunk(
     }
   }
 );
+
+export const loadUser = createAsyncThunk("user/loadUser", async (thunkAPI) => {
+  if (localStorage.token) {
+    setAuthToken(localStorage.token);
+  }
+
+  try {
+    const res = await axios.get("http://localhost:5000/api/user/details");
+
+    console.log(res.data);
+    return res.data;
+  } catch (err) {
+    const errors = err.response.data.errors;
+    if (errors) {
+      errors.forEach((error) =>
+        thunkAPI.dispatch(timedAlert({ ...error, type: "danger" }))
+      );
+    }
+    return thunkAPI.rejectWithValue(err.response.data);
+  }
+});
 
 const initialState = {
   token: localStorage.getItem("token"),
