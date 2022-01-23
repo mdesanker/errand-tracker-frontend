@@ -84,7 +84,7 @@ export const loadUser = createAsyncThunk("user/loadUser", async (thunkAPI) => {
 
   try {
     console.log("LOADING USER...");
-    const res = await axios.get("http://localhost:5000/api/user/details");
+    const res = await axios.get("http://localhost:5000/api/user/detail");
 
     console.log(res.data);
     return res.data;
