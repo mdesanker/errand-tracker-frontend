@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { timedAlert } from "./alertSlice";
 
 export const registerUser = createAsyncThunk(
   "user/register",
@@ -28,7 +29,10 @@ export const registerUser = createAsyncThunk(
       }
     } catch (err) {
       const errors = err.response.data.errors;
-      console.error(errors);
+      if (errors) {
+        errors.forEach((error) => thunkAPI.dispatch(timedAlert(error)));
+      }
+      return thunkAPI.rejectWithValue(err.response.data);
     }
   }
 );
