@@ -2,9 +2,10 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import Button from "../elements/Button";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../store/slices/userSlice";
 import Alert from "../alerts/Alert";
+import { useEffect } from "react";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -32,6 +33,9 @@ const Login = () => {
     console.log({ email, password });
     dispatch(loginUser({ email, password }));
   };
+
+  const alerts = useSelector((state) => state.alerts);
+  console.log(alerts);
 
   return (
     <Wrapper>
@@ -63,7 +67,10 @@ const Login = () => {
           <StyledLink to="/register">Sign up.</StyledLink>
         </Text>
       </Card>
-      <Alert msg="Password must be at least 6 characters" type="danger" />
+      {alerts.length > 0 &&
+        alerts.map((alert) => {
+          return <Alert key={alert.id} msg={alert.msg} type={alert.type} />;
+        })}
     </Wrapper>
   );
 };
