@@ -104,6 +104,18 @@ const userSlice = createSlice({
       state.loading = false;
       state.user = null;
     });
+    builder.addCase(loginUser.fulfilled, (state, actions) => {
+      localStorage.setItem("token", actions.payload);
+      state.isAuthenticated = true;
+      state.loading = false;
+    });
+    builder.addCase(loginUser.rejected, (state, actions) => {
+      localStorage.removeItem("token");
+      state.token = null;
+      state.isAuthenticated = false;
+      state.loading = false;
+      state.user = null;
+    });
   },
 });
 
