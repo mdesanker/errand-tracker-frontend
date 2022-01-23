@@ -4,6 +4,7 @@ import { useState } from "react";
 import Button from "../elements/Button";
 import { useDispatch } from "react-redux";
 import { registerUser } from "../../store/slices/userSlice";
+import { setAlert, timedAlert } from "../../store/slices/alertSlice";
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -33,6 +34,12 @@ const Register = () => {
     // Check passwords match
     if (password !== password2) {
       console.log("Passwords do not match");
+      dispatch(
+        timedAlert({
+          msg: "Passwords do not match",
+          type: "danger",
+        })
+      );
     } else {
       console.log({ username, email, password });
       dispatch(registerUser({ username, email, password }));
@@ -51,7 +58,6 @@ const Register = () => {
             id="username"
             placeholder="Username"
             autoComplete="off"
-            required
             value={username}
             onChange={formChangeHandler}
           />
@@ -61,7 +67,6 @@ const Register = () => {
             id="email"
             placeholder="name@domain.com"
             autoComplete="email"
-            required
             value={email}
             onChange={formChangeHandler}
           />
@@ -70,7 +75,6 @@ const Register = () => {
             name="password"
             id="password"
             placeholder="Password"
-            required
             value={password}
             onChange={formChangeHandler}
           />
@@ -79,7 +83,6 @@ const Register = () => {
             name="password2"
             id="password2"
             placeholder="Confirm password"
-            required
             value={password2}
             onChange={formChangeHandler}
           />

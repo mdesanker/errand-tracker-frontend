@@ -1,4 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { v4 as uuidv4 } from "uuid";
+
+export const timedAlert = (error) => (dispatch) => {
+  const id = uuidv4();
+
+  dispatch(setAlert({ ...error, id }));
+
+  setTimeout(() => {
+    dispatch(removeAlert(id));
+  }, 5000);
+};
 
 const initialState = [];
 
