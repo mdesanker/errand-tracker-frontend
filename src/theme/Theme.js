@@ -5,6 +5,10 @@ const Theme = {
     light: "#a8dadc",
     faint: "#f1faee",
     accent: "#e63946",
+    danger: "#c00404",
+    alert: "#ffae42",
+    success: "#008000",
+    info: "#4682B4",
   },
   hover: {
     medium: "#3a6885",

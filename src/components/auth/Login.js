@@ -4,6 +4,7 @@ import { useState } from "react";
 import Button from "../elements/Button";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../../store/slices/userSlice";
+import Alert from "../alerts/Alert";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -62,6 +63,7 @@ const Login = () => {
           <StyledLink to="/register">Sign up.</StyledLink>
         </Text>
       </Card>
+      <Alert msg="Password must be at least 6 characters" type="danger" />
     </Wrapper>
   );
 };
@@ -70,6 +72,7 @@ const Wrapper = styled.main`
   width: 100%;
   height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 `;
