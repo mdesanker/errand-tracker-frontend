@@ -1,7 +1,16 @@
 import styled from "styled-components";
 import Header from "../header/Header";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { loadUser } from "../../store/slices/userSlice";
 
 const Dashboard = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loadUser());
+  }, []);
+
   return (
     <Wrapper>
       <Header />

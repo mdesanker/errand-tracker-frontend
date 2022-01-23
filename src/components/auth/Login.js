@@ -1,13 +1,15 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Button from "../elements/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../store/slices/userSlice";
 import AlertView from "../alerts/AlertView";
+import { useEffect } from "react";
 
 const Login = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     email: "",
@@ -29,12 +31,19 @@ const Login = () => {
 
   const formSubmitHandler = (e) => {
     e.preventDefault();
-    console.log({ email, password });
+    // console.log({ email, password });
     dispatch(loginUser({ email, password }));
   };
 
   const alerts = useSelector((state) => state.alerts);
-  console.log(alerts);
+
+  const { isAuthenticated } = useSelector((state) => state.user);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/dashboard");
+    }
+  }, [isAuthenticated]);
 
   return (
     <Wrapper>
@@ -48,7 +57,6 @@ const Login = () => {
             name="email"
             id="email"
             placeholder="name@domain.com"
-            autoComplete="email"
             value={email}
             onChange={formChangeHandler}
           />
