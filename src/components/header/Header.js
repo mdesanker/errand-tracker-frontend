@@ -24,6 +24,8 @@ const Wrapper = styled.header`
 
 const Container = styled.div`
   width: 100%;
+  // margin: 0 auto;
+  // max-width: ${({ theme }) => theme.widths.content};
   height: 100%;
   display: flex;
   justify-content: space-between;

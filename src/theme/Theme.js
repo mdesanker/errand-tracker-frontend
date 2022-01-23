@@ -19,6 +19,7 @@ const Theme = {
     footer: "20px",
   },
   widths: {
+    content: "800px",
     mobile: "max-width: 600px",
     tablet: "min-width: 600px",
     computer: "min-width: 992px",
