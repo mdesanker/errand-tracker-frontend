@@ -12,6 +12,7 @@ const Wrapper = styled.p`
   text-align: center;
   border-radius: ${({ theme }) => theme.radii.small};
   margin-top: 10px;
+  box-shadow: ${({ theme }) => theme.shadows.sharp};
 
   ${(props) =>
     props.type === "danger" &&

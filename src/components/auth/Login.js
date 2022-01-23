@@ -4,8 +4,7 @@ import { useState } from "react";
 import Button from "../elements/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../store/slices/userSlice";
-import Alert from "../alerts/Alert";
-import { useEffect } from "react";
+import AlertView from "../alerts/AlertView";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -39,6 +38,7 @@ const Login = () => {
 
   return (
     <Wrapper>
+      <AlertView alerts={alerts} />
       <Card>
         <Header>Log in.</Header>
         <SubHeader>Log in to your account.</SubHeader>
@@ -67,10 +67,6 @@ const Login = () => {
           <StyledLink to="/register">Sign up.</StyledLink>
         </Text>
       </Card>
-      {alerts.length > 0 &&
-        alerts.map((alert) => {
-          return <Alert key={alert.id} msg={alert.msg} type={alert.type} />;
-        })}
     </Wrapper>
   );
 };
