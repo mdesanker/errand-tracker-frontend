@@ -37,6 +37,41 @@ export const registerUser = createAsyncThunk(
   }
 );
 
+export const loginUser = createAsyncThunk(
+  "user/login",
+  async ({ email, password }, thunkAPI) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const body = JSON.stringify({ email, password });
+
+    try {
+      const res = await axios.post(
+        "http://localhost:5000/api/user/login",
+        body,
+        config
+      );
+
+      console.log(res.data);
+
+      if (res.status === 200) {
+        return res.data.token;
+      } else {
+        return thunkAPI.rejectWithValue(res.data);
+      }
+    } catch (err) {
+      const errors = err.response.data.errors;
+      if (errors) {
+        errors.forEach((error) => thunkAPI.dispatch(timedAlert(error)));
+      }
+      return thunkAPI.rejectWithValue(err.response.data);
+    }
+  }
+);
+
 const initialState = {
   token: localStorage.getItem("token"),
   isAuthenticated: null,

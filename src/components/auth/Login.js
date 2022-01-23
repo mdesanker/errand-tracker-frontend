@@ -2,8 +2,12 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import Button from "../elements/Button";
+import { useDispatch } from "react-redux";
+import { loginUser } from "../../store/slices/userSlice";
 
 const Login = () => {
+  const dispatch = useDispatch();
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -24,7 +28,8 @@ const Login = () => {
 
   const formSubmitHandler = (e) => {
     e.preventDefault();
-    console.log(formData);
+    console.log({ email, password });
+    dispatch(loginUser({ email, password }));
   };
 
   return (
@@ -39,7 +44,6 @@ const Login = () => {
             id="email"
             placeholder="name@domain.com"
             autoComplete="email"
-            required
             value={email}
             onChange={formChangeHandler}
           />
@@ -48,7 +52,6 @@ const Login = () => {
             name="password"
             id="password"
             placeholder="Password"
-            required
             value={password}
             onChange={formChangeHandler}
           />

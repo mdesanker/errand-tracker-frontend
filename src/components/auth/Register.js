@@ -4,7 +4,7 @@ import { useState } from "react";
 import Button from "../elements/Button";
 import { useDispatch } from "react-redux";
 import { registerUser } from "../../store/slices/userSlice";
-import { setAlert, timedAlert } from "../../store/slices/alertSlice";
+import { timedAlert } from "../../store/slices/alertSlice";
 
 const Register = () => {
   const dispatch = useDispatch();
