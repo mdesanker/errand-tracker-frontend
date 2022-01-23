@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 import Button from "../elements/Button";
 import { useDispatch } from "react-redux";
 import { registerUser } from "../../store/slices/userSlice";
@@ -10,6 +10,7 @@ import AlertView from "../alerts/AlertView";
 
 const Register = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     username: "",
@@ -49,6 +50,14 @@ const Register = () => {
   };
 
   const alerts = useSelector((state) => state.alerts);
+
+  const { isAuthenticated } = useSelector((state) => state.user);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/dashboard");
+    }
+  }, [isAuthenticated]);
 
   return (
     <Wrapper>
