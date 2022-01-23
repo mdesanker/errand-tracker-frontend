@@ -142,6 +142,18 @@ const userSlice = createSlice({
       state.loading = false;
       state.user = null;
     });
+    builder.addCase(loadUser.fulfilled, (state, actions) => {
+      state.user = actions.payload;
+      state.isAuthenticated = true;
+      state.loading = false;
+    });
+    builder.addCase(loadUser.rejected, (state, actions) => {
+      localStorage.removeItem("token");
+      state.token = null;
+      state.isAuthenticated = false;
+      state.loading = false;
+      state.user = null;
+    });
   },
 });
 
