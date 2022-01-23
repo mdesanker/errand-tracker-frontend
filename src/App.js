@@ -7,6 +7,7 @@ import Dashboard from "./components/dashboard/Dashboard";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { loadUser } from "./store/slices/userSlice";
+import ProtectedRoute from "./utils/ProtectedRoute";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -21,7 +22,14 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </Fragment>
   );
