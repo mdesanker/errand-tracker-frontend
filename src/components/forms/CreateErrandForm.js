@@ -1,8 +1,12 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
+import { createErrand } from "../../store/slices/errandSlice";
 import OvalBtn from "../elements/OvalBtn";
 
 const CreateErrandForm = () => {
+  const dispatch = useDispatch();
+
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -23,6 +27,7 @@ const CreateErrandForm = () => {
   const formSubmitHandler = (e) => {
     e.preventDefault();
     console.log(formData);
+    dispatch(createErrand(formData));
   };
 
   return (

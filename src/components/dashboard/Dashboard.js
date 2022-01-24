@@ -9,13 +9,13 @@ import CreateErrandLink from "../elements/CreateErrandLink";
 const Dashboard = () => {
   const dispatch = useDispatch();
 
-  const { user } = useSelector((state) => state.user);
-
-  // console.log(user);
-
   useEffect(() => {
     dispatch(loadUser());
   }, []);
+
+  const { user } = useSelector((state) => state.user);
+
+  // console.log(user);
 
   return (
     <Wrapper>
