@@ -1,15 +1,40 @@
+import { useState } from "react";
 import styled from "styled-components";
 import OvalBtn from "../elements/OvalBtn";
 
 const CreateErrandForm = () => {
+  const [formData, setFormData] = useState({
+    title: "",
+    description: "",
+    dueDate: "",
+    priority: "",
+  });
+
+  const { title, description, dueDate, priority } = formData;
+
+  const formChangeHandler = (e) => {
+    const { name, value } = e.target;
+
+    setFormData((prevState) => {
+      return { ...prevState, [name]: value };
+    });
+  };
+
+  const formSubmitHandler = (e) => {
+    e.preventDefault();
+    console.log(formData);
+  };
+
   return (
     <Wrapper>
-      <Form>
+      <Form onSubmit={formSubmitHandler}>
         <Title
           type="text"
           name="title"
           id="title"
           placeholder="Title (required)"
+          value={title}
+          onChange={formChangeHandler}
         />
         <Description
           name="description"
@@ -17,21 +42,33 @@ const CreateErrandForm = () => {
           cols="30"
           rows="3"
           placeholder="Description"
+          value={description}
+          onChange={formChangeHandler}
         ></Description>
         <FormGroup>
           <label htmlFor="dueDate">Due date:</label>
-          <Date type="date" name="dueDate" id="dueDate" />
+          <Date
+            type="date"
+            name="dueDate"
+            id="dueDate"
+            value={dueDate}
+            onChange={formChangeHandler}
+          />
         </FormGroup>
         <FormGroup>
           <label htmlFor="priority">Priority:</label>
-          <PrioritySelect name="priority" id="priority">
+          <PrioritySelect
+            name="priority"
+            id="priority"
+            value={priority}
+            onChange={formChangeHandler}
+          >
             <option value="None">None</option>
             <option value="Low">Low</option>
             <option value="Medium">Medium</option>
             <option value="High">High</option>
           </PrioritySelect>
         </FormGroup>
-        {/* <button>Create errand</button> */}
         <OvalBtn text="Create errand" />
       </Form>
     </Wrapper>
