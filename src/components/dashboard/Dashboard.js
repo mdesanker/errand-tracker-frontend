@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { loadUser } from "../../store/slices/userSlice";
 import { useSelector } from "react-redux";
 import Greeting from "./Greeting";
+import CreateErrandLink from "../elements/CreateErrandLink";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ const Dashboard = () => {
     <Wrapper>
       <Container>
         <Greeting />
+        <CreateErrandLink />
       </Container>
     </Wrapper>
   );
