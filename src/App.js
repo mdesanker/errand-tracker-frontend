@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { loadUser } from "./store/slices/userSlice";
 import ProtectedRoute from "./utils/ProtectedRoute";
+import CreateErrandForm from "./components/forms/CreateErrandForm";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -27,6 +28,14 @@ const App = () => {
           element={
             <ProtectedRoute>
               <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/createerrand"
+          element={
+            <ProtectedRoute>
+              <CreateErrandForm />
             </ProtectedRoute>
           }
         />
