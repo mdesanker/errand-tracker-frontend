@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { createErrand } from "../../store/slices/errandSlice";
+import ExitBtn from "../elements/ExitBtn";
 import OvalBtn from "../elements/OvalBtn";
 
 const CreateErrandForm = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     title: "",
@@ -36,8 +39,13 @@ const CreateErrandForm = () => {
     });
   };
 
+  const exitHandler = () => {
+    navigate("/dashboard");
+  };
+
   return (
     <Wrapper>
+      <ExitBtn onClick={exitHandler} />
       <Form onSubmit={formSubmitHandler}>
         <Title
           type="text"
