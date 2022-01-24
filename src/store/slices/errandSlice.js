@@ -19,8 +19,14 @@ export const createErrand = createAsyncThunk(
         body,
         config
       );
-      console.log(res.data);
-      return res.data;
+
+      // console.log(res.data);
+      if (res.status === 200) {
+        thunkAPI.dispatch(
+          timedAlert({ msg: "Errand created", type: "success" })
+        );
+        return res.data;
+      }
     } catch (err) {
       const errors = err.response.data.errors;
       if (errors) {
