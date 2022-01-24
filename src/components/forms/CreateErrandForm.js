@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import OvalBtn from "../elements/OvalBtn";
 
 const CreateErrandForm = () => {
   return (
@@ -30,7 +31,8 @@ const CreateErrandForm = () => {
             <option value="High">High</option>
           </PrioritySelect>
         </FormGroup>
-        <button>Create errand</button>
+        {/* <button>Create errand</button> */}
+        <OvalBtn text="Create errand" />
       </Form>
     </Wrapper>
   );
