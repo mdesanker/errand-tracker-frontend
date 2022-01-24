@@ -7,10 +7,8 @@ const Greeting = () => {
 
   return (
     <Wrapper>
-      <Avatar src={user.avatar} alt="user.username" />
-      <div>
-        <h1>Hi, {user.username}</h1>
-      </div>
+      {user && <Avatar src={user.avatar} alt="user.username" />}
+      <div>{user && <h1>Hi, {user.username}</h1>}</div>
     </Wrapper>
   );
 };
