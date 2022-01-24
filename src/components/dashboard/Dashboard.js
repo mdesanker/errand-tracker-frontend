@@ -19,8 +19,10 @@ const Dashboard = () => {
   console.log(user);
 
   useEffect(() => {
-    dispatch(getUserErrands({ id: user._id }));
-  }, []);
+    if (user) {
+      dispatch(getUserErrands({ id: user._id }));
+    }
+  }, [user]);
 
   return (
     <Wrapper>

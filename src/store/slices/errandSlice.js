@@ -59,14 +59,20 @@ export const getUserErrands = createAsyncThunk(
 const initialState = {
   posts: [],
   post: null,
-  status: "idle",
 };
 
 const errandSlice = createSlice({
   name: "errands",
   initialState,
   reducers: {},
-  extraReducers: (builder) => {},
+  extraReducers: (builder) => {
+    builder.addCase(getUserErrands.fulfilled, (state, actions) => {
+      state.posts = actions.payload;
+    });
+    builder.addCase(getUserErrands.rejected, (state, actions) => {
+      state.posts = [];
+    });
+  },
 });
 
 export const {} = errandSlice.actions;

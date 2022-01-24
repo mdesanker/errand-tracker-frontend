@@ -13,7 +13,7 @@ const GlobalStyles = createGlobalStyle`
   }
   body {
     width: 100%;
-    background-color: ${({ theme }) => theme.colors.faint};
+    // background-color: ${({ theme }) => theme.colors.faint};
     /* For footer positioning */
     position: relative;
     min-height: 100vh;

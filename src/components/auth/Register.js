@@ -112,6 +112,7 @@ const Wrapper = styled.main`
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: ${({ theme }) => theme.colors.light};
 `;
 
 const Card = styled.div`

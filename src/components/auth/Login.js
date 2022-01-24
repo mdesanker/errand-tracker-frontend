@@ -81,6 +81,7 @@ const Wrapper = styled.main`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: ${({ theme }) => theme.colors.light};
 `;
 
 const Card = styled.div`
