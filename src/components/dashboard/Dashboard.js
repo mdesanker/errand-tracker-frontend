@@ -5,6 +5,7 @@ import { loadUser } from "../../store/slices/userSlice";
 import { useSelector } from "react-redux";
 import Greeting from "./Greeting";
 import CreateErrandLink from "../elements/CreateErrandLink";
+import { getUserErrands } from "../../store/slices/errandSlice";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -15,7 +16,11 @@ const Dashboard = () => {
 
   const { user } = useSelector((state) => state.user);
 
-  // console.log(user);
+  console.log(user);
+
+  useEffect(() => {
+    dispatch(getUserErrands({ id: user._id }));
+  }, []);
 
   return (
     <Wrapper>

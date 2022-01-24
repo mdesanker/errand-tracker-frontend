@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { useSelector } from "react-redux";
 import { timedAlert } from "./alertSlice";
 
 export const createErrand = createAsyncThunk(
@@ -34,6 +35,22 @@ export const createErrand = createAsyncThunk(
           thunkAPI.dispatch(timedAlert({ ...error, type: "danger" }))
         );
       }
+      return thunkAPI.rejectWithValue(err.response.data);
+    }
+  }
+);
+
+export const getUserErrands = createAsyncThunk(
+  "errand/getUserErrands",
+  async ({ id }, thunkAPI) => {
+    try {
+      const res = await axios.get(
+        `http://localhost:5000/api/errand/user/${id}`
+      );
+      return res.data;
+    } catch (err) {
+      const errors = err.response.data;
+      console.error(errors);
       return thunkAPI.rejectWithValue(err.response.data);
     }
   }
