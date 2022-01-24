@@ -37,6 +37,7 @@ const Theme = {
     small: "3px",
     medium: "5px",
     large: "8px",
+    avatar: "120px",
   },
 };
 

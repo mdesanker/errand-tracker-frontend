@@ -1,11 +1,16 @@
 import styled from "styled-components";
-import Header from "../header/Header";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { loadUser } from "../../store/slices/userSlice";
+import { useSelector } from "react-redux";
+import Greeting from "./Greeting";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
+
+  const { user } = useSelector((state) => state.user);
+
+  // console.log(user);
 
   useEffect(() => {
     dispatch(loadUser());
@@ -13,16 +18,15 @@ const Dashboard = () => {
 
   return (
     <Wrapper>
-      <Header />
       <Container>
-        <h1>Dashboard</h1>
+        <Greeting />
       </Container>
     </Wrapper>
   );
 };
 
 const Wrapper = styled.main`
-  padding-top: ${({ theme }) => theme.heights.header};
+  // padding-top: ${({ theme }) => theme.heights.header};
   min-height: 100vh;
 `;
 
