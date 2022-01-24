@@ -28,6 +28,12 @@ const CreateErrandForm = () => {
     e.preventDefault();
     console.log(formData);
     dispatch(createErrand(formData));
+    setFormData({
+      title: "",
+      description: "",
+      dueDate: "",
+      priority: "",
+    });
   };
 
   return (
