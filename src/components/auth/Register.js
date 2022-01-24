@@ -6,7 +6,6 @@ import { useDispatch } from "react-redux";
 import { registerUser } from "../../store/slices/userSlice";
 import { timedAlert } from "../../store/slices/alertSlice";
 import { useSelector } from "react-redux";
-import AlertView from "../alerts/AlertView";
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -49,19 +48,16 @@ const Register = () => {
     }
   };
 
-  const alerts = useSelector((state) => state.alerts);
-
   const { isAuthenticated } = useSelector((state) => state.user);
 
   useEffect(() => {
     if (isAuthenticated) {
-      // navigate("/dashboard");
+      navigate("/dashboard");
     }
   }, [isAuthenticated]);
 
   return (
     <Wrapper>
-      <AlertView alerts={alerts} />
       <Card>
         <Header>Sign up.</Header>
         <SubHeader>Create an account.</SubHeader>

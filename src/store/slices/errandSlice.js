@@ -36,6 +36,7 @@ export const createErrand = createAsyncThunk(
 const initialState = {
   posts: [],
   post: null,
+  status: "idle",
 };
 
 const errandSlice = createSlice({

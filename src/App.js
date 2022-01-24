@@ -5,10 +5,11 @@ import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import Dashboard from "./components/dashboard/Dashboard";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { loadUser } from "./store/slices/userSlice";
 import ProtectedRoute from "./utils/ProtectedRoute";
 import CreateErrandForm from "./components/forms/CreateErrandForm";
+import AlertView from "./components/alerts/AlertView";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -17,9 +18,12 @@ const App = () => {
     dispatch(loadUser());
   }, []);
 
+  const alerts = useSelector((state) => state.alerts);
+
   return (
     <Fragment>
       <GlobalStyles />
+      <AlertView alerts={alerts} />
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
