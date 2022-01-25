@@ -10,6 +10,7 @@ import { loadUser } from "./store/slices/userSlice";
 import ProtectedRoute from "./utils/ProtectedRoute";
 import CreateErrandForm from "./components/forms/CreateErrandForm";
 import AlertView from "./components/alerts/AlertView";
+import CreateProjectForm from "./components/forms/CreateProjectForm";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -40,6 +41,14 @@ const App = () => {
           element={
             <ProtectedRoute>
               <CreateErrandForm />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/createproject"
+          element={
+            <ProtectedRoute>
+              <CreateProjectForm />
             </ProtectedRoute>
           }
         />
