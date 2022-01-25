@@ -39,13 +39,9 @@ const Card = styled.div`
   align-items: center;
   border-radius: ${({ theme }) => theme.radii.small};
   border-left: 5px solid transparent;
+  cursor: pointer;
 
   ${({ priority }) => {
-    if (priority === "None") {
-      return css`
-        border-left: 5px solid ${({ theme }) => theme.colors.noPriority};
-      `;
-    }
     if (priority === "Low") {
       return css`
         border-left: 5px solid ${({ theme }) => theme.colors.lowPriority};
