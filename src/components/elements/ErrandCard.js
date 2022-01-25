@@ -7,7 +7,7 @@ const ErrandCard = ({ errand }) => {
   const { title, description, isComplete, priority } = errand;
 
   return (
-    <Card>
+    <Card priority={priority}>
       <CardGroup>
         <Checkbox isComplete={isComplete}>
           <i className="fas fa-check" />
@@ -29,7 +29,31 @@ const Card = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-radius: ${({ theme }) => theme.radii.medium};
+  border-radius: ${({ theme }) => theme.radii.small};
+  border-left: 5px solid transparent;
+
+  ${({ priority }) => {
+    if (priority === "None") {
+      return css`
+        border-left: 5px solid ${({ theme }) => theme.colors.noPriority};
+      `;
+    }
+    if (priority === "Low") {
+      return css`
+        border-left: 5px solid ${({ theme }) => theme.colors.lowPriority};
+      `;
+    }
+    if (priority === "Medium") {
+      return css`
+        border-left: 5px solid ${({ theme }) => theme.colors.mediumPriority};
+      `;
+    }
+    if (priority === "High") {
+      return css`
+        border-left: 5px solid ${({ theme }) => theme.colors.highPriority};
+      `;
+    }
+  }}
 `;
 
 const CardGroup = styled.div`

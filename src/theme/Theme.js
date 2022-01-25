@@ -9,6 +9,10 @@ const Theme = {
     alert: "#ffae42",
     success: "#008000",
     info: "#4682B4",
+    noPriority: "green",
+    lowPriority: "yellow",
+    mediumPriority: "orange",
+    highPriority: "red",
   },
   hover: {
     medium: "#3a6885",
