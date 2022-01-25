@@ -41,6 +41,10 @@ const Card = styled.div`
   border-left: 5px solid transparent;
   cursor: pointer;
 
+  &:active {
+    background-color: ${({ theme }) => theme.colors.light};
+  }
+
   ${({ priority }) => {
     if (priority === "Low") {
       return css`
