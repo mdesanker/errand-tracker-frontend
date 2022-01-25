@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import styled from "styled-components";
+import CreateProjectLink from "../elements/CreateProjectLink";
 import ErrandCard from "./ErrandCard";
 
 const ErrandContainer = () => {
@@ -7,7 +8,10 @@ const ErrandContainer = () => {
 
   return (
     <Wrapper>
-      <ProjectTitle>All errands</ProjectTitle>
+      <ProjectHeader>
+        <Title>All errands</Title>
+        <CreateProjectLink />
+      </ProjectHeader>
       {errands &&
         errands.map((errand) => {
           return <ErrandCard key={errand._id} errand={errand} />;
@@ -23,8 +27,14 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
-const ProjectTitle = styled.h2`
+const ProjectHeader = styled.h2`
   width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const Title = styled.h2`
   font-weight: normal;
   text-transform: uppercase;
   color: gray;
