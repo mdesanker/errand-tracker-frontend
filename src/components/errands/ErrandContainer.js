@@ -27,7 +27,7 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
-const ProjectHeader = styled.h2`
+const ProjectHeader = styled.div`
   width: 80%;
   display: flex;
   justify-content: space-between;

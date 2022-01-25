@@ -7,6 +7,7 @@ import Greeting from "./Greeting";
 import CreateErrandLink from "../elements/CreateErrandLink";
 import { getUserErrands } from "../../store/slices/errandSlice";
 import ErrandContainer from "../errands/ErrandContainer";
+import { getUserProjects } from "../../store/slices/projectSlice";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -22,6 +23,7 @@ const Dashboard = () => {
   useEffect(() => {
     if (user) {
       dispatch(getUserErrands({ id: user._id }));
+      dispatch(getUserProjects({ id: user._id }));
     }
   }, [user]);
 

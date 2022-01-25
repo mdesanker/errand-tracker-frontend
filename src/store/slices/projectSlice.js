@@ -39,6 +39,23 @@ export const createProject = createAsyncThunk(
   }
 );
 
+export const getUserProjects = createAsyncThunk(
+  "project/getAllProjects",
+  async ({ id }, thunkAPI) => {
+    try {
+      const res = await axios.get(
+        `http://localhost:5000/api/project/user/${id}`
+      );
+      console.log(res.data);
+      return res.data;
+    } catch (err) {
+      const errors = err.response.data.errors;
+      console.error(errors);
+      return thunkAPI.rejectWithValue(err.response.data);
+    }
+  }
+);
+
 const initialState = {
   projects: [],
   project: null,
@@ -51,6 +68,6 @@ const projectSlice = createSlice({
   extraReducers: (builder) => {},
 });
 
-// export const {} = projectSlice.actions;
+// export const {} = projectSlice.actions;;
 
 export default projectSlice.reducer;
