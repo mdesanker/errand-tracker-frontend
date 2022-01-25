@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import CreateProjectLink from "../elements/CreateProjectLink";
+import ProjectSelector from "../elements/ProjectSelector";
 import ErrandCard from "./ErrandCard";
 
 const ErrandContainer = () => {
@@ -9,7 +10,8 @@ const ErrandContainer = () => {
   return (
     <Wrapper>
       <ProjectHeader>
-        <Title>All errands</Title>
+        {/* <>All errands</<Title> */}
+        <ProjectSelector />
         <CreateProjectLink />
       </ProjectHeader>
       {errands &&
