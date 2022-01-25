@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const CreateProjectLink = ({ onClick }) => {
+const CreateProjectLink = () => {
   return <Wrapper to="/createproject">+ Project</Wrapper>;
 };
 
