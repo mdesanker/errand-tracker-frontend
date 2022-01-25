@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { useSelector } from "react-redux";
 import { timedAlert } from "./alertSlice";
 
 export const createErrand = createAsyncThunk(
@@ -11,7 +10,6 @@ export const createErrand = createAsyncThunk(
         "Content-Type": "application/json",
       },
     };
-
     const body = JSON.stringify({ title, description, dueDate, priority });
 
     try {
@@ -56,6 +54,23 @@ export const getUserErrands = createAsyncThunk(
   }
 );
 
+export const toggleErrandComplete = createAsyncThunk(
+  "errand/toggleComplete",
+  async ({ id }, thunkAPI) => {
+    try {
+      const res = await axios.put(
+        `http://localhost:5000/api/errand/${id}/toggle`
+      );
+      console.log(res.data);
+      return res.data;
+    } catch (err) {
+      const errors = err.response.data.errors;
+      console.error(errors);
+      return thunkAPI.rejectWithValue(err.response.data);
+    }
+  }
+);
+
 const initialState = {
   errands: [],
   errand: null,
@@ -75,6 +90,6 @@ const errandSlice = createSlice({
   },
 });
 
-export const {} = errandSlice.actions;
+// export const {} = errandSlice.actions;
 
 export default errandSlice.reducer;

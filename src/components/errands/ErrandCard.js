@@ -1,13 +1,22 @@
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { css } from "styled-components";
+import { toggleErrandComplete } from "../../store/slices/errandSlice";
 
 const ErrandCard = ({ errand }) => {
+  const dispatch = useDispatch();
+
   // console.log(errand);
 
-  const { title, description, isComplete, priority } = errand;
+  const { _id, title, description, isComplete, priority } = errand;
+
+  const errandClickHandler = () => {
+    console.log(`Errand ${_id} clicked...`);
+    dispatch(toggleErrandComplete({ id: _id }));
+  };
 
   return (
-    <Card priority={priority}>
+    <Card priority={priority} onClick={errandClickHandler}>
       <CardGroup>
         <Checkbox isComplete={isComplete}>
           <i className="fas fa-check" />
@@ -20,12 +29,11 @@ const ErrandCard = ({ errand }) => {
 
 const Card = styled.div`
   width: 80%;
-  height: 70px;
-  margin: 0 auto;
+  height: 50px;
   padding: 16px;
   font-size: 1rem;
   background-color: white;
-  margin: 0.5rem 0;
+  margin-top: 0.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
