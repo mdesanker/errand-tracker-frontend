@@ -57,8 +57,8 @@ export const getUserErrands = createAsyncThunk(
 );
 
 const initialState = {
-  posts: [],
-  post: null,
+  errands: [],
+  errand: null,
 };
 
 const errandSlice = createSlice({
@@ -67,10 +67,10 @@ const errandSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(getUserErrands.fulfilled, (state, actions) => {
-      state.posts = actions.payload;
+      state.errands = actions.payload;
     });
     builder.addCase(getUserErrands.rejected, (state, actions) => {
-      state.posts = [];
+      state.errands = [];
     });
   },
 });

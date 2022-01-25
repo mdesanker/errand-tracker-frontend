@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import Greeting from "./Greeting";
 import CreateErrandLink from "../elements/CreateErrandLink";
 import { getUserErrands } from "../../store/slices/errandSlice";
+import ErrandCard from "../elements/ErrandCard";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -24,11 +25,18 @@ const Dashboard = () => {
     }
   }, [user]);
 
+  const { errands } = useSelector((state) => state.errands);
+  console.log(errands);
+
   return (
     <Wrapper>
       <Container>
         <Greeting />
         <CreateErrandLink />
+        {errands &&
+          errands.map((errand) => {
+            return <ErrandCard key={errand._id} errand={errand} />;
+          })}
       </Container>
     </Wrapper>
   );
