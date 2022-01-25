@@ -26,7 +26,7 @@ const Dashboard = () => {
   }, [user]);
 
   const { errands } = useSelector((state) => state.errands);
-  console.log(errands);
+  // console.log(errands);
 
   return (
     <Wrapper>
