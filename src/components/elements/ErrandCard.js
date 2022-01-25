@@ -12,7 +12,7 @@ const ErrandCard = ({ errand }) => {
         <Checkbox isComplete={isComplete}>
           <i className="fas fa-check" />
         </Checkbox>
-        <p>{title}</p>
+        <Title isComplete={isComplete}>{title}</Title>
       </CardGroup>
     </Card>
   );
@@ -81,6 +81,15 @@ const Checkbox = styled.div`
       color: white;
       background-color: lightgray;
       border: 2px solid lightgray;
+    `}
+`;
+
+const Title = styled.p`
+  ${({ isComplete }) =>
+    isComplete &&
+    css`
+      color: lightgray;
+      text-decoration: line-through;
     `}
 `;
 
