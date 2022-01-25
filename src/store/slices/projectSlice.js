@@ -65,7 +65,14 @@ const projectSlice = createSlice({
   name: "projects",
   initialState,
   reducers: {},
-  extraReducers: (builder) => {},
+  extraReducers: (builder) => {
+    builder.addCase(getUserProjects.fulfilled, (state, actions) => {
+      state.projects = actions.payload;
+    });
+    builder.addCase(getUserProjects.rejected, (state, actions) => {
+      state.projects = [];
+    });
+  },
 });
 
 // export const {} = projectSlice.actions;;
