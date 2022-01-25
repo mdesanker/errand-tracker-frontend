@@ -19,8 +19,14 @@ export const createProject = createAsyncThunk(
         body,
         config
       );
-      console.log(res.data);
-      return res.data;
+
+      if (res.status === 200) {
+        thunkAPI.dispatch(
+          timedAlert({ msg: "Project created", type: "success" })
+        );
+        console.log(res.data);
+        return res.data;
+      }
     } catch (err) {
       const errors = err.response.data.errors;
       if (errors) {

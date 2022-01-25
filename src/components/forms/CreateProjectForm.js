@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { createProject } from "../../store/slices/projectSlice";
 import ExitBtn from "../elements/ExitBtn";
 import OvalBtn from "../elements/OvalBtn";
 
@@ -27,10 +28,11 @@ const CreateProjectForm = () => {
   const formSubmitHandler = (e) => {
     e.preventDefault();
     console.log(formData);
-    // setFormData({
-    //   title: "",
-    //   description: "",
-    // });
+    dispatch(createProject(formData));
+    setFormData({
+      title: "",
+      description: "",
+    });
   };
 
   const exitHandler = () => {
