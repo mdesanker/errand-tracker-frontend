@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { css } from "styled-components";
 
 const ErrandCard = ({ errand }) => {
-  console.log(errand);
+  // console.log(errand);
 
   const { title, description, isComplete, priority } = errand;
 
