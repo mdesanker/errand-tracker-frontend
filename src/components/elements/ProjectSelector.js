@@ -21,6 +21,15 @@ const ProjectSelector = () => {
   );
 };
 
-const Wrapper = styled.select``;
+const Wrapper = styled.select`
+  padding: 5px;
+  font-size: 1.1rem;
+  color: gray;
+  text-transform: uppercase;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  min-width: 50%;
+`;
 
 export default ProjectSelector;
