@@ -56,6 +56,21 @@ export const getUserProjects = createAsyncThunk(
   }
 );
 
+export const getProject = createAsyncThunk(
+  "project/getProject",
+  async ({ id }, thunkAPI) => {
+    try {
+      const res = await axios.get(`http://localhost:5000/api/project/${id}`);
+      console.log(res.data);
+      return res.data;
+    } catch (err) {
+      const errors = err.response.data.errors;
+      console.error(errors);
+      return thunkAPI.rejectWithValue(err.response.data);
+    }
+  }
+);
+
 const initialState = {
   projects: [],
   project: null,
@@ -71,6 +86,12 @@ const projectSlice = createSlice({
     });
     builder.addCase(getUserProjects.rejected, (state, actions) => {
       state.projects = [];
+    });
+    builder.addCase(getProject.fulfilled, (state, actions) => {
+      state.project = actions.payload;
+    });
+    builder.addCase(getProject.rejected, (state, actions) => {
+      state.project = null;
     });
   },
 });
