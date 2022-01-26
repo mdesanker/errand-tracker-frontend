@@ -16,11 +16,12 @@ const CreateErrandForm = () => {
     description: "",
     dueDate: "",
     priority: "",
+    project: "",
   });
 
   const { projects } = useSelector((state) => state.projects);
 
-  const { title, description, dueDate, priority } = formData;
+  const { title, description, dueDate, priority, project } = formData;
 
   const formChangeHandler = (e) => {
     const { name, value } = e.target;
@@ -28,6 +29,8 @@ const CreateErrandForm = () => {
     setFormData((prevState) => {
       return { ...prevState, [name]: value };
     });
+
+    console.log(formData);
   };
 
   const formSubmitHandler = (e) => {
@@ -39,6 +42,7 @@ const CreateErrandForm = () => {
       description: "",
       dueDate: "",
       priority: "",
+      // project: "",
     });
   };
 
@@ -50,8 +54,8 @@ const CreateErrandForm = () => {
     <Wrapper>
       <ExitBtn onClick={exitHandler} />
       <Form onSubmit={formSubmitHandler}>
-        <ProjectSelect>
-          <option value="none">No project</option>
+        <ProjectSelect name="project" id="project" onChange={formChangeHandler}>
+          <option value="">No project</option>
           {projects &&
             projects.map((project) => {
               return (
