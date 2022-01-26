@@ -67,7 +67,7 @@ export const getProjectErrands = createAsyncThunk(
       const res = await axios.get(
         `http://localhost:5000/api/errand/project/${id}`
       );
-      console.log(res.data);
+      // console.log(res.data);
       return res.data;
     } catch (err) {
       const errors = err.response.data.errors;
@@ -84,7 +84,7 @@ export const toggleErrandComplete = createAsyncThunk(
       const res = await axios.put(
         `http://localhost:5000/api/errand/${id}/toggle`
       );
-      console.log(res.data);
+      // console.log(res.data);
       return res.data;
     } catch (err) {
       const errors = err.response.data.errors;

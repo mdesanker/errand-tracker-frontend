@@ -42,7 +42,11 @@ const Wrapper = styled.select`
   background-color: transparent;
   border: none;
   cursor: pointer;
-  min-width: 50%;
+  max-width: 50%;
+
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 `;
 
 export default ProjectSelector;

@@ -29,13 +29,11 @@ const CreateErrandForm = () => {
     setFormData((prevState) => {
       return { ...prevState, [name]: value };
     });
-
-    console.log(formData);
   };
 
   const formSubmitHandler = (e) => {
     e.preventDefault();
-    console.log(formData);
+    // console.log(formData);
     dispatch(createErrand(formData));
     setFormData((prevState) => {
       return {

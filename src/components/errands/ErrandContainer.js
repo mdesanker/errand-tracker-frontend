@@ -55,11 +55,4 @@ const ProjectHeader = styled.div`
   align-items: center;
 `;
 
-const Title = styled.h2`
-  font-weight: normal;
-  text-transform: uppercase;
-  color: gray;
-  font-size: 1.2rem;
-`;
-
 export default ErrandContainer;

@@ -11,7 +11,6 @@ const ErrandCard = ({ errand }) => {
   const { _id, title, description, isComplete, priority } = errand;
 
   const errandClickHandler = () => {
-    console.log(`Errand ${_id} clicked...`);
     dispatch(toggleErrandComplete({ id: _id }));
   };
 
