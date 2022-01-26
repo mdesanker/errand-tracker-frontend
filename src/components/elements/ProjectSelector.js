@@ -12,7 +12,7 @@ const ProjectSelector = () => {
   const projectSelectHandler = (e) => {
     const { value } = e.target;
     // console.log(value);
-    if (value === "allErrands") {
+    if (value === "none") {
       dispatch(clearProject());
     } else {
       dispatch(getProject({ id: value }));
@@ -21,7 +21,7 @@ const ProjectSelector = () => {
 
   return (
     <Wrapper onChange={projectSelectHandler}>
-      <option value="allErrands">Your errands</option>
+      <option value="none">Your errands</option>
       {projects &&
         projects.map((project) => {
           return (

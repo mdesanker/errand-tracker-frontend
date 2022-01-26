@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
@@ -16,6 +17,8 @@ const CreateErrandForm = () => {
     dueDate: "",
     priority: "",
   });
+
+  const { projects } = useSelector((state) => state.projects);
 
   const { title, description, dueDate, priority } = formData;
 
@@ -47,6 +50,17 @@ const CreateErrandForm = () => {
     <Wrapper>
       <ExitBtn onClick={exitHandler} />
       <Form onSubmit={formSubmitHandler}>
+        <ProjectSelect>
+          <option value="none">No project</option>
+          {projects &&
+            projects.map((project) => {
+              return (
+                <option key={project._id} value={project._id}>
+                  {project.title}
+                </option>
+              );
+            })}
+        </ProjectSelect>
         <Title
           type="text"
           name="title"
@@ -109,6 +123,13 @@ const Form = styled.form`
   display: flex;
   flex-direction: column;
   gap: 10px;
+`;
+
+const ProjectSelect = styled.select`
+  font-size: 1rem;
+  padding: 5px;
+  margin-bottom: 15px;
+  color: gray;
 `;
 
 const Title = styled.input`
