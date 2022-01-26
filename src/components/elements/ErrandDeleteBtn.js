@@ -14,6 +14,7 @@ const ErrandDeleteBtn = ({ id }) => {
 };
 
 const Wrapper = styled.button`
+  // display: none;
   font-size: 12px;
   font-weight: bold;
   text-transform: uppercase;
