@@ -22,10 +22,11 @@ const ErrandContainer = () => {
   useEffect(() => {
     if (project) {
       dispatch(getProjectErrands({ id: project._id }));
-    } else {
+    }
+    if (user) {
       dispatch(getUserErrands({ id: user._id }));
     }
-  }, [project]);
+  }, [project, user]);
 
   return (
     <Wrapper>

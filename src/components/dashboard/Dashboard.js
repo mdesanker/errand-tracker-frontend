@@ -8,6 +8,7 @@ import CreateErrandLink from "../elements/CreateErrandLink";
 import { getUserErrands } from "../../store/slices/errandSlice";
 import ErrandContainer from "../errands/ErrandContainer";
 import { getUserProjects } from "../../store/slices/projectSlice";
+import EditBtn from "../elements/EditBtn";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ const Dashboard = () => {
       <Container>
         <Greeting />
         <CreateErrandLink />
+        <EditBtn />
         <ErrandContainer />
       </Container>
     </Wrapper>
