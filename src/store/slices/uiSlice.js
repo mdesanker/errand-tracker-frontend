@@ -1,20 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  mode: "normal",
+  edit: false,
 };
 
 const UISlice = createSlice({
   name: "ui",
   initialState,
   reducers: {
-    setMode: (state, actions) => {
-      state.mode = actions.payload;
+    toggleEdit: (state, actions) => {
+      state.edit = !state.edit;
     },
   },
   extraReducers: (builder) => {},
 });
 
-// export const {} = UISlice.actions;
+export const { toggleEdit } = UISlice.actions;
 
 export default UISlice.reducer;
