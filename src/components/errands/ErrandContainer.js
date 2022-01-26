@@ -46,6 +46,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-bottom: 20px;
 `;
 
 const ProjectHeader = styled.div`

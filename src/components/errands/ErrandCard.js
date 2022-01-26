@@ -15,7 +15,7 @@ const ErrandCard = ({ errand }) => {
   };
 
   return (
-    <Card priority={priority} onClick={errandClickHandler}>
+    <Card draggable="true" priority={priority} onClick={errandClickHandler}>
       <CardGroup>
         <Checkbox isComplete={isComplete}>
           <i className="fas fa-check" />
@@ -28,8 +28,8 @@ const ErrandCard = ({ errand }) => {
 
 const Card = styled.div`
   width: 80%;
-  height: 50px;
-  padding: 16px;
+  min-height: 40px;
+  padding: 8px;
   font-size: 1rem;
   background-color: white;
   margin-top: 0.5rem;
@@ -71,16 +71,17 @@ const CardGroup = styled.div`
 `;
 
 const Checkbox = styled.div`
-  height: 30px;
-  width: 30px;
+  min-height: 30px;
+  min-width: 30px;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 16px;
   color: white;
-  border: 2px solid magenta;
+  border: 2px solid ${({ theme }) => theme.colors.medium};
   cursor: pointer;
+  background-color: #fff;
 
   ${({ isComplete }) =>
     isComplete &&
@@ -92,6 +93,8 @@ const Checkbox = styled.div`
 `;
 
 const Title = styled.p`
+  overflow: hidden;
+
   ${({ isComplete }) =>
     isComplete &&
     css`
