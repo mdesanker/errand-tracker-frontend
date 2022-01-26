@@ -46,7 +46,7 @@ export const getUserProjects = createAsyncThunk(
       const res = await axios.get(
         `http://localhost:5000/api/project/user/${id}`
       );
-      console.log(res.data);
+      // console.log(res.data);
       return res.data;
     } catch (err) {
       const errors = err.response.data.errors;
@@ -61,8 +61,7 @@ export const getProject = createAsyncThunk(
   async ({ id }, thunkAPI) => {
     try {
       const res = await axios.get(`http://localhost:5000/api/project/${id}`);
-      console.log(res.data);
-      console.log(res.status);
+      // console.log(res.data);
       return res.data;
     } catch (err) {
       const errors = err.response.data.errors;

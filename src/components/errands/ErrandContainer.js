@@ -1,16 +1,28 @@
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
+import { getProjectErrands } from "../../store/slices/errandSlice";
 import CreateProjectLink from "../elements/CreateProjectLink";
 import ProjectSelector from "../elements/ProjectSelector";
 import ErrandCard from "./ErrandCard";
 
 const ErrandContainer = () => {
+  const dispatch = useDispatch();
+
   const { errands } = useSelector((state) => state.errands);
+
+  const { project } = useSelector((state) => state.projects);
+
+  useEffect(() => {
+    if (project) {
+      dispatch(getProjectErrands({ id: project._id }));
+    }
+  }, [project]);
 
   return (
     <Wrapper>
       <ProjectHeader>
-        {/* <>All errands</<Title> */}
         <ProjectSelector />
         <CreateProjectLink />
       </ProjectHeader>
