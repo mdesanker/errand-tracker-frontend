@@ -94,6 +94,29 @@ export const toggleErrandComplete = createAsyncThunk(
   }
 );
 
+export const deleteErrand = createAsyncThunk(
+  "errand/delete",
+  async ({ id }, thunkAPI) => {
+    try {
+      const res = await axios.delete(
+        `http://localhost:5000/api/errand/${id}/delete`
+      );
+
+      if (res.status === 200) {
+        // console.log(res.data);
+        thunkAPI.dispatch(
+          timedAlert({ msg: "Errand deleted", type: "success" })
+        );
+        return id;
+      }
+    } catch (err) {
+      const errors = err.response.data.errors;
+      console.error(errors);
+      return thunkAPI.rejectWithValue(err.response.data);
+    }
+  }
+);
+
 const initialState = {
   errands: [],
   errand: null,
@@ -123,6 +146,11 @@ const errandSlice = createSlice({
     });
     builder.addCase(getProjectErrands.rejected, (state, actions) => {
       state.errands = [];
+    });
+    builder.addCase(deleteErrand.fulfilled, (state, actions) => {
+      state.errands = state.errands.filter(
+        (errand) => errand._id !== actions.payload
+      );
     });
   },
 });

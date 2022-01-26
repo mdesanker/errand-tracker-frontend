@@ -2,7 +2,6 @@ import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { css } from "styled-components";
 import { toggleErrandComplete } from "../../store/slices/errandSlice";
-import { Fragment } from "react";
 import ErrandDeleteBtn from "../elements/ErrandDeleteBtn";
 
 const ErrandCard = ({ errand }) => {
@@ -26,7 +25,7 @@ const ErrandCard = ({ errand }) => {
           <Title isComplete={isComplete}>{title}</Title>
         </CardGroup>
       </Card>
-      <ErrandDeleteBtn />
+      <ErrandDeleteBtn id={_id} />
     </Container>
   );
 };
@@ -39,7 +38,6 @@ const Container = styled.div`
 `;
 
 const Card = styled.div`
-  // width: 80%;
   flex-grow: 1;
   min-height: 40px;
   padding: 8px;

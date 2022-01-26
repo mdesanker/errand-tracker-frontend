@@ -1,7 +1,16 @@
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
+import { deleteErrand } from "../../store/slices/errandSlice";
 
-const ErrandDeleteBtn = () => {
-  return <Wrapper>Delete</Wrapper>;
+const ErrandDeleteBtn = ({ id }) => {
+  const dispatch = useDispatch();
+  // console.log(id);
+
+  const errandDeleteHandler = () => {
+    dispatch(deleteErrand({ id }));
+  };
+
+  return <Wrapper onClick={errandDeleteHandler}>Delete</Wrapper>;
 };
 
 const Wrapper = styled.button`
