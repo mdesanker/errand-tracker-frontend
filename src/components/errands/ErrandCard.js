@@ -1,18 +1,22 @@
+import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { css } from "styled-components";
+import { timedAlert } from "../../store/slices/alertSlice";
 import { toggleErrandComplete } from "../../store/slices/errandSlice";
 import ErrandDeleteBtn from "../elements/ErrandDeleteBtn";
 
 const ErrandCard = ({ errand }) => {
   const dispatch = useDispatch();
 
-  // console.log(errand);
+  const { edit } = useSelector((state) => state.ui);
 
   const { _id, title, description, isComplete, priority } = errand;
 
   const errandClickHandler = () => {
-    dispatch(toggleErrandComplete({ id: _id }));
+    if (edit === false) {
+      dispatch(toggleErrandComplete({ id: _id }));
+    }
   };
 
   return (
@@ -24,8 +28,8 @@ const ErrandCard = ({ errand }) => {
           </Checkbox>
           <Title isComplete={isComplete}>{title}</Title>
         </CardGroup>
+        <ErrandDeleteBtn id={_id} />
       </Card>
-      <ErrandDeleteBtn id={_id} />
     </Container>
   );
 };

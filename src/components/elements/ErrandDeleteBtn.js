@@ -14,20 +14,20 @@ const ErrandDeleteBtn = ({ id }) => {
   };
 
   return (
-    <Wrapper mode={edit} onClick={errandDeleteHandler}>
-      Delete
-    </Wrapper>
+    <Wrapper /*mode={edit}*/ onClick={errandDeleteHandler}>Delete</Wrapper>
   );
 };
 
 const Wrapper = styled.button`
-  display: ${({ mode }) => (mode ? "block" : "none")};
+  // display: ${({ mode }) => (mode === true ? "block" : "none")};
+
   font-size: 12px;
   font-weight: bold;
   text-transform: uppercase;
   padding: 5px;
   color: rgba(255, 0, 0, 0.3);
   border: 2px solid rgba(255, 0, 0, 0.3);
+  background-color: transparent;
   border-radius: ${({ theme }) => theme.radii.small};
   margin-left: 5px;
   cursor: pointer;

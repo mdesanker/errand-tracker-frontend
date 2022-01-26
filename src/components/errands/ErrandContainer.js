@@ -22,8 +22,7 @@ const ErrandContainer = () => {
   useEffect(() => {
     if (project) {
       dispatch(getProjectErrands({ id: project._id }));
-    }
-    if (user) {
+    } else if (user) {
       dispatch(getUserErrands({ id: user._id }));
     }
   }, [project, user]);
