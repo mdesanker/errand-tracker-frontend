@@ -2,6 +2,8 @@ import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { css } from "styled-components";
 import { toggleErrandComplete } from "../../store/slices/errandSlice";
+import { Fragment } from "react";
+import ErrandDeleteBtn from "../elements/ErrandDeleteBtn";
 
 const ErrandCard = ({ errand }) => {
   const dispatch = useDispatch();
@@ -15,24 +17,35 @@ const ErrandCard = ({ errand }) => {
   };
 
   return (
-    <Card draggable="true" priority={priority} onClick={errandClickHandler}>
-      <CardGroup>
-        <Checkbox isComplete={isComplete}>
-          <i className="fas fa-check" />
-        </Checkbox>
-        <Title isComplete={isComplete}>{title}</Title>
-      </CardGroup>
-    </Card>
+    <Container>
+      <Card draggable="true" priority={priority} onClick={errandClickHandler}>
+        <CardGroup>
+          <Checkbox isComplete={isComplete}>
+            <i className="fas fa-check" />
+          </Checkbox>
+          <Title isComplete={isComplete}>{title}</Title>
+        </CardGroup>
+      </Card>
+      <ErrandDeleteBtn />
+    </Container>
   );
 };
 
-const Card = styled.div`
+const Container = styled.div`
+  display: flex;
+  justify-content: space-between;
   width: 80%;
+  align-items: center;
+`;
+
+const Card = styled.div`
+  // width: 80%;
+  flex-grow: 1;
   min-height: 40px;
   padding: 8px;
   font-size: 1rem;
   background-color: white;
-  margin-top: 0.5rem;
+  margin: 0.25rem 0;
   display: flex;
   justify-content: space-between;
   align-items: center;

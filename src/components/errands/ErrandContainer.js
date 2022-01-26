@@ -46,7 +46,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 20px;
+  padding-bottom: 100px;
 `;
 
 const ProjectHeader = styled.div`
@@ -54,6 +54,7 @@ const ProjectHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 10px;
 `;
 
 export default ErrandContainer;
