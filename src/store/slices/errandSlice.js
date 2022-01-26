@@ -112,6 +112,12 @@ const errandSlice = createSlice({
       // Replace errand at index
       state.errands[index] = actions.payload;
     });
+    builder.addCase(getProjectErrands.fulfilled, (state, actions) => {
+      state.errands = actions.payload;
+    });
+    builder.addCase(getProjectErrands.rejected, (state, actions) => {
+      state.errands = [];
+    });
   },
 });
 

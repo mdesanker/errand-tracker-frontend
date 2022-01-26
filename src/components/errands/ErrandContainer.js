@@ -2,7 +2,10 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
-import { getProjectErrands } from "../../store/slices/errandSlice";
+import {
+  getProjectErrands,
+  getUserErrands,
+} from "../../store/slices/errandSlice";
 import CreateProjectLink from "../elements/CreateProjectLink";
 import ProjectSelector from "../elements/ProjectSelector";
 import ErrandCard from "./ErrandCard";
@@ -14,9 +17,13 @@ const ErrandContainer = () => {
 
   const { project } = useSelector((state) => state.projects);
 
+  const { user } = useSelector((state) => state.user);
+
   useEffect(() => {
     if (project) {
       dispatch(getProjectErrands({ id: project._id }));
+    } else {
+      dispatch(getUserErrands({ id: user._id }));
     }
   }, [project]);
 
