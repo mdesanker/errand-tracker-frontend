@@ -14,9 +14,7 @@ const ErrandCard = ({ errand }) => {
   const { _id, title, description, isComplete, priority } = errand;
 
   const errandClickHandler = () => {
-    if (edit === false) {
-      dispatch(toggleErrandComplete({ id: _id }));
-    }
+    dispatch(toggleErrandComplete({ id: _id }));
   };
 
   return (

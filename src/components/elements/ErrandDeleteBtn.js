@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { deleteErrand } from "../../store/slices/errandSlice";
 
 const ErrandDeleteBtn = ({ id }) => {
@@ -14,13 +14,13 @@ const ErrandDeleteBtn = ({ id }) => {
   };
 
   return (
-    <Wrapper /*mode={edit}*/ onClick={errandDeleteHandler}>Delete</Wrapper>
+    <Wrapper active={edit} onClick={errandDeleteHandler}>
+      Delete
+    </Wrapper>
   );
 };
 
 const Wrapper = styled.button`
-  // display: ${({ mode }) => (mode === true ? "block" : "none")};
-
   font-size: 12px;
   font-weight: bold;
   text-transform: uppercase;
@@ -36,6 +36,12 @@ const Wrapper = styled.button`
     color: rgba(255, 0, 0, 0.6);
     border: 2px solid rgba(255, 0, 0, 0.6);
   }
+
+  ${({ active }) =>
+    !active &&
+    css`
+      display: none;
+    `};
 `;
 
 export default ErrandDeleteBtn;
