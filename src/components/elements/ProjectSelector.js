@@ -1,23 +1,27 @@
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
-import { getProject } from "../../store/slices/projectSlice";
+import { clearProject, getProject } from "../../store/slices/projectSlice";
 
 const ProjectSelector = () => {
   const dispatch = useDispatch();
   const { projects } = useSelector((state) => state.projects);
 
-  console.log(projects);
+  // console.log(projects);
 
   const projectSelectHandler = (e) => {
     const { value } = e.target;
-    console.log(value);
-    dispatch(getProject({ id: value }));
+    // console.log(value);
+    if (value === "allErrands") {
+      dispatch(clearProject());
+    } else {
+      dispatch(getProject({ id: value }));
+    }
   };
 
   return (
     <Wrapper onChange={projectSelectHandler}>
-      <option value="all">Your errands</option>
+      <option value="allErrands">Your errands</option>
       {projects &&
         projects.map((project) => {
           return (

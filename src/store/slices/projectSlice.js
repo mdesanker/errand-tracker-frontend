@@ -62,6 +62,7 @@ export const getProject = createAsyncThunk(
     try {
       const res = await axios.get(`http://localhost:5000/api/project/${id}`);
       console.log(res.data);
+      console.log(res.status);
       return res.data;
     } catch (err) {
       const errors = err.response.data.errors;
@@ -79,7 +80,11 @@ const initialState = {
 const projectSlice = createSlice({
   name: "projects",
   initialState,
-  reducers: {},
+  reducers: {
+    clearProject: (state, actions) => {
+      state.project = null;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(getUserProjects.fulfilled, (state, actions) => {
       state.projects = actions.payload;
@@ -96,6 +101,6 @@ const projectSlice = createSlice({
   },
 });
 
-// export const {} = projectSlice.actions;;
+export const { clearProject } = projectSlice.actions;
 
 export default projectSlice.reducer;
