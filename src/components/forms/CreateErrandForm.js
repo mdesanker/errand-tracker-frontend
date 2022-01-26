@@ -37,12 +37,14 @@ const CreateErrandForm = () => {
     e.preventDefault();
     console.log(formData);
     dispatch(createErrand(formData));
-    setFormData({
-      title: "",
-      description: "",
-      dueDate: "",
-      priority: "",
-      // project: "",
+    setFormData((prevState) => {
+      return {
+        ...prevState,
+        title: "",
+        description: "",
+        dueDate: "",
+        priority: "",
+      };
     });
   };
 
