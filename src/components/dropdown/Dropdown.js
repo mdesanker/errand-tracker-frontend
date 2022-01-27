@@ -13,6 +13,7 @@ const Dropdown = () => {
       <MenuBtn active={active} onClick={clickHandler}>
         <i class="fas fa-ellipsis-h" />
       </MenuBtn>
+      <MenuCard active={active}></MenuCard>
     </Wrapper>
   );
 };
@@ -21,6 +22,9 @@ const Wrapper = styled.div`
   position: fixed;
   top: 20px;
   right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 `;
 
 const MenuBtn = styled.button`
@@ -34,7 +38,7 @@ const MenuBtn = styled.button`
   border: none;
   background-color: transparent;
   cursor: pointer;
-  transition: all 200ms;
+  transition: all 100ms;
   color: gray;
 
   &:hover {
@@ -46,6 +50,20 @@ const MenuBtn = styled.button`
     css`
       transform: rotate(90deg);
       color: blue;
+    `}
+`;
+
+const MenuCard = styled.div`
+  display: none;
+  width: 200px;
+  height: 300px;
+  background-color: white;
+  margin-top: 5px;
+
+  ${({ active }) =>
+    active &&
+    css`
+      display: flex;
     `}
 `;
 
