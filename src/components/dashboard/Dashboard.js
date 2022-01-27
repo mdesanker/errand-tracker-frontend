@@ -9,6 +9,7 @@ import { getUserErrands } from "../../store/slices/errandSlice";
 import ErrandContainer from "../errands/ErrandContainer";
 import { getUserProjects } from "../../store/slices/projectSlice";
 import EditBtn from "./EditBtn";
+import Dropdown from "../elements/Dropdown";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -30,6 +31,7 @@ const Dashboard = () => {
 
   return (
     <Wrapper>
+      <Dropdown />
       <Container>
         <Greeting />
         <CreateErrandLink />
