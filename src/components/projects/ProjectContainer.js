@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
+import ProjectCard from "./ProjectCard";
 
 const ProjectContainer = () => {
   const dispatch = useDispatch();
@@ -21,7 +22,7 @@ const ProjectContainer = () => {
     <Wrapper>
       <Header>Projects (Owner)</Header>
       {ownerProjects.map((project) => {
-        return <p key={project._id}>{project.title}</p>;
+        return <ProjectCard key={project._id} project={project} />;
       })}
       <Header>Projects (Member)</Header>
     </Wrapper>
