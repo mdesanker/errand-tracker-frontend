@@ -35,8 +35,7 @@ const Dashboard = () => {
       <Container>
         <Greeting />
         <CreateErrandLink />
-        {/* <ErrandContainer /> */}
-        <ProjectContainer />
+        <ErrandContainer />
       </Container>
     </Wrapper>
   );

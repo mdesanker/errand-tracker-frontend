@@ -32,7 +32,8 @@ const Dropdown = () => {
         <i className="fas fa-ellipsis-h" />
       </MenuBtn>
       <MenuCard ref={ref} active={isMenuOpen}>
-        <MenuItem to="#" text="Projects" />
+        <MenuItem to="/dashboard" text="Home" />
+        <MenuItem to="/projects" text="Projects" />
         <MenuItem to="#" text="Friends" />
         <LogoutBtn />
       </MenuCard>

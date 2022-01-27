@@ -11,6 +11,7 @@ import ProtectedRoute from "./utils/ProtectedRoute";
 import CreateErrandForm from "./components/forms/CreateErrandForm";
 import AlertView from "./components/alerts/AlertView";
 import CreateProjectForm from "./components/forms/CreateProjectForm";
+import Projectboard from "./components/projects/Projectboard";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -33,6 +34,14 @@ const App = () => {
           element={
             <ProtectedRoute>
               <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/projects"
+          element={
+            <ProtectedRoute>
+              <Projectboard />
             </ProtectedRoute>
           }
         />

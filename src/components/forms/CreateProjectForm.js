@@ -36,7 +36,7 @@ const CreateProjectForm = () => {
   };
 
   const exitHandler = () => {
-    navigate("/dashboard");
+    navigate("/projects");
   };
 
   return (

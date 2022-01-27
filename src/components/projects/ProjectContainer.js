@@ -17,7 +17,7 @@ const ProjectContainer = () => {
     (project) => project.author === user._id
   );
 
-  console.log(ownerProjects);
+  // console.log(ownerProjects);
 
   return (
     <Wrapper>
