@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import styled, { css } from "styled-components";
+import LogoutBtn from "./LogoutBtn";
 import MenuItem from "./MenuItem";
 
 const Dropdown = () => {
@@ -33,7 +34,7 @@ const Dropdown = () => {
       <MenuCard ref={ref} active={isMenuOpen}>
         <MenuItem to="#" text="Projects" />
         <MenuItem to="#" text="Friends" />
-        <MenuItem to="#" text="Log out" />
+        <LogoutBtn />
       </MenuCard>
     </Wrapper>
   );
@@ -75,7 +76,6 @@ const MenuBtn = styled.button`
 `;
 
 const MenuCard = styled.div`
-  // display: none;
   width: 200px;
   background-color: white;
   margin-top: 5px;
