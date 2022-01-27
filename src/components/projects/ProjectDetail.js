@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
+import { getProject } from "../../store/slices/projectSlice";
 import ExitBtn from "../elements/ExitBtn";
 
 const ProjectDetail = () => {
   const { id } = useParams();
+  const dispatch = useDispatch();
 
   const [formData, setFormData] = useState({
     title: "",
@@ -24,6 +27,20 @@ const ProjectDetail = () => {
     e.preventDefault();
     console.log(formData);
   };
+
+  useEffect(() => {
+    dispatch(getProject({ id }));
+  }, []);
+
+  const { project } = useSelector((state) => state.projects);
+
+  useEffect(() => {
+    if (project) {
+      setFormData({ ...project });
+    }
+  }, [project]);
+
+  console.log(project);
 
   return (
     <Wrapper>
