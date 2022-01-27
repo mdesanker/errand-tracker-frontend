@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styled, { css } from "styled-components";
+import MenuItem from "./MenuItem";
 
 const Dropdown = () => {
   const [active, setActive] = useState(false);
@@ -13,7 +14,11 @@ const Dropdown = () => {
       <MenuBtn active={active} onClick={clickHandler}>
         <i class="fas fa-ellipsis-h" />
       </MenuBtn>
-      <MenuCard active={active}></MenuCard>
+      <MenuCard active={active}>
+        <MenuItem to="#" text="Projects" />
+        <MenuItem to="#" text="Friends" />
+        <MenuItem to="#" text="Log out" />
+      </MenuCard>
     </Wrapper>
   );
 };
@@ -56,14 +61,16 @@ const MenuBtn = styled.button`
 const MenuCard = styled.div`
   display: none;
   width: 200px;
-  height: 300px;
+  // height: 300px;
   background-color: white;
   margin-top: 5px;
+  box-shadow: ${({ theme }) => theme.shadows.soft};
 
   ${({ active }) =>
     active &&
     css`
       display: flex;
+      flex-direction: column;
     `}
 `;
 
