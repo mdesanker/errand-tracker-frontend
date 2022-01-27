@@ -14,11 +14,11 @@ import ErrandCard from "./ErrandCard";
 const ErrandContainer = () => {
   const dispatch = useDispatch();
 
-  const { errands } = useSelector((state) => state.errands);
-
   const { project } = useSelector((state) => state.projects);
 
   const { user } = useSelector((state) => state.user);
+
+  const { errands } = useSelector((state) => state.errands);
 
   useEffect(() => {
     if (project) {

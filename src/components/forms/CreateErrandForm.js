@@ -11,15 +11,17 @@ const CreateErrandForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const { project: currentProject, projects } = useSelector(
+    (state) => state.projects
+  );
+
   const [formData, setFormData] = useState({
     title: "",
     description: "",
     dueDate: "",
     priority: "",
-    project: "",
+    project: currentProject ? currentProject._id : "",
   });
-
-  const { projects } = useSelector((state) => state.projects);
 
   const { title, description, dueDate, priority, project } = formData;
 
@@ -33,7 +35,6 @@ const CreateErrandForm = () => {
 
   const formSubmitHandler = (e) => {
     e.preventDefault();
-    // console.log(formData);
     dispatch(createErrand(formData));
     setFormData((prevState) => {
       return {
@@ -54,7 +55,12 @@ const CreateErrandForm = () => {
     <Wrapper>
       <ExitBtn onClick={exitHandler} />
       <Form onSubmit={formSubmitHandler}>
-        <ProjectSelect name="project" id="project" onChange={formChangeHandler}>
+        <ProjectSelect
+          name="project"
+          id="project"
+          onChange={formChangeHandler}
+          value={project}
+        >
           <option value="">No project</option>
           {projects &&
             projects.map((project) => {
