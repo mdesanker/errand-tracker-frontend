@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
-import CreateProjectLink from "../elements/CreateProjectLink";
+import CreateProjectLink from "./CreateProjectLink";
 import ProjectCard from "./ProjectCard";
 
 const ProjectContainer = () => {
@@ -11,13 +11,9 @@ const ProjectContainer = () => {
 
   const { user } = useSelector((state) => state.user);
 
-  console.log(projects);
-
   const ownerProjects = projects.filter(
     (project) => project.author === user._id
   );
-
-  // console.log(ownerProjects);
 
   return (
     <Wrapper>

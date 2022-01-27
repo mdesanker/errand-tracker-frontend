@@ -6,7 +6,6 @@ import {
   getProjectErrands,
   getUserErrands,
 } from "../../store/slices/errandSlice";
-import CreateProjectLink from "../elements/CreateProjectLink";
 import EditBtn from "../dashboard/EditBtn";
 import ProjectSelector from "../dashboard/ProjectSelector";
 import ErrandCard from "./ErrandCard";

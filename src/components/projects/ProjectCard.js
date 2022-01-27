@@ -1,11 +1,15 @@
 import styled from "styled-components";
+import ProjectEditLink from "./ProjectEditLink";
 
 const ProjectCard = ({ project }) => {
   const { _id, title, description, author, members } = project;
 
   return (
     <Container>
-      <Card>{title}</Card>
+      <Card>
+        <Title>{title}</Title>
+        <ProjectEditLink id={_id} />
+      </Card>
     </Container>
   );
 };
@@ -21,10 +25,6 @@ const Card = styled.div`
   flex-grow: 1;
   min-height: 40px;
   padding: 8px;
-  font-size: 1rem;
-  text-transform: uppercase;
-  // color: ${({ theme }) => theme.colors.medium};
-  color: black;
   margin: 0.25rem 0;
   display: flex;
   justify-content: space-between;
@@ -32,12 +32,18 @@ const Card = styled.div`
   cursor: pointer;
 
   &:hover {
-    // color: ${({ theme }) => theme.colors.medium};
+    background-color: #e5e5e5;
   }
 
   &:active {
     background-color: ${({ theme }) => theme.colors.light};
   }
+`;
+
+const Title = styled.div`
+  font-size: 1rem;
+  text-transform: uppercase;
+  color: black;
 `;
 
 export default ProjectCard;
