@@ -33,7 +33,6 @@ const ErrandContainer = () => {
       <ProjectHeader>
         <ProjectSelector />
         <EditBtn />
-        {/* <CreateProjectLink /> */}
       </ProjectHeader>
       {errands &&
         errands.map((errand) => {
