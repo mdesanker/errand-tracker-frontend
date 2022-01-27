@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { css } from "styled-components";
 import { timedAlert } from "../../store/slices/alertSlice";
 import { toggleErrandComplete } from "../../store/slices/errandSlice";
-import ErrandDeleteBtn from "../elements/ErrandDeleteBtn";
+import ErrandDeleteBtn from "../dashboard/ErrandDeleteBtn";
 
 const ErrandCard = ({ errand }) => {
   const dispatch = useDispatch();

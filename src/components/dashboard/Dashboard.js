@@ -4,11 +4,11 @@ import { useDispatch } from "react-redux";
 import { loadUser } from "../../store/slices/userSlice";
 import { useSelector } from "react-redux";
 import Greeting from "./Greeting";
-import CreateErrandLink from "../elements/CreateErrandLink";
+import CreateErrandLink from "./CreateErrandLink";
 import { getUserErrands } from "../../store/slices/errandSlice";
 import ErrandContainer from "../errands/ErrandContainer";
 import { getUserProjects } from "../../store/slices/projectSlice";
-import EditBtn from "../elements/EditBtn";
+import EditBtn from "./EditBtn";
 
 const Dashboard = () => {
   const dispatch = useDispatch();

@@ -7,8 +7,8 @@ import {
   getUserErrands,
 } from "../../store/slices/errandSlice";
 import CreateProjectLink from "../elements/CreateProjectLink";
-import EditBtn from "../elements/EditBtn";
-import ProjectSelector from "../elements/ProjectSelector";
+import EditBtn from "../dashboard/EditBtn";
+import ProjectSelector from "../dashboard/ProjectSelector";
 import ErrandCard from "./ErrandCard";
 
 const ErrandContainer = () => {
