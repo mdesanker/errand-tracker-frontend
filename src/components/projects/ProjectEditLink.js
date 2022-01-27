@@ -2,7 +2,9 @@ import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
 
 const ProjectEditLink = ({ id }) => {
-  return <Wrapper to="#">Edit</Wrapper>;
+  const url = `/project/${id}`;
+
+  return <Wrapper to={url}>Edit</Wrapper>;
 };
 
 const Wrapper = styled(Link)`
