@@ -1,20 +1,36 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import styled, { css } from "styled-components";
 import MenuItem from "./MenuItem";
 
 const Dropdown = () => {
-  const [active, setActive] = useState(false);
+  const ref = useRef();
+
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const clickHandler = () => {
-    setActive(!active);
+    setIsMenuOpen(!isMenuOpen);
   };
+
+  useEffect(() => {
+    const checkIfClickedOutside = (e) => {
+      if (isMenuOpen && ref.current && !ref.current.contains(e.target)) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("click", checkIfClickedOutside);
+
+    return () => {
+      document.removeEventListener("click", checkIfClickedOutside);
+    };
+  }, [isMenuOpen]);
 
   return (
     <Wrapper>
-      <MenuBtn active={active} onClick={clickHandler}>
-        <i class="fas fa-ellipsis-h" />
+      <MenuBtn active={isMenuOpen} onClick={clickHandler}>
+        <i className="fas fa-ellipsis-h" />
       </MenuBtn>
-      <MenuCard active={active}>
+      <MenuCard ref={ref} active={isMenuOpen}>
         <MenuItem to="#" text="Projects" />
         <MenuItem to="#" text="Friends" />
         <MenuItem to="#" text="Log out" />
