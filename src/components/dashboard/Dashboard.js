@@ -33,7 +33,7 @@ const Dashboard = () => {
       <Container>
         <Greeting />
         <CreateErrandLink />
-        <EditBtn />
+        {/* <EditBtn /> */}
         <ErrandContainer />
       </Container>
     </Wrapper>

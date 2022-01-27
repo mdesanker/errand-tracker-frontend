@@ -12,6 +12,7 @@ const Wrapper = styled(Link)`
   padding: 5px 15px;
   border: 2px solid gray;
   border-radius: ${({ theme }) => theme.radii.medium};
+  justify-self: flex-end;
 
   &:hover {
     color: black;

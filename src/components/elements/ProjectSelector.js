@@ -42,7 +42,7 @@ const Wrapper = styled.select`
   background-color: transparent;
   border: none;
   cursor: pointer;
-  max-width: 50%;
+  max-width: 60%;
 
   overflow: hidden;
   white-space: nowrap;

@@ -7,6 +7,7 @@ import {
   getUserErrands,
 } from "../../store/slices/errandSlice";
 import CreateProjectLink from "../elements/CreateProjectLink";
+import EditBtn from "../elements/EditBtn";
 import ProjectSelector from "../elements/ProjectSelector";
 import ErrandCard from "./ErrandCard";
 
@@ -31,7 +32,8 @@ const ErrandContainer = () => {
     <Wrapper>
       <ProjectHeader>
         <ProjectSelector />
-        <CreateProjectLink />
+        <EditBtn />
+        {/* <CreateProjectLink /> */}
       </ProjectHeader>
       {errands &&
         errands.map((errand) => {

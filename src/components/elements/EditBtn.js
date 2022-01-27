@@ -20,19 +20,16 @@ const EditBtn = () => {
 };
 
 const Wrapper = styled.button`
-  position: fixed;
-  right: 20px;
-  top: 20px;
   font-size: 25px;
-  padding: 10px;
+  padding: 5px;
   cursor: pointer;
   background-color: transparent;
   border: none;
   color: gray;
 
-  &:hover {
-    color: black;
-  }
+  // &:hover {
+  //   color: black;
+  // }
 
   ${({ active }) =>
     active &&
