@@ -1,10 +1,11 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const ExitBtn = ({ onClick }) => {
-  return <Wrapper onClick={onClick}>X</Wrapper>;
+const ExitBtn = ({ to }) => {
+  return <Wrapper to={to}>X</Wrapper>;
 };
 
-const Wrapper = styled.div`
+const Wrapper = styled(Link)`
   position: fixed;
   top: 20px;
   right: 20px;
@@ -16,6 +17,7 @@ const Wrapper = styled.div`
   border-radius: 50%;
   border: 1px solid lightgray;
   font-size: 30px;
+  text-decoration: none;
   color: gray;
   background-color: white;
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);

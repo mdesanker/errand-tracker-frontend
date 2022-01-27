@@ -53,7 +53,7 @@ const CreateErrandForm = () => {
 
   return (
     <Wrapper>
-      <ExitBtn onClick={exitHandler} />
+      <ExitBtn to="/dashboard" />
       <Form onSubmit={formSubmitHandler}>
         <ProjectSelect
           name="project"

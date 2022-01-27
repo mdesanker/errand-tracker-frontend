@@ -1,12 +1,18 @@
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
+import ExitBtn from "../elements/ExitBtn";
 
 const ProjectDetail = () => {
   const { id } = useParams();
 
   console.log(id);
 
-  return <Wrapper>Project detail</Wrapper>;
+  return (
+    <Wrapper>
+      <ExitBtn to="/projects" />
+      Project detail
+    </Wrapper>
+  );
 };
 
 const Wrapper = styled.main`

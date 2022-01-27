@@ -41,7 +41,7 @@ const CreateProjectForm = () => {
 
   return (
     <Wrapper>
-      <ExitBtn onClick={exitHandler} />
+      <ExitBtn to="/projects" />
       <Form onSubmit={formSubmitHandler}>
         <Title
           type="text"
