@@ -63,7 +63,7 @@ const MenuBtn = styled.button`
   color: gray;
 
   &:hover {
-    background-color: lightgray;
+    background-color: #e5e5e5;
   }
 
   ${({ active }) =>
@@ -75,18 +75,21 @@ const MenuBtn = styled.button`
 `;
 
 const MenuCard = styled.div`
-  display: none;
+  // display: none;
   width: 200px;
-  // height: 300px;
   background-color: white;
   margin-top: 5px;
   box-shadow: ${({ theme }) => theme.shadows.soft};
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 200ms;
 
   ${({ active }) =>
     active &&
     css`
       display: flex;
       flex-direction: column;
+      max-height: 500px;
     `}
 `;
 

@@ -13,10 +13,14 @@ const Wrapper = styled(Link)`
   font-size: 1rem;
   text-align: center;
   padding: 15px 0;
-  margin-top: 5px;
+  border: 5px solid white;
+  border-radius: 15px;
 
   &:hover {
     color: ${({ theme }) => theme.colors.dark};
+    border: 5px solid white;
+    border-radius: 15px;
+    background-color: #efefef;
   }
 `;
 
