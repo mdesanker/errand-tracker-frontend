@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import styled from "styled-components";
+import FriendRequestBtn from "./FriendRequestBtn";
 
 const FriendCard = ({ friend }) => {
   const { _id, username, avatar } = friend;
@@ -18,7 +19,9 @@ const FriendCard = ({ friend }) => {
           <Avatar src={avatar} alt={username} />
           <Title>{username}</Title>
         </NameSection>
-        <ActionSection></ActionSection>
+        <ActionSection>
+          {!isFriend && <FriendRequestBtn content="Send request" />}
+        </ActionSection>
       </Card>
     </Container>
   );
