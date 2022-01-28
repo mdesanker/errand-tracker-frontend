@@ -13,6 +13,7 @@ import AlertView from "./components/alerts/AlertView";
 import CreateProjectForm from "./components/forms/CreateProjectForm";
 import Projectboard from "./components/projects/Projectboard";
 import ProjectDetail from "./components/projects/ProjectDetail";
+import FriendView from "./components/friends/FriendView";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -67,6 +68,14 @@ const App = () => {
           element={
             <ProtectedRoute>
               <ProjectDetail />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/friends"
+          element={
+            <ProtectedRoute>
+              <FriendView />
             </ProtectedRoute>
           }
         />

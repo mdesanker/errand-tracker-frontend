@@ -34,7 +34,7 @@ const Dropdown = () => {
       <MenuCard ref={ref} active={isMenuOpen}>
         <MenuItem to="/dashboard" text="Home" />
         <MenuItem to="/projects" text="Projects" />
-        <MenuItem to="#" text="Friends" />
+        <MenuItem to="/friends" text="Friends" />
         <LogoutBtn />
       </MenuCard>
     </Wrapper>
