@@ -98,11 +98,25 @@ export const loadUser = createAsyncThunk("user/loadUser", async (thunkAPI) => {
   }
 });
 
+export const getAllUsers = createAsyncThunk("user/getAll", async (thunkAPI) => {
+  try {
+    const res = await axios.get("http://localhost:5000/api/user/all");
+
+    // console.log(res.data);
+    return res.data;
+  } catch (err) {
+    const errors = err.response.data.errors;
+    console.error(errors);
+    return thunkAPI.rejectWithValue(err.response.data);
+  }
+});
+
 const initialState = {
   token: localStorage.getItem("token"),
   isAuthenticated: null,
   loading: true,
   user: null,
+  users: [],
 };
 
 const userSlice = createSlice({
@@ -115,6 +129,7 @@ const userSlice = createSlice({
       state.isAuthenticated = false;
       state.loading = false;
       state.user = null;
+      state.users = [];
     },
   },
   extraReducers: (builder) => {
@@ -129,6 +144,7 @@ const userSlice = createSlice({
       state.isAuthenticated = false;
       state.loading = false;
       state.user = null;
+      state.users = [];
     });
     builder.addCase(loginUser.fulfilled, (state, actions) => {
       localStorage.setItem("token", actions.payload);
@@ -141,6 +157,7 @@ const userSlice = createSlice({
       state.isAuthenticated = false;
       state.loading = false;
       state.user = null;
+      state.users = [];
     });
     builder.addCase(loadUser.fulfilled, (state, actions) => {
       state.user = actions.payload;
@@ -153,6 +170,13 @@ const userSlice = createSlice({
       state.isAuthenticated = false;
       state.loading = false;
       state.user = null;
+      state.users = [];
+    });
+    builder.addCase(getAllUsers.fulfilled, (state, actions) => {
+      state.users = actions.payload;
+    });
+    builder.addCase(getAllUsers.rejected, (state, actions) => {
+      state.users = [];
     });
   },
 });

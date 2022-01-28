@@ -1,12 +1,24 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { getAllUsers } from "../../store/slices/userSlice";
 
 const SearchForm = () => {
+  const dispatch = useDispatch();
+
   const [formData, setFormData] = useState({
     search: "",
   });
 
   const { search } = formData;
+
+  useEffect(() => {
+    dispatch(getAllUsers());
+  }, []);
+
+  const { users } = useSelector((state) => state.user);
+  console.log(users);
 
   const formChangeHandler = (e) => {
     const { name, value } = e.target;
