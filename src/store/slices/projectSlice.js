@@ -145,6 +145,9 @@ const projectSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
+    builder.addCase(createProject.fulfilled, (state, actions) => {
+      state.projects = state.projects.concat([actions.payload]);
+    });
     builder.addCase(getUserProjects.fulfilled, (state, actions) => {
       state.projects = actions.payload;
     });
