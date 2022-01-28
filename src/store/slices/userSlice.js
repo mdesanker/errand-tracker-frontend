@@ -111,6 +111,34 @@ export const getAllUsers = createAsyncThunk("user/getAll", async (thunkAPI) => {
   }
 });
 
+export const sendFriendRequest = createAsyncThunk(
+  "user/sendFriendRequest",
+  async ({ id }, thunkAPI) => {
+    try {
+      console.log("Sending request...");
+      const res = await axios.put(
+        `http://localhost:5000/api/user/sendrequest/${id}`
+      );
+
+      if (res.status === 200) {
+        console.log(res.data);
+        thunkAPI.dispatch(
+          timedAlert({ msg: "Friend request sent", type: "success" })
+        );
+        return id;
+      }
+    } catch (err) {
+      const errors = err.response.data.errors;
+      if (errors) {
+        errors.forEach((error) =>
+          thunkAPI.dispatch(timedAlert({ ...error, type: "danger" }))
+        );
+      }
+      return thunkAPI.rejectWithValue(err.response.data);
+    }
+  }
+);
+
 const initialState = {
   token: localStorage.getItem("token"),
   isAuthenticated: null,
@@ -177,6 +205,9 @@ const userSlice = createSlice({
     });
     builder.addCase(getAllUsers.rejected, (state, actions) => {
       state.users = [];
+    });
+    builder.addCase(sendFriendRequest.fulfilled, (state, actions) => {
+      // state.user = actions.payload;
     });
   },
 });

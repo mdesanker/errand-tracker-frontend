@@ -29,7 +29,7 @@ const SearchForm = () => {
 
   const formSubmitHandler = (e) => {
     e.preventDefault();
-    console.log(formData);
+    // console.log(formData);
   };
 
   return (

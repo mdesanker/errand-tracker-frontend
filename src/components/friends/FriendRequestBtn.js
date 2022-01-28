@@ -1,7 +1,24 @@
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
+import { sendFriendRequest } from "../../store/slices/userSlice";
 
-const FriendRequestBtn = ({ content, onClick }) => {
-  return <Wrapper onClick={onClick}>{content}</Wrapper>;
+const FriendRequestBtn = ({ id, content }) => {
+  const dispatch = useDispatch();
+  // const fromId = useSelector((state) => state.user.user._id);
+
+  // console.log(fromId);
+
+  const clickHandler = () => {
+    dispatch(sendFriendRequest({ id }));
+    // console.log("Request sent");
+  };
+
+  return (
+    <Wrapper type="button" onClick={clickHandler}>
+      {content}
+    </Wrapper>
+  );
 };
 
 const Wrapper = styled.button`

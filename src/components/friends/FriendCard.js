@@ -20,7 +20,7 @@ const FriendCard = ({ friend }) => {
           <Title>{username}</Title>
         </NameSection>
         <ActionSection>
-          {!isFriend && <FriendRequestBtn content="Send request" />}
+          {!isFriend && <FriendRequestBtn id={_id} content="Send request" />}
         </ActionSection>
       </Card>
     </Container>
