@@ -28,7 +28,7 @@ const FriendCard = ({ friend }) => {
           {!isFriend && !isPending && !isRequested && (
             <FriendRequestBtn id={_id} content="Send request" />
           )}
-          {isRequested && <AcceptDeclineBtn />}
+          {isRequested && <AcceptDeclineBtn id={_id} />}
         </ActionSection>
       </Card>
     </Container>

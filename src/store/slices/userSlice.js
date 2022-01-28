@@ -139,6 +139,33 @@ export const sendFriendRequest = createAsyncThunk(
   }
 );
 
+export const declineFriendRequest = createAsyncThunk(
+  "user/declineRequest",
+  async ({ id }, thunkAPI) => {
+    try {
+      const res = await axios.put(
+        `http://localhost:5000/api/user/declinerequest/${id}`
+      );
+
+      if (res.status === 200) {
+        thunkAPI.dispatch(
+          timedAlert({ msg: "Request declined", type: "success" })
+        );
+        console.log(res.data);
+        return res.data;
+      }
+    } catch (err) {
+      const errors = err.response.data.errors;
+      if (errors) {
+        errors.forEach((error) =>
+          thunkAPI.dispatch(timedAlert({ ...error, type: "danger" }))
+        );
+      }
+      return thunkAPI.rejectWithValue(err.response.data);
+    }
+  }
+);
+
 const initialState = {
   token: localStorage.getItem("token"),
   isAuthenticated: null,
@@ -207,6 +234,9 @@ const userSlice = createSlice({
       state.users = [];
     });
     builder.addCase(sendFriendRequest.fulfilled, (state, actions) => {
+      state.user = actions.payload;
+    });
+    builder.addCase(declineFriendRequest.fulfilled, (state, actions) => {
       state.user = actions.payload;
     });
   },

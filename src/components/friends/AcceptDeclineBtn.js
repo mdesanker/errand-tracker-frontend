@@ -1,8 +1,9 @@
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import styled, { css } from "styled-components";
+import { declineFriendRequest } from "../../store/slices/userSlice";
 
-const AcceptDeclineBtn = ({ id, content }) => {
+const AcceptDeclineBtn = ({ id }) => {
   const dispatch = useDispatch();
 
   const acceptRequestHandler = () => {
@@ -11,14 +12,15 @@ const AcceptDeclineBtn = ({ id, content }) => {
 
   const declineRequestHandler = () => {
     console.log("Declining request");
+    dispatch(declineFriendRequest({ id }));
   };
 
   return (
     <Wrapper>
-      <Button type="button" onClick={acceptRequestHandler} accept>
+      <Button type="button" onClick={acceptRequestHandler} accept="true">
         Accept
       </Button>
-      <Button type="button" onClick={declineRequestHandler} decline>
+      <Button type="button" onClick={declineRequestHandler} decline="true">
         Decline
       </Button>
     </Wrapper>
