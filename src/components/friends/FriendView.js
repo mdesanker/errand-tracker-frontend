@@ -19,7 +19,7 @@ const FriendView = () => {
         </Header>
         {friendRequests.length > 0 ? (
           friendRequests.map((friend) => {
-            return <FriendCard key={friend._id} user={friend} />;
+            return <FriendCard key={friend._id} friend={friend} />;
           })
         ) : (
           <EmptyMsg>No current friend requests</EmptyMsg>
@@ -31,7 +31,7 @@ const FriendView = () => {
         </Header>
         {friends.length > 0
           ? friends.map((friend) => {
-              return <FriendCard key={friend._id} user={friend} />;
+              return <FriendCard key={friend._id} friend={friend} />;
             })
           : "Friend list empty"}
       </Section>

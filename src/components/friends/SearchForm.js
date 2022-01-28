@@ -49,7 +49,7 @@ const SearchForm = () => {
             user.username.toLowerCase().includes(search.toLowerCase())
           )
           .map((user) => {
-            return <FriendCard key={user._id} user={user} />;
+            return <FriendCard key={user._id} friend={user} />;
           })}
     </Wrapper>
   );

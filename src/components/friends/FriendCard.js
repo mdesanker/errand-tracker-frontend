@@ -1,15 +1,24 @@
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 
-const FriendCard = ({ user }) => {
-  const { _id, username, avatar } = user;
+const FriendCard = ({ friend }) => {
+  const { _id, username, avatar } = friend;
+
+  const { user } = useSelector((state) => state.user);
+
+  const isFriend =
+    user.friends.filter((friend) => friend._id === _id).length > 0;
+
+  console.log(username, isFriend);
 
   return (
     <Container>
       <Card>
-        <CardSection>
+        <NameSection>
           <Avatar src={avatar} alt={username} />
           <Title>{username}</Title>
-        </CardSection>
+        </NameSection>
+        <ActionSection></ActionSection>
       </Card>
     </Container>
   );
@@ -36,7 +45,7 @@ const Card = styled.div`
   cursor: pointer;
 `;
 
-const CardSection = styled.div`
+const NameSection = styled.div`
   display: flex;
   gap: 10px;
   align-items: center;
@@ -52,6 +61,12 @@ const Title = styled.div`
   font-size: 1rem;
   text-transform: uppercase;
   color: black;
+`;
+
+const ActionSection = styled.div`
+  display: flex;
+  gap: 10px;
+  align-items: center;
 `;
 
 export default FriendCard;
