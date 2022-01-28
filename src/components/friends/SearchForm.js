@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { getAllUsers } from "../../store/slices/userSlice";
+import FriendCard from "./FriendCard";
 
 const SearchForm = () => {
   const dispatch = useDispatch();
@@ -18,7 +19,6 @@ const SearchForm = () => {
   }, []);
 
   const { users } = useSelector((state) => state.user);
-  console.log(users);
 
   const formChangeHandler = (e) => {
     const { name, value } = e.target;
@@ -40,14 +40,27 @@ const SearchForm = () => {
         name="search"
         value={search}
         placeholder="Find new friends..."
+        autoComplete="off"
         onChange={formChangeHandler}
       />
+      {users &&
+        users
+          .filter((user) =>
+            user.username.toLowerCase().includes(search.toLowerCase())
+          )
+          .map((user) => {
+            return <FriendCard key={user._id} user={user} />;
+          })}
     </Wrapper>
   );
 };
 
 const Wrapper = styled.form`
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 100px;
 `;
 
 const Search = styled.input`
