@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import Dropdown from "../dropdown/Dropdown";
 import Greeting from "../dashboard/Greeting";
+import { useState } from "react";
+import SearchForm from "./SearchForm";
 
 const FriendView = () => {
   return (
@@ -21,6 +23,7 @@ const FriendView = () => {
         <Header>
           <Title>Add Friends</Title>
         </Header>
+        <SearchForm />
       </Section>
     </Wrapper>
   );
@@ -36,7 +39,7 @@ const Wrapper = styled.main`
 `;
 
 const Section = styled.div`
-  width: 80%;
+  width: 100%;
   display: flex;
   flex-direction: column;
 `;
