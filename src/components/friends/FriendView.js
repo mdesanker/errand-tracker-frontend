@@ -3,8 +3,14 @@ import Dropdown from "../dropdown/Dropdown";
 import Greeting from "../dashboard/Greeting";
 import { useState } from "react";
 import SearchForm from "./SearchForm";
+import { useSelector } from "react-redux";
+import FriendCard from "./FriendCard";
 
 const FriendView = () => {
+  const { friends, friendRequests } = useSelector((state) => state.user.user);
+
+  console.log(friends);
+
   return (
     <Wrapper>
       <Dropdown />
@@ -13,11 +19,23 @@ const FriendView = () => {
         <Header>
           <Title>Friend Requests</Title>
         </Header>
+        {friendRequests.length > 0 ? (
+          friendRequests.map((friend) => {
+            return <FriendCard key={friend._id} user={friend} />;
+          })
+        ) : (
+          <p>No current friend requests</p>
+        )}
       </Section>
       <Section>
         <Header>
           <Title>Friends</Title>
         </Header>
+        {friends.length > 0
+          ? friends.map((friend) => {
+              return <FriendCard key={friend._id} user={friend} />;
+            })
+          : "Friend list empty"}
       </Section>
       <Section>
         <Header>
