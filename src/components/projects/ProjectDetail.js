@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { getProject, updateProject } from "../../store/slices/projectSlice";
 import ExitBtn from "../elements/ExitBtn";
+import FormBtn from "../elements/FormBtn";
 
 const ProjectDetail = () => {
   const { id } = useParams();
@@ -64,6 +65,10 @@ const ProjectDetail = () => {
           value={description}
           onChange={formChangeHandler}
         ></Description>
+        <BtnGroup>
+          <FormBtn type="submit" content="Update" />
+          <FormBtn type="button" content="Delete" red />
+        </BtnGroup>
       </Form>
     </Wrapper>
   );
@@ -83,10 +88,12 @@ const Form = styled.form`
   padding: 1rem;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 10px;
 `;
 
 const Title = styled.input`
+  width: 100%;
   font-size: 1rem;
   padding: 5px;
   border: none;
@@ -94,9 +101,17 @@ const Title = styled.input`
 `;
 
 const Description = styled.textarea`
+  width: 100%;
   font-size: 1rem;
   font-family: inherit;
   padding: 5px;
+`;
+
+const BtnGroup = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  margin-top: 50px;
 `;
 
 export default ProjectDetail;
