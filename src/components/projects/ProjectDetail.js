@@ -1,14 +1,19 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
-import { getProject, updateProject } from "../../store/slices/projectSlice";
+import {
+  deleteProject,
+  getProject,
+  updateProject,
+} from "../../store/slices/projectSlice";
 import ExitBtn from "../elements/ExitBtn";
 import FormBtn from "../elements/FormBtn";
 
 const ProjectDetail = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     title: "",
@@ -28,6 +33,11 @@ const ProjectDetail = () => {
     e.preventDefault();
     console.log(formData);
     dispatch(updateProject({ id, title, description }));
+  };
+
+  const deleteProjectHandler = () => {
+    dispatch(deleteProject({ id }));
+    navigate("/projects");
   };
 
   useEffect(() => {
@@ -67,7 +77,12 @@ const ProjectDetail = () => {
         ></Description>
         <BtnGroup>
           <FormBtn type="submit" content="Update" />
-          <FormBtn type="button" content="Delete" red />
+          <FormBtn
+            type="button"
+            content="Delete"
+            onClick={deleteProjectHandler}
+            red
+          />
         </BtnGroup>
       </Form>
     </Wrapper>

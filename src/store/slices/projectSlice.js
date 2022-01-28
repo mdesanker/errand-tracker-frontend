@@ -108,6 +108,29 @@ export const updateProject = createAsyncThunk(
   }
 );
 
+export const deleteProject = createAsyncThunk(
+  "project/delete",
+  async ({ id }, thunkAPI) => {
+    try {
+      const res = await axios.delete(
+        `http://localhost:5000/api/project/${id}/delete`
+      );
+
+      if (res.status === 200) {
+        console.log(res.data);
+        thunkAPI.dispatch(
+          timedAlert({ msg: "Project deleted", type: "success" })
+        );
+        return id;
+      }
+    } catch (err) {
+      const errors = err.response.data.errors;
+      console.error(errors);
+      return thunkAPI.rejectWithValue(err.response.data);
+    }
+  }
+);
+
 const initialState = {
   projects: [],
   project: null,
@@ -141,6 +164,11 @@ const projectSlice = createSlice({
       );
       // Replace with updated object
       state.projects[index] = actions.payload;
+    });
+    builder.addCase(deleteProject.fulfilled, (state, actions) => {
+      state.projects = state.projects.filter(
+        (project) => project._id !== actions.payload
+      );
     });
   },
 });
