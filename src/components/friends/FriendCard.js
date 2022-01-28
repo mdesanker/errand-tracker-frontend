@@ -10,7 +10,8 @@ const FriendCard = ({ friend }) => {
   const isFriend =
     user.friends.filter((friend) => friend._id === _id).length > 0;
 
-  console.log(username, isFriend);
+  const isPending =
+    user.pendingRequests.filter((pending) => pending._id === _id).length > 0;
 
   return (
     <Container>
@@ -20,7 +21,9 @@ const FriendCard = ({ friend }) => {
           <Title>{username}</Title>
         </NameSection>
         <ActionSection>
-          {!isFriend && <FriendRequestBtn id={_id} content="Send request" />}
+          {!isFriend && !isPending && (
+            <FriendRequestBtn id={_id} content="Send request" />
+          )}
         </ActionSection>
       </Card>
     </Container>

@@ -125,7 +125,7 @@ export const sendFriendRequest = createAsyncThunk(
         thunkAPI.dispatch(
           timedAlert({ msg: "Friend request sent", type: "success" })
         );
-        return id;
+        return res.data;
       }
     } catch (err) {
       const errors = err.response.data.errors;
@@ -207,7 +207,7 @@ const userSlice = createSlice({
       state.users = [];
     });
     builder.addCase(sendFriendRequest.fulfilled, (state, actions) => {
-      // state.user = actions.payload;
+      state.user = actions.payload;
     });
   },
 });
