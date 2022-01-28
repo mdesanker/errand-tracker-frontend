@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import styled from "styled-components";
+import AcceptDeclineBtn from "./AcceptDeclineBtn";
 import FriendRequestBtn from "./FriendRequestBtn";
 
 const FriendCard = ({ friend }) => {
@@ -13,6 +14,9 @@ const FriendCard = ({ friend }) => {
   const isPending =
     user.pendingRequests.filter((pending) => pending._id === _id).length > 0;
 
+  const isRequested =
+    user.friendRequests.filter((request) => request._id === _id).length > 0;
+
   return (
     <Container>
       <Card>
@@ -21,9 +25,10 @@ const FriendCard = ({ friend }) => {
           <Title>{username}</Title>
         </NameSection>
         <ActionSection>
-          {!isFriend && !isPending && (
+          {!isFriend && !isPending && !isRequested && (
             <FriendRequestBtn id={_id} content="Send request" />
           )}
+          {isRequested && <AcceptDeclineBtn />}
         </ActionSection>
       </Card>
     </Container>
