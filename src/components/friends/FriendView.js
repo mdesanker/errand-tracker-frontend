@@ -9,8 +9,6 @@ import FriendCard from "./FriendCard";
 const FriendView = () => {
   const { friends, friendRequests } = useSelector((state) => state.user.user);
 
-  console.log(friends);
-
   return (
     <Wrapper>
       <Dropdown />
@@ -24,7 +22,7 @@ const FriendView = () => {
             return <FriendCard key={friend._id} user={friend} />;
           })
         ) : (
-          <p>No current friend requests</p>
+          <EmptyMsg>No current friend requests</EmptyMsg>
         )}
       </Section>
       <Section>
@@ -60,6 +58,7 @@ const Section = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+  padding-bottom: 15px;
 `;
 
 const Header = styled.div`
@@ -77,6 +76,10 @@ const Title = styled.h2`
   text-transform: uppercase;
   font-weight: normal;
   font-size: 1rem;
+`;
+
+const EmptyMsg = styled.p`
+  padding: 5px;
 `;
 
 export default FriendView;

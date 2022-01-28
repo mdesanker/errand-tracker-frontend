@@ -6,7 +6,10 @@ const FriendCard = ({ user }) => {
   return (
     <Container>
       <Card>
-        <Title>{username}</Title>
+        <CardSection>
+          <Avatar src={avatar} alt={username} />
+          <Title>{username}</Title>
+        </CardSection>
       </Card>
     </Container>
   );
@@ -15,27 +18,34 @@ const FriendCard = ({ user }) => {
 const Container = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 80%;
+  width: 100%;
   align-items: center;
+  margin: 5px 0;
+
+  // border: 1px solid red;
 `;
 
 const Card = styled.div`
   flex-grow: 1;
-  min-height: 40px;
+  height: 40px;
   padding: 8px;
   margin: 0.25rem 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
+`;
 
-  &:hover {
-    background-color: #e5e5e5;
-  }
+const CardSection = styled.div`
+  display: flex;
+  gap: 10px;
+  align-items: center;
+`;
 
-  &:active {
-    background-color: ${({ theme }) => theme.colors.light};
-  }
+const Avatar = styled.img`
+  height: 40px;
+  width: 40px;
+  object-fit: center;
 `;
 
 const Title = styled.div`
