@@ -20,6 +20,8 @@ const SearchForm = () => {
 
   const { users } = useSelector((state) => state.user);
 
+  const loggedIn = useSelector((state) => state.user.user);
+
   const formChangeHandler = (e) => {
     const { name, value } = e.target;
     setFormData((prevState) => {
@@ -45,6 +47,7 @@ const SearchForm = () => {
       />
       {users &&
         users
+          .filter((user) => user._id !== loggedIn._id)
           .filter((user) =>
             user.username.toLowerCase().includes(search.toLowerCase())
           )

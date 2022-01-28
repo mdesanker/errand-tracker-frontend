@@ -5,13 +5,9 @@ import { sendFriendRequest } from "../../store/slices/userSlice";
 
 const FriendRequestBtn = ({ id, content }) => {
   const dispatch = useDispatch();
-  // const fromId = useSelector((state) => state.user.user._id);
-
-  // console.log(fromId);
 
   const clickHandler = () => {
     dispatch(sendFriendRequest({ id }));
-    // console.log("Request sent");
   };
 
   return (
