@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
-import { getProject } from "../../store/slices/projectSlice";
+import { getProject, updateProject } from "../../store/slices/projectSlice";
 import ExitBtn from "../elements/ExitBtn";
 
 const ProjectDetail = () => {
@@ -26,6 +26,7 @@ const ProjectDetail = () => {
   const formSubmitHandler = (e) => {
     e.preventDefault();
     console.log(formData);
+    dispatch(updateProject({ id, title, description }));
   };
 
   useEffect(() => {
@@ -40,7 +41,7 @@ const ProjectDetail = () => {
     }
   }, [project]);
 
-  console.log(project);
+  // console.log(project);
 
   return (
     <Wrapper>
