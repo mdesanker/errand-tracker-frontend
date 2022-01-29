@@ -7,7 +7,10 @@ import Greeting from "./Greeting";
 import CreateErrandLink from "./CreateErrandLink";
 import { getUserErrands } from "../../store/slices/errandSlice";
 import ErrandContainer from "../errands/ErrandContainer";
-import { getUserProjects } from "../../store/slices/projectSlice";
+import {
+  getAuthorProjects,
+  getMemberProjects,
+} from "../../store/slices/projectSlice";
 import Dropdown from "../dropdown/Dropdown";
 import ProjectContainer from "../projects/ProjectContainer";
 
@@ -25,7 +28,8 @@ const Dashboard = () => {
   useEffect(() => {
     if (user) {
       dispatch(getUserErrands({ id: user._id }));
-      dispatch(getUserProjects({ id: user._id }));
+      dispatch(getAuthorProjects({ id: user._id }));
+      dispatch(getMemberProjects({ id: user._id }));
     }
   }, [user]);
 

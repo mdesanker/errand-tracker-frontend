@@ -40,7 +40,7 @@ export const createProject = createAsyncThunk(
 );
 
 export const getAuthorProjects = createAsyncThunk(
-  "project/getAllProjects",
+  "project/getAuthorProjects",
   async ({ id }, thunkAPI) => {
     try {
       const res = await axios.get(
@@ -57,7 +57,7 @@ export const getAuthorProjects = createAsyncThunk(
 );
 
 export const getMemberProjects = createAsyncThunk(
-  "project/getAllProjects",
+  "project/getMemberProjects",
   async ({ id }, thunkAPI) => {
     try {
       const res = await axios.get(
