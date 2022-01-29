@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { createProject } from "../../store/slices/projectSlice";
 import ExitBtn from "../elements/ExitBtn";
 import OvalBtn from "../elements/OvalBtn";
@@ -74,6 +74,7 @@ const CreateProjectForm = () => {
           value={description}
           onChange={formChangeHandler}
         ></Description>
+        <SelectLabel>Select friends to share your project with</SelectLabel>
         <MembersSelect>
           {friends &&
             friends.map((friend) => {
@@ -83,6 +84,7 @@ const CreateProjectForm = () => {
                   id={friend._id}
                   key={friend._id}
                   onClick={memberSelectHandler}
+                  selected={members.includes(friend._id)}
                 >
                   {friend.username}
                 </MemberItem>
@@ -125,9 +127,11 @@ const Description = styled.textarea`
   padding: 5px;
 `;
 
+const SelectLabel = styled.p``;
+
 const MembersSelect = styled.div`
   width: 100%;
-  height: 50px;
+  height: 100px;
   display: flex;
   flex-direction: column;
   // align-items: center;
@@ -146,6 +150,12 @@ const MemberItem = styled.button`
   &:hover {
     background-color: #efefef;
   }
+
+  ${({ selected }) =>
+    selected &&
+    css`
+      background-color: ${({ theme }) => theme.colors.light};
+    `}
 `;
 
 export default CreateProjectForm;
