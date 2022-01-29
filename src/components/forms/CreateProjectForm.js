@@ -15,7 +15,7 @@ const CreateProjectForm = () => {
     members: [],
   });
 
-  const { title, description } = formData;
+  const { title, description, members } = formData;
 
   const formChangeHandler = (e) => {
     const { name, value } = e.target;
@@ -41,6 +41,16 @@ const CreateProjectForm = () => {
 
   const memberSelectHandler = (e) => {
     const { id } = e.target;
+    let memberList;
+    if (members.includes(id)) {
+      memberList = members.filter((member) => member !== id);
+    } else {
+      memberList = members.concat(id);
+    }
+    console.log(memberList);
+    setFormData((prevState) => {
+      return { ...prevState, members: memberList };
+    });
   };
 
   return (
