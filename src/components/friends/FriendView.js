@@ -32,7 +32,7 @@ const FriendView = () => {
         </Header>
         {friends.length > 0 ? (
           friends.map((friend) => {
-            return <FriendCard key={friend} friend={friend} />;
+            return <FriendCard key={friend._id} friend={friend} />;
           })
         ) : (
           <EmptyMsg>Friend list empty</EmptyMsg>
