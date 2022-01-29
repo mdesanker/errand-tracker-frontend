@@ -1,10 +1,12 @@
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
+import { unfriendUser } from "../../store/slices/userSlice";
 const UnfriendBtn = ({ id }) => {
   const dispatch = useDispatch();
 
   const unfriendRequestHandler = () => {
     console.log("Unfriending");
+    dispatch(unfriendUser({ id }));
   };
 
   return (

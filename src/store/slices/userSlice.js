@@ -193,6 +193,31 @@ export const declineFriendRequest = createAsyncThunk(
   }
 );
 
+export const unfriendUser = createAsyncThunk(
+  "user/unfriend",
+  async ({ id }, thunkAPI) => {
+    try {
+      const res = await axios.put(
+        `http://localhost:5000/api/user/unfriend/${id}`
+      );
+
+      if (res.status === 200) {
+        thunkAPI.dispatch(timedAlert({ msg: "User unfriended", type: "info" }));
+        console.log(res.data);
+        return res.data;
+      }
+    } catch (err) {
+      const errors = err.response.data.errors;
+      if (errors) {
+        errors.forEach((error) =>
+          thunkAPI.dispatch(timedAlert({ ...error, type: "danger" }))
+        );
+      }
+      return thunkAPI.rejectWithValue(err.response.data);
+    }
+  }
+);
+
 const initialState = {
   token: localStorage.getItem("token"),
   isAuthenticated: null,
@@ -263,10 +288,13 @@ const userSlice = createSlice({
     builder.addCase(sendFriendRequest.fulfilled, (state, actions) => {
       state.user = actions.payload;
     });
+    builder.addCase(acceptFriendRequest.fulfilled, (state, actions) => {
+      state.user = actions.payload;
+    });
     builder.addCase(declineFriendRequest.fulfilled, (state, actions) => {
       state.user = actions.payload;
     });
-    builder.addCase(acceptFriendRequest.fulfilled, (state, actions) => {
+    builder.addCase(unfriendUser.fulfilled, (state, actions) => {
       state.user = actions.payload;
     });
   },
