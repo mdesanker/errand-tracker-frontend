@@ -13,6 +13,7 @@ import {
 } from "../../store/slices/projectSlice";
 import Dropdown from "../dropdown/Dropdown";
 import ProjectContainer from "../projects/ProjectContainer";
+import Navbar from "../navbar/Navbar";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -35,6 +36,7 @@ const Dashboard = () => {
 
   return (
     <Wrapper>
+      <Navbar />
       <Dropdown />
       <Container>
         <Greeting />
