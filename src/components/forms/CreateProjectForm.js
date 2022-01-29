@@ -28,16 +28,15 @@ const CreateProjectForm = () => {
   const formSubmitHandler = (e) => {
     e.preventDefault();
     console.log(formData);
-    // dispatch(createProject(formData));
-    // setFormData({
-    //   title: "",
-    //   description: "",
-    // });
+    dispatch(createProject(formData));
+    setFormData({
+      title: "",
+      description: "",
+      members: [],
+    });
   };
 
   const { friends } = useSelector((state) => state.user.user);
-
-  console.log(friends);
 
   const memberSelectHandler = (e) => {
     const { id } = e.target;

@@ -1,7 +1,5 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { createErrand } from "../../store/slices/errandSlice";
 import ExitBtn from "../elements/ExitBtn";
@@ -9,11 +7,12 @@ import OvalBtn from "../elements/OvalBtn";
 
 const CreateErrandForm = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
-  const { project: currentProject, projects } = useSelector(
-    (state) => state.projects
-  );
+  const {
+    project: currentProject,
+    author,
+    member,
+  } = useSelector((state) => state.projects);
 
   const [formData, setFormData] = useState({
     title: "",
@@ -47,10 +46,6 @@ const CreateErrandForm = () => {
     });
   };
 
-  const exitHandler = () => {
-    navigate("/dashboard");
-  };
-
   return (
     <Wrapper>
       <ExitBtn to="/dashboard" />
@@ -62,8 +57,16 @@ const CreateErrandForm = () => {
           value={project}
         >
           <option value="">No project</option>
-          {projects &&
-            projects.map((project) => {
+          {author &&
+            author.map((project) => {
+              return (
+                <option key={project._id} value={project._id}>
+                  {project.title}
+                </option>
+              );
+            })}
+          {member &&
+            member.map((project) => {
               return (
                 <option key={project._id} value={project._id}>
                   {project.title}
