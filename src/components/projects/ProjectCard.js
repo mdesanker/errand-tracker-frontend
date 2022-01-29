@@ -1,14 +1,21 @@
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import ProjectEditLink from "./ProjectEditLink";
 
 const ProjectCard = ({ project }) => {
   const { _id, title, description, author, members } = project;
 
+  // const { project } = useSelector((state) => state.projects);
+
+  const { user } = useSelector((state) => state.user);
+
+  const isAuthor = author === user._id;
+
   return (
     <Container>
       <Card>
         <Title>{title}</Title>
-        <ProjectEditLink id={_id} />
+        {isAuthor && <ProjectEditLink id={_id} />}
       </Card>
     </Container>
   );

@@ -97,7 +97,7 @@ export const updateProject = createAsyncThunk(
       },
     };
 
-    const body = JSON.stringify({ id, title, description, members });
+    const body = JSON.stringify({ title, description, members });
 
     try {
       const res = await axios.put(
@@ -115,10 +115,8 @@ export const updateProject = createAsyncThunk(
       }
     } catch (err) {
       const errors = err.response.data.errors;
-      if (errors) {
-        errors.forEach((error) =>
-          thunkAPI.dispatch(timedAlert({ ...error, type: "danger" }))
-        );
+      for (let error of errors) {
+        thunkAPI.dispatch(timedAlert({ ...error, type: "danger" }));
       }
       return thunkAPI.rejectWithValue(err.response.data);
     }
@@ -142,7 +140,9 @@ export const deleteProject = createAsyncThunk(
       }
     } catch (err) {
       const errors = err.response.data.errors;
-      console.error(errors);
+      for (let error of errors) {
+        thunkAPI.dispatch(timedAlert({ ...error, type: "danger" }));
+      }
       return thunkAPI.rejectWithValue(err.response.data);
     }
   }

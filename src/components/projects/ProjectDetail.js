@@ -18,9 +18,10 @@ const ProjectDetail = () => {
   const [formData, setFormData] = useState({
     title: "",
     description: "",
+    members: [],
   });
 
-  const { title, description } = formData;
+  const { title, description, members } = formData;
 
   const formChangeHandler = (e) => {
     const { name, value } = e.target;
