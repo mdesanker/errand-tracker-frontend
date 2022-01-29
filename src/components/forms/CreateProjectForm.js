@@ -1,6 +1,6 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { createProject } from "../../store/slices/projectSlice";
 import ExitBtn from "../elements/ExitBtn";
@@ -8,11 +8,11 @@ import OvalBtn from "../elements/OvalBtn";
 
 const CreateProjectForm = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     title: "",
     description: "",
+    members: [],
   });
 
   const { title, description } = formData;
@@ -28,15 +28,19 @@ const CreateProjectForm = () => {
   const formSubmitHandler = (e) => {
     e.preventDefault();
     console.log(formData);
-    dispatch(createProject(formData));
-    setFormData({
-      title: "",
-      description: "",
-    });
+    // dispatch(createProject(formData));
+    // setFormData({
+    //   title: "",
+    //   description: "",
+    // });
   };
 
-  const exitHandler = () => {
-    navigate("/projects");
+  const { friends } = useSelector((state) => state.user.user);
+
+  console.log(friends);
+
+  const memberSelectHandler = (e) => {
+    const { id } = e.target;
   };
 
   return (
@@ -60,7 +64,21 @@ const CreateProjectForm = () => {
           value={description}
           onChange={formChangeHandler}
         ></Description>
-
+        <MembersSelect>
+          {friends &&
+            friends.map((friend) => {
+              return (
+                <MemberItem
+                  type="button"
+                  id={friend._id}
+                  key={friend._id}
+                  onClick={memberSelectHandler}
+                >
+                  {friend.username}
+                </MemberItem>
+              );
+            })}
+        </MembersSelect>
         <OvalBtn text="Create project" />
       </Form>
     </Wrapper>
@@ -95,6 +113,29 @@ const Description = styled.textarea`
   font-size: 1rem;
   font-family: inherit;
   padding: 5px;
+`;
+
+const MembersSelect = styled.div`
+  width: 100%;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  // align-items: center;
+  overflow: auto;
+
+  border: 1px solid gray;
+`;
+
+const MemberItem = styled.button`
+  font-size: 1rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px 0;
+
+  &:hover {
+    background-color: #efefef;
+  }
 `;
 
 export default CreateProjectForm;
