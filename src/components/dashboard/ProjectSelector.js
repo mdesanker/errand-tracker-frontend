@@ -5,7 +5,7 @@ import { clearProject, getProject } from "../../store/slices/projectSlice";
 
 const ProjectSelector = () => {
   const dispatch = useDispatch();
-  const { projects } = useSelector((state) => state.projects);
+  const { author, member } = useSelector((state) => state.projects);
 
   // console.log(projects);
 
@@ -22,8 +22,16 @@ const ProjectSelector = () => {
   return (
     <Wrapper onChange={projectSelectHandler}>
       <option value="none">Your errands</option>
-      {projects &&
-        projects.map((project) => {
+      {author &&
+        author.map((project) => {
+          return (
+            <option key={project._id} value={project._id}>
+              {project.title}
+            </option>
+          );
+        })}
+      {member &&
+        member.map((project) => {
           return (
             <option key={project._id} value={project._id}>
               {project.title}
