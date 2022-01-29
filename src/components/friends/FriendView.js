@@ -19,6 +19,7 @@ const FriendView = () => {
         </Header>
         {friendRequests.length > 0 ? (
           friendRequests.map((friend) => {
+            console.log(friend);
             return <FriendCard key={friend._id} friend={friend} />;
           })
         ) : (

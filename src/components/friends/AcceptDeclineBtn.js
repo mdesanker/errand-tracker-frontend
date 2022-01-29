@@ -1,13 +1,17 @@
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import styled, { css } from "styled-components";
-import { declineFriendRequest } from "../../store/slices/userSlice";
+import {
+  declineFriendRequest,
+  acceptFriendRequest,
+} from "../../store/slices/userSlice";
 
 const AcceptDeclineBtn = ({ id }) => {
   const dispatch = useDispatch();
 
   const acceptRequestHandler = () => {
     console.log("Accepting request");
+    dispatch(acceptFriendRequest({ id }));
   };
 
   const declineRequestHandler = () => {

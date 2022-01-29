@@ -139,6 +139,33 @@ export const sendFriendRequest = createAsyncThunk(
   }
 );
 
+export const acceptFriendRequest = createAsyncThunk(
+  "user/acceptRequest",
+  async ({ id }, thunkAPI) => {
+    try {
+      const res = await axios.put(
+        `http://localhost:5000/api/user/acceptrequest/${id}`
+      );
+
+      if (res.status === 200) {
+        thunkAPI.dispatch(
+          timedAlert({ msg: "Request accepted", type: "success" })
+        );
+        console.log(res.data);
+        return res.data;
+      }
+    } catch (err) {
+      const errors = err.response.data.errors;
+      if (errors) {
+        errors.forEach((error) =>
+          thunkAPI.dispatch(timedAlert({ ...errors, type: "danger" }))
+        );
+      }
+      return thunkAPI.rejectWithValue(err.response.data);
+    }
+  }
+);
+
 export const declineFriendRequest = createAsyncThunk(
   "user/declineRequest",
   async ({ id }, thunkAPI) => {
@@ -149,7 +176,7 @@ export const declineFriendRequest = createAsyncThunk(
 
       if (res.status === 200) {
         thunkAPI.dispatch(
-          timedAlert({ msg: "Request declined", type: "success" })
+          timedAlert({ msg: "Request declined", type: "info" })
         );
         console.log(res.data);
         return res.data;
@@ -237,6 +264,9 @@ const userSlice = createSlice({
       state.user = actions.payload;
     });
     builder.addCase(declineFriendRequest.fulfilled, (state, actions) => {
+      state.user = actions.payload;
+    });
+    builder.addCase(acceptFriendRequest.fulfilled, (state, actions) => {
       state.user = actions.payload;
     });
   },
