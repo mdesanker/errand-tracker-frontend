@@ -4,14 +4,14 @@ import { timedAlert } from "./alertSlice";
 
 export const createProject = createAsyncThunk(
   "project/createProject",
-  async ({ title, description }, thunkAPI) => {
+  async ({ title, description, members }, thunkAPI) => {
     const config = {
       headers: {
         "Content-Type": "application/json",
       },
     };
 
-    const body = JSON.stringify({ title, description });
+    const body = JSON.stringify({ title, description, members });
 
     try {
       const res = await axios.post(
@@ -39,12 +39,29 @@ export const createProject = createAsyncThunk(
   }
 );
 
-export const getUserProjects = createAsyncThunk(
+export const getAuthorProjects = createAsyncThunk(
   "project/getAllProjects",
   async ({ id }, thunkAPI) => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/project/user/${id}`
+        `http://localhost:5000/api/project/author/${id}`
+      );
+      // console.log(res.data);
+      return res.data;
+    } catch (err) {
+      const errors = err.response.data.errors;
+      console.error(errors);
+      return thunkAPI.rejectWithValue(err.response.data);
+    }
+  }
+);
+
+export const getMemberProjects = createAsyncThunk(
+  "project/getAllProjects",
+  async ({ id }, thunkAPI) => {
+    try {
+      const res = await axios.get(
+        `http://localhost:5000/api/project/member/${id}`
       );
       // console.log(res.data);
       return res.data;
@@ -73,14 +90,14 @@ export const getProject = createAsyncThunk(
 
 export const updateProject = createAsyncThunk(
   "project/update",
-  async ({ id, title, description }, thunkAPI) => {
+  async ({ id, title, description, members }, thunkAPI) => {
     const config = {
       headers: {
         "Content-Type": "application/json",
       },
     };
 
-    const body = JSON.stringify({ id, title, description });
+    const body = JSON.stringify({ id, title, description, members });
 
     try {
       const res = await axios.put(
@@ -132,7 +149,8 @@ export const deleteProject = createAsyncThunk(
 );
 
 const initialState = {
-  projects: [],
+  author: [],
+  member: [],
   project: null,
 };
 
@@ -146,13 +164,19 @@ const projectSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(createProject.fulfilled, (state, actions) => {
-      state.projects = state.projects.concat([actions.payload]);
+      state.author = state.author.concat([actions.payload]);
     });
-    builder.addCase(getUserProjects.fulfilled, (state, actions) => {
-      state.projects = actions.payload;
+    builder.addCase(getAuthorProjects.fulfilled, (state, actions) => {
+      state.author = actions.payload;
     });
-    builder.addCase(getUserProjects.rejected, (state, actions) => {
-      state.projects = [];
+    builder.addCase(getAuthorProjects.rejected, (state, actions) => {
+      state.author = [];
+    });
+    builder.addCase(getMemberProjects.fulfilled, (state, actions) => {
+      state.member = actions.payload;
+    });
+    builder.addCase(getMemberProjects.rejected, (state, actions) => {
+      state.member = [];
     });
     builder.addCase(getProject.fulfilled, (state, actions) => {
       state.project = actions.payload;
@@ -162,14 +186,14 @@ const projectSlice = createSlice({
     });
     builder.addCase(updateProject.fulfilled, (state, actions) => {
       // Find index of project that was updated
-      const index = state.projects.findIndex(
+      const index = state.author.findIndex(
         (project) => project._id === actions.payload._id
       );
       // Replace with updated object
-      state.projects[index] = actions.payload;
+      state.author[index] = actions.payload;
     });
     builder.addCase(deleteProject.fulfilled, (state, actions) => {
-      state.projects = state.projects.filter(
+      state.author = state.author.filter(
         (project) => project._id !== actions.payload
       );
     });
