@@ -1,19 +1,10 @@
-import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import CreateProjectLink from "./CreateProjectLink";
 import ProjectCard from "./ProjectCard";
 
 const ProjectContainer = () => {
-  const dispatch = useDispatch();
-
-  const { projects } = useSelector((state) => state.projects);
-
-  const { user } = useSelector((state) => state.user);
-
-  const ownerProjects = projects.filter(
-    (project) => project.author === user._id
-  );
+  const { author, member } = useSelector((state) => state.projects);
 
   return (
     <Wrapper>
@@ -21,12 +12,15 @@ const ProjectContainer = () => {
         <Title>Projects (Owned)</Title>
         <CreateProjectLink />
       </Header>
-      {ownerProjects.map((project) => {
+      {author.map((project) => {
         return <ProjectCard key={project._id} project={project} />;
       })}
       <Header>
         <Title>Projects (Member)</Title>
       </Header>
+      {member.map((project) => {
+        return <ProjectCard key={project._id} project={project} />;
+      })}
     </Wrapper>
   );
 };
