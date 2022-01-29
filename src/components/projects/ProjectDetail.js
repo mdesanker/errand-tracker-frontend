@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import {
   deleteProject,
   getProject,
@@ -15,10 +15,18 @@ const ProjectDetail = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  useEffect(() => {
+    dispatch(getProject({ id }));
+  }, []);
+
+  const { project } = useSelector((state) => state.projects);
+
+  const { friends } = useSelector((state) => state.user.user);
+
   const [formData, setFormData] = useState({
     title: "",
     description: "",
-    members: [],
+    members: project ? project.members : [],
   });
 
   const { title, description, members } = formData;
@@ -33,7 +41,7 @@ const ProjectDetail = () => {
   const formSubmitHandler = (e) => {
     e.preventDefault();
     console.log(formData);
-    dispatch(updateProject({ id, title, description }));
+    dispatch(updateProject({ id, title, description, members }));
   };
 
   const deleteProjectHandler = () => {
@@ -41,11 +49,18 @@ const ProjectDetail = () => {
     navigate("/projects");
   };
 
-  useEffect(() => {
-    dispatch(getProject({ id }));
-  }, []);
-
-  const { project } = useSelector((state) => state.projects);
+  const memberSelectHandler = (e) => {
+    const { id } = e.target;
+    let memberList;
+    if (members.includes(id)) {
+      memberList = members.filter((member) => member !== id);
+    } else {
+      memberList = members.concat(id);
+    }
+    setFormData((prevState) => {
+      return { ...prevState, members: memberList };
+    });
+  };
 
   useEffect(() => {
     if (project) {
@@ -76,6 +91,23 @@ const ProjectDetail = () => {
           value={description}
           onChange={formChangeHandler}
         ></Description>
+        <SelectLabel>Select friends to share your project with</SelectLabel>
+        <MembersSelect>
+          {friends &&
+            friends.map((friend) => {
+              return (
+                <MemberItem
+                  type="button"
+                  id={friend._id}
+                  key={friend._id}
+                  onClick={memberSelectHandler}
+                  selected={members.includes(friend._id)}
+                >
+                  {friend.username}
+                </MemberItem>
+              );
+            })}
+        </MembersSelect>
         <BtnGroup>
           <FormBtn type="submit" content="Update" />
           <FormBtn
@@ -121,6 +153,37 @@ const Description = styled.textarea`
   font-size: 1rem;
   font-family: inherit;
   padding: 5px;
+`;
+
+const SelectLabel = styled.p``;
+
+const MembersSelect = styled.div`
+  width: 100%;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  // align-items: center;
+  overflow: auto;
+
+  border: 1px solid gray;
+`;
+
+const MemberItem = styled.button`
+  font-size: 1rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px 0;
+
+  &:hover {
+    background-color: #efefef;
+  }
+
+  ${({ selected }) =>
+    selected &&
+    css`
+      background-color: ${({ theme }) => theme.colors.light};
+    `}
 `;
 
 const BtnGroup = styled.div`
