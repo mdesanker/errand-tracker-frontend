@@ -52,6 +52,16 @@ const CreateErrandForm = () => {
       <Card>
         <ExitBtn to="/dashboard" />
         <Form onSubmit={formSubmitHandler}>
+          <FormHeader>Create new errand</FormHeader>
+
+          <Title
+            type="text"
+            name="title"
+            id="title"
+            placeholder="Title (required)"
+            value={title}
+            onChange={formChangeHandler}
+          />
           <ProjectSelect
             name="project"
             id="project"
@@ -76,15 +86,7 @@ const CreateErrandForm = () => {
                 );
               })}
           </ProjectSelect>
-          <Title
-            type="text"
-            name="title"
-            id="title"
-            placeholder="Title (required)"
-            value={title}
-            onChange={formChangeHandler}
-          />
-          <Description
+          {/* <Description
             name="description"
             id="description"
             cols="30"
@@ -92,7 +94,7 @@ const CreateErrandForm = () => {
             placeholder="Description"
             value={description}
             onChange={formChangeHandler}
-          ></Description>
+          ></Description> */}
           <FormGroup>
             <label htmlFor="dueDate">Due date:</label>
             <Date
@@ -132,18 +134,29 @@ const Form = styled.form`
   gap: 10px;
 `;
 
-const ProjectSelect = styled.select`
-  font-size: 1rem;
-  padding: 5px;
-  margin-bottom: 15px;
-  color: gray;
+const FormHeader = styled.h1`
+  font-size: 1.5rem;
+  padding-bottom: 10px;
+  border-bottom: 1px solid lightgray;
 `;
 
 const Title = styled.input`
   font-size: 1rem;
-  padding: 5px;
+  padding: 8px;
   border: none;
-  border-bottom: 1px solid gray;
+  border: 1px solid lightgray;
+  background-color: #f5f5f5;
+  border-radius: ${({ theme }) => theme.radii.small};
+`;
+
+const ProjectSelect = styled.select`
+  font-size: 1rem;
+  padding: 8px;
+  margin-bottom: 15px;
+  color: gray;
+  border: 1px solid lightgray;
+  background-color: #f5f5f5;
+  border-radius: ${({ theme }) => theme.radii.small};
 `;
 
 const Description = styled.textarea`
@@ -160,12 +173,17 @@ const FormGroup = styled.div`
 
 const Date = styled.input`
   font-size: 1rem;
-  padding: 5px;
+  padding: 8px;
+  border: 1px solid lightgray;
+  border-radius: ${({ theme }) => theme.radii.small};
 `;
 
 const PrioritySelect = styled.select`
   font-size: 1rem;
-  padding: 5px;
+  padding: 8px;
+  border: 1px solid lightgray;
+  background-color: white;
+  border-radius: ${({ theme }) => theme.radii.small};
 `;
 
 export default CreateErrandForm;

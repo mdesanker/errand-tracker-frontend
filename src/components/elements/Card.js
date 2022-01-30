@@ -12,6 +12,7 @@ const Wrapper = styled.div`
   background-color: #fff;
   border-radius: ${({ theme }) => theme.radii.medium};
   box-shadow: ${({ theme }) => theme.shadows.soft};
+  position: relative;
 `;
 
 export default Card;
