@@ -4,7 +4,8 @@ import { useDispatch } from "react-redux";
 import styled, { css } from "styled-components";
 import { createProject } from "../../store/slices/projectSlice";
 import ExitBtn from "../elements/ExitBtn";
-import OvalBtn from "../elements/OvalBtn";
+import Card from "../elements/Card";
+import Button from "../elements/Button";
 
 const CreateProjectForm = () => {
   const dispatch = useDispatch();
@@ -53,57 +54,42 @@ const CreateProjectForm = () => {
   };
 
   return (
-    <Wrapper>
-      <ExitBtn to="/projects" />
-      <Form onSubmit={formSubmitHandler}>
-        <Title
-          type="text"
-          name="title"
-          id="title"
-          placeholder="Title (required)"
-          value={title}
-          onChange={formChangeHandler}
-        />
-        <Description
-          name="description"
-          id="description"
-          cols="30"
-          rows="3"
-          placeholder="Description"
-          value={description}
-          onChange={formChangeHandler}
-        ></Description>
-        <SelectLabel>Select friends to share your project with</SelectLabel>
-        <MembersSelect>
-          {friends &&
-            friends.map((friend) => {
-              return (
-                <MemberItem
-                  type="button"
-                  id={friend._id}
-                  key={friend._id}
-                  onClick={memberSelectHandler}
-                  selected={members.includes(friend._id)}
-                >
-                  {friend.username}
-                </MemberItem>
-              );
-            })}
-        </MembersSelect>
-        <OvalBtn text="Create project" />
-      </Form>
-    </Wrapper>
+    <main>
+      <Card>
+        <Form onSubmit={formSubmitHandler}>
+          <FormHeader>Create new project</FormHeader>
+          <ExitBtn to="/projects" />
+          <Title
+            type="text"
+            name="title"
+            id="title"
+            placeholder="Project Title (required)"
+            value={title}
+            onChange={formChangeHandler}
+          />
+          <SelectLabel>Share your project with friends:</SelectLabel>
+          <MembersSelect>
+            {friends &&
+              friends.map((friend) => {
+                return (
+                  <MemberItem
+                    type="button"
+                    id={friend._id}
+                    key={friend._id}
+                    onClick={memberSelectHandler}
+                    selected={members.includes(friend._id)}
+                  >
+                    {friend.username}
+                  </MemberItem>
+                );
+              })}
+          </MembersSelect>
+          <Button type="submit" text="Create project" />
+        </Form>
+      </Card>
+    </main>
   );
 };
-
-const Wrapper = styled.main`
-  width: 100%;
-  height: 100vh;
-  background-color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
 
 const Form = styled.form`
   width: 100%;
@@ -113,30 +99,32 @@ const Form = styled.form`
   gap: 10px;
 `;
 
+const FormHeader = styled.h1`
+  font-size: 1.5rem;
+  padding-bottom: 8px;
+  border-bottom: 1px solid lightgray;
+  margin-bottom: 10px;
+`;
+
 const Title = styled.input`
   font-size: 1rem;
-  padding: 5px;
-  border: none;
-  border-bottom: 1px solid gray;
+  padding: 8px;
+  border: 1px solid lightgray;
+  background-color: #f5f5f5;
+  border-radius: ${({ theme }) => theme.radii.small};
 `;
 
-const Description = styled.textarea`
-  font-size: 1rem;
-  font-family: inherit;
-  padding: 5px;
+const SelectLabel = styled.p`
+  padding-top: 10px;
 `;
-
-const SelectLabel = styled.p``;
 
 const MembersSelect = styled.div`
-  width: 100%;
-  height: 100px;
+  height: 72px;
   display: flex;
   flex-direction: column;
-  // align-items: center;
   overflow: auto;
-
-  border: 1px solid gray;
+  border: 1px solid lightgray;
+  border-radius: ${({ theme }) => theme.radii.small};
 `;
 
 const MemberItem = styled.button`
@@ -144,16 +132,23 @@ const MemberItem = styled.button`
   background-color: transparent;
   border: none;
   cursor: pointer;
-  padding: 5px 0;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  height: 36px;
 
   &:hover {
-    background-color: #efefef;
+    background-color: #f5f5f5;
   }
 
   ${({ selected }) =>
     selected &&
     css`
       background-color: ${({ theme }) => theme.colors.light};
+
+      &:hover {
+        background-color: ${({ theme }) => theme.hover.light};
+      }
     `}
 `;
 
