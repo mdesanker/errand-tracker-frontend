@@ -22,6 +22,7 @@ const Wrapper = styled(Link)`
   background-color: white;
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
   cursor: pointer;
+  z-index: 100;
 
   & a {
     text-decoration: none;
