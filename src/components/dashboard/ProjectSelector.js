@@ -1,5 +1,4 @@
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { clearProject, getProject } from "../../store/slices/projectSlice";
 
@@ -7,11 +6,8 @@ const ProjectSelector = () => {
   const dispatch = useDispatch();
   const { author, member } = useSelector((state) => state.projects);
 
-  // console.log(projects);
-
   const projectSelectHandler = (e) => {
     const { value } = e.target;
-    // console.log(value);
     if (value === "none") {
       dispatch(clearProject());
     } else {
@@ -20,8 +16,8 @@ const ProjectSelector = () => {
   };
 
   return (
-    <Wrapper onChange={projectSelectHandler}>
-      <option value="none">Your errands</option>
+    <Select onChange={projectSelectHandler}>
+      <option value="none">All errands</option>
       {author &&
         author.map((project) => {
           return (
@@ -38,23 +34,28 @@ const ProjectSelector = () => {
             </option>
           );
         })}
-    </Wrapper>
+    </Select>
   );
 };
 
-const Wrapper = styled.select`
-  padding: 5px;
-  font-size: 1.1rem;
-  color: gray;
+const Select = styled.select`
+  padding: 5px 10px;
+  font-size: 1rem;
+  color: ${({ theme }) => theme.colors.dark};
   text-transform: uppercase;
   background-color: transparent;
   border: none;
   cursor: pointer;
   max-width: 60%;
+  border-bottom: 1px solid gray;
 
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+
+  & > option {
+    color: ${({ theme }) => theme.colors.dark};
+  }
 `;
 
 export default ProjectSelector;

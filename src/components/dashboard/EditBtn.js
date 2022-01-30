@@ -29,7 +29,7 @@ const Button = styled.button`
   ${({ active }) =>
     active &&
     css`
-      color: blue;
+      color: ${({ theme }) => theme.colors.medium};
     `}
 `;
 
