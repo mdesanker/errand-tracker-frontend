@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import ProjectEditLink from "./ProjectEditLink";
+import ProjectRemoveBtn from "./ProjectRemoveBtn";
 
 const ProjectCard = ({ project }) => {
   const { _id, title, description, author, members } = project;
@@ -15,6 +16,7 @@ const ProjectCard = ({ project }) => {
     <Card>
       <Title>{title}</Title>
       {isAuthor && <ProjectEditLink id={_id} />}
+      {!isAuthor && <ProjectRemoveBtn id={_id} />}
     </Card>
   );
 };
