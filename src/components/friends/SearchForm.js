@@ -35,13 +35,13 @@ const SearchForm = () => {
   };
 
   return (
-    <Wrapper onSubmit={formSubmitHandler}>
+    <Form onSubmit={formSubmitHandler}>
       <Search
         type="text"
         id="search"
         name="search"
         value={search}
-        placeholder="Find new friends..."
+        placeholder="Search users"
         autoComplete="off"
         onChange={formChangeHandler}
       />
@@ -54,16 +54,16 @@ const SearchForm = () => {
           .map((user) => {
             return <FriendCard key={user._id} friend={user} />;
           })}
-    </Wrapper>
+    </Form>
   );
 };
 
-const Wrapper = styled.form`
+const Form = styled.form`
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 100px;
+  padding-bottom: 50px;
 `;
 
 const Search = styled.input`

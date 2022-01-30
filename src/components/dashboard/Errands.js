@@ -54,6 +54,7 @@ const ErrandContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
+  margin-bottom: 50px;
 `;
 
 export default Errands;

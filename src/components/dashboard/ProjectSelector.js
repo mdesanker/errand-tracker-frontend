@@ -17,7 +17,7 @@ const ProjectSelector = () => {
 
   return (
     <Select onChange={projectSelectHandler}>
-      <option value="none">All errands</option>
+      <option value="none">Personal errands</option>
       {author &&
         author.map((project) => {
           return (

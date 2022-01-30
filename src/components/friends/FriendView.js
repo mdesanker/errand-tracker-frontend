@@ -1,79 +1,87 @@
 import styled from "styled-components";
-import Greeting from "../dashboard/Greeting";
 import SearchForm from "./SearchForm";
 import { useSelector } from "react-redux";
 import FriendCard from "./FriendCard";
 import Navbar from "../navbar/Navbar";
+import { Fragment } from "react";
+import Container from "../elements/Container";
 
 const FriendView = () => {
-  const { friends, friendRequests } = useSelector((state) => state.user.user);
+  const { friends, friendRequests, pendingRequests } = useSelector(
+    (state) => state.user.user
+  );
+
+  const { username } = useSelector((state) => state.user.user);
 
   return (
-    <Wrapper>
+    <Fragment>
       <Navbar />
-      <Greeting />
-      <Section>
-        <Header>
-          <Title>Friend Requests</Title>
-        </Header>
-        {friendRequests.length > 0 ? (
-          friendRequests.map((friend) => {
-            console.log(friend);
-            return <FriendCard key={friend._id} friend={friend} />;
-          })
-        ) : (
-          <EmptyMsg>No current friend requests</EmptyMsg>
-        )}
-      </Section>
-      <Section>
-        <Header>
-          <Title>Friends</Title>
-        </Header>
-        {friends.length > 0 ? (
-          friends.map((friend) => {
-            return <FriendCard key={friend._id} friend={friend} />;
-          })
-        ) : (
-          <EmptyMsg>Friend list empty</EmptyMsg>
-        )}
-      </Section>
-      <Section>
-        <Header>
-          <Title>Add Friends</Title>
-        </Header>
-        <SearchForm />
-      </Section>
-    </Wrapper>
+      <main>
+        <Container>
+          <Section>
+            <Header>
+              <Title>{username && username}'s Friends</Title>
+            </Header>
+            {friends.length > 0 ? (
+              friends.map((friend) => {
+                return <FriendCard key={friend._id} friend={friend} />;
+              })
+            ) : (
+              <EmptyMsg>Friend list empty</EmptyMsg>
+            )}
+          </Section>
+          <Section>
+            <Header>
+              <Title>Friend Requests</Title>
+            </Header>
+            {friendRequests.length > 0 ? (
+              friendRequests.map((friend) => {
+                console.log(friend);
+                return <FriendCard key={friend._id} friend={friend} />;
+              })
+            ) : (
+              <EmptyMsg>No current friend requests</EmptyMsg>
+            )}
+          </Section>
+          <Section>
+            <Header>
+              <Title>Pending Requests</Title>
+            </Header>
+            {pendingRequests.length > 0 ? (
+              pendingRequests.map((friend) => {
+                console.log(friend);
+                return <FriendCard key={friend._id} friend={friend} />;
+              })
+            ) : (
+              <EmptyMsg>No pending requests</EmptyMsg>
+            )}
+          </Section>
+          <Section>
+            <Header>
+              <Title>Search all users</Title>
+            </Header>
+            <SearchForm />
+          </Section>
+        </Container>
+      </main>
+    </Fragment>
   );
 };
 
-const Wrapper = styled.main`
-  width: 80%;
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
 const Section = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  padding-bottom: 15px;
+  margin: 10px 0 30px;
 `;
 
 const Header = styled.div`
-  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 45px;
   border-bottom: 1px solid gray;
   padding-bottom: 5px;
 `;
 
 const Title = styled.h2`
-  // width: 80%;
   color: gray;
   text-transform: uppercase;
   font-weight: normal;
