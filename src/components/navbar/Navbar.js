@@ -123,7 +123,7 @@ const SignoutBtn = styled.button`
   color: gray;
   cursor: pointer;
   height: 60px;
-  width: 70px;
+  width: 80px;
   border-bottom: 3px solid transparent;
   background-color: transparent;
   border: none;

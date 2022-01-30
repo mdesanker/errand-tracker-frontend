@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { Fragment, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loadUser } from "../../store/slices/userSlice";
 import Greeting from "./Greeting";
@@ -32,14 +32,16 @@ const Dashboard = () => {
   }, [user]);
 
   return (
-    <main>
+    <Fragment>
       <Navbar />
-      <Container>
-        <Greeting />
-        <Errands />
-      </Container>
-      <CreateErrandLink />
-    </main>
+      <main>
+        <Container>
+          <Greeting />
+          <Errands />
+        </Container>
+        <CreateErrandLink />
+      </main>
+    </Fragment>
   );
 };
 

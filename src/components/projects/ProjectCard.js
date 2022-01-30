@@ -12,21 +12,12 @@ const ProjectCard = ({ project }) => {
   const isAuthor = author === user._id;
 
   return (
-    <Container>
-      <Card>
-        <Title>{title}</Title>
-        {isAuthor && <ProjectEditLink id={_id} />}
-      </Card>
-    </Container>
+    <Card>
+      <Title>{title}</Title>
+      {isAuthor && <ProjectEditLink id={_id} />}
+    </Card>
   );
 };
-
-const Container = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 80%;
-  align-items: center;
-`;
 
 const Card = styled.div`
   flex-grow: 1;
@@ -36,7 +27,7 @@ const Card = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  cursor: pointer;
+  cursor: default;
 
   &:hover {
     background-color: #e5e5e5;

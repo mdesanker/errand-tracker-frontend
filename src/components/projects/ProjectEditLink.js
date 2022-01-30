@@ -13,16 +13,16 @@ const Wrapper = styled(Link)`
   text-transform: uppercase;
   text-decoration: none;
   padding: 5px 10px;
-  color: ${({ theme }) => theme.colors.medium};
-  border: 2px solid ${({ theme }) => theme.colors.medium};
+  color: gray;
+  border: 2px solid gray;
   background-color: transparent;
   border-radius: ${({ theme }) => theme.radii.small};
   margin-left: 5px;
   cursor: pointer;
 
   &:hover {
-    color: ${({ theme }) => theme.colors.dark};
-    border: 2px solid ${({ theme }) => theme.colors.dark};
+    color: ${({ theme }) => theme.colors.medium};
+    border: 2px solid ${({ theme }) => theme.colors.medium};
   }
 `;
 
