@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import Greeting from "../dashboard/Greeting";
-import Dropdown from "../dropdown/Dropdown";
+import Navbar from "../navbar/Navbar";
 import ProjectContainer from "../projects/ProjectContainer";
 
 const Projectboard = () => {
   return (
     <Wrapper>
-      <Dropdown />
+      <Navbar />
       <Container>
         <Greeting />
         <ProjectContainer />

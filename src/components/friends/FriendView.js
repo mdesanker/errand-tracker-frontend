@@ -1,17 +1,16 @@
 import styled from "styled-components";
-import Dropdown from "../dropdown/Dropdown";
 import Greeting from "../dashboard/Greeting";
-import { useState } from "react";
 import SearchForm from "./SearchForm";
 import { useSelector } from "react-redux";
 import FriendCard from "./FriendCard";
+import Navbar from "../navbar/Navbar";
 
 const FriendView = () => {
   const { friends, friendRequests } = useSelector((state) => state.user.user);
 
   return (
     <Wrapper>
-      <Dropdown />
+      <Navbar />
       <Greeting />
       <Section>
         <Header>
