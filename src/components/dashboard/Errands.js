@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { Fragment, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
@@ -6,11 +6,11 @@ import {
   getProjectErrands,
   getUserErrands,
 } from "../../store/slices/errandSlice";
-import EditBtn from "../dashboard/EditBtn";
-import ProjectSelector from "../dashboard/ProjectSelector";
+import EditBtn from "./EditBtn";
+import ProjectSelector from "./ProjectSelector";
 import ErrandCard from "./ErrandCard";
 
-const ErrandContainer = () => {
+const Errands = () => {
   const dispatch = useDispatch();
 
   const { project } = useSelector((state) => state.projects);
@@ -28,33 +28,32 @@ const ErrandContainer = () => {
   }, [project, user]);
 
   return (
-    <Wrapper>
-      <ProjectHeader>
+    <Fragment>
+      <Header>
         <ProjectSelector />
         <EditBtn />
-      </ProjectHeader>
-      {errands &&
-        errands.map((errand) => {
-          return <ErrandCard key={errand._id} errand={errand} />;
-        })}
-    </Wrapper>
+      </Header>
+      <ErrandContainer>
+        {errands &&
+          errands.map((errand) => {
+            return <ErrandCard key={errand._id} errand={errand} />;
+          })}
+      </ErrandContainer>
+    </Fragment>
   );
 };
 
-const Wrapper = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-bottom: 100px;
-`;
-
-const ProjectHeader = styled.div`
-  width: 80%;
+const Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
 `;
 
-export default ErrandContainer;
+const ErrandContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+`;
+
+export default Errands;

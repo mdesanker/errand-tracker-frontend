@@ -4,7 +4,7 @@ import { loadUser } from "../../store/slices/userSlice";
 import Greeting from "./Greeting";
 import CreateErrandLink from "./CreateErrandLink";
 import { getUserErrands } from "../../store/slices/errandSlice";
-import ErrandContainer from "../errands/ErrandContainer";
+import Errands from "./Errands";
 import {
   getAuthorProjects,
   getMemberProjects,
@@ -36,7 +36,7 @@ const Dashboard = () => {
       <Navbar />
       <Container>
         <Greeting />
-        <ErrandContainer />
+        <Errands />
       </Container>
       <CreateErrandLink />
     </main>

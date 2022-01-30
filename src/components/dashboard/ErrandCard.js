@@ -1,43 +1,30 @@
-import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { css } from "styled-components";
-import { timedAlert } from "../../store/slices/alertSlice";
 import { toggleErrandComplete } from "../../store/slices/errandSlice";
-import ErrandDeleteBtn from "../dashboard/ErrandDeleteBtn";
+import ErrandDeleteBtn from "./ErrandDeleteBtn";
 
 const ErrandCard = ({ errand }) => {
   const dispatch = useDispatch();
 
-  const { edit } = useSelector((state) => state.ui);
-
-  const { _id, title, description, isComplete, priority } = errand;
+  const { _id, title, isComplete, priority } = errand;
 
   const errandClickHandler = () => {
     dispatch(toggleErrandComplete({ id: _id }));
   };
 
   return (
-    <Container>
-      <Card draggable="true" priority={priority} onClick={errandClickHandler}>
-        <CardGroup>
-          <Checkbox isComplete={isComplete}>
-            <i className="fas fa-check" />
-          </Checkbox>
-          <Title isComplete={isComplete}>{title}</Title>
-        </CardGroup>
-        <ErrandDeleteBtn id={_id} />
-      </Card>
-    </Container>
+    <Card priority={priority} onClick={errandClickHandler}>
+      <CardGroup>
+        <Checkbox isComplete={isComplete}>
+          <i className="fas fa-check" />
+        </Checkbox>
+        <Title isComplete={isComplete}>{title}</Title>
+      </CardGroup>
+      <ErrandDeleteBtn id={_id} />
+    </Card>
   );
 };
-
-const Container = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 80%;
-  align-items: center;
-`;
 
 const Card = styled.div`
   flex-grow: 1;
@@ -45,7 +32,6 @@ const Card = styled.div`
   padding: 8px;
   font-size: 1rem;
   background-color: white;
-  margin: 0.25rem 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
