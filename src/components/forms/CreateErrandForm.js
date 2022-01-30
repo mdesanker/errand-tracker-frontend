@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { createErrand } from "../../store/slices/errandSlice";
 import ExitBtn from "../elements/ExitBtn";
 import OvalBtn from "../elements/OvalBtn";
+import Card from "../elements/Card";
 
 const CreateErrandForm = () => {
   const dispatch = useDispatch();
@@ -47,88 +48,81 @@ const CreateErrandForm = () => {
   };
 
   return (
-    <Wrapper>
-      <ExitBtn to="/dashboard" />
-      <Form onSubmit={formSubmitHandler}>
-        <ProjectSelect
-          name="project"
-          id="project"
-          onChange={formChangeHandler}
-          value={project}
-        >
-          <option value="">No project</option>
-          {author &&
-            author.map((project) => {
-              return (
-                <option key={project._id} value={project._id}>
-                  {project.title}
-                </option>
-              );
-            })}
-          {member &&
-            member.map((project) => {
-              return (
-                <option key={project._id} value={project._id}>
-                  {project.title}
-                </option>
-              );
-            })}
-        </ProjectSelect>
-        <Title
-          type="text"
-          name="title"
-          id="title"
-          placeholder="Title (required)"
-          value={title}
-          onChange={formChangeHandler}
-        />
-        <Description
-          name="description"
-          id="description"
-          cols="30"
-          rows="3"
-          placeholder="Description"
-          value={description}
-          onChange={formChangeHandler}
-        ></Description>
-        <FormGroup>
-          <label htmlFor="dueDate">Due date:</label>
-          <Date
-            type="date"
-            name="dueDate"
-            id="dueDate"
-            value={dueDate}
+    <main>
+      <Card>
+        <ExitBtn to="/dashboard" />
+        <Form onSubmit={formSubmitHandler}>
+          <ProjectSelect
+            name="project"
+            id="project"
+            onChange={formChangeHandler}
+            value={project}
+          >
+            <option value="">No project</option>
+            {author &&
+              author.map((project) => {
+                return (
+                  <option key={project._id} value={project._id}>
+                    {project.title}
+                  </option>
+                );
+              })}
+            {member &&
+              member.map((project) => {
+                return (
+                  <option key={project._id} value={project._id}>
+                    {project.title}
+                  </option>
+                );
+              })}
+          </ProjectSelect>
+          <Title
+            type="text"
+            name="title"
+            id="title"
+            placeholder="Title (required)"
+            value={title}
             onChange={formChangeHandler}
           />
-        </FormGroup>
-        <FormGroup>
-          <label htmlFor="priority">Priority:</label>
-          <PrioritySelect
-            name="priority"
-            id="priority"
-            value={priority}
+          <Description
+            name="description"
+            id="description"
+            cols="30"
+            rows="3"
+            placeholder="Description"
+            value={description}
             onChange={formChangeHandler}
-          >
-            <option value="None">None</option>
-            <option value="Low">Low</option>
-            <option value="Medium">Medium</option>
-            <option value="High">High</option>
-          </PrioritySelect>
-        </FormGroup>
-        <OvalBtn text="Create errand" />
-      </Form>
-    </Wrapper>
+          ></Description>
+          <FormGroup>
+            <label htmlFor="dueDate">Due date:</label>
+            <Date
+              type="date"
+              name="dueDate"
+              id="dueDate"
+              value={dueDate}
+              onChange={formChangeHandler}
+            />
+          </FormGroup>
+          <FormGroup>
+            <label htmlFor="priority">Priority:</label>
+            <PrioritySelect
+              name="priority"
+              id="priority"
+              value={priority}
+              onChange={formChangeHandler}
+            >
+              <option value="None">None</option>
+              <option value="Low">Low</option>
+              <option value="Medium">Medium</option>
+              <option value="High">High</option>
+            </PrioritySelect>
+          </FormGroup>
+          <OvalBtn text="Create errand" />
+        </Form>
+      </Card>
+    </main>
   );
 };
-
-const Wrapper = styled.main`
-  width: 100%;
-  height: 100vh;
-  background-color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
 
 const Form = styled.form`
   width: 100%;

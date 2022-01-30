@@ -15,7 +15,7 @@ const Navbar = () => {
       <NavList>
         <NavItem>
           <StyledNavLink to="/dashboard">
-            <i className="fas fa-home" />
+            <i className="far fa-list-alt" />
             <p>Home</p>
           </StyledNavLink>
         </NavItem>
