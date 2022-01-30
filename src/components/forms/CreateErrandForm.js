@@ -50,10 +50,9 @@ const CreateErrandForm = () => {
   return (
     <main>
       <Card>
-        <ExitBtn to="/dashboard" />
         <Form onSubmit={formSubmitHandler}>
           <FormHeader>Create new errand</FormHeader>
-
+          <ExitBtn to="/dashboard" />
           <Title
             type="text"
             name="title"
