@@ -11,8 +11,6 @@ import {
   getAuthorProjects,
   getMemberProjects,
 } from "../../store/slices/projectSlice";
-import Dropdown from "../dropdown/Dropdown";
-import ProjectContainer from "../projects/ProjectContainer";
 import Navbar from "../navbar/Navbar";
 
 const Dashboard = () => {
@@ -37,7 +35,6 @@ const Dashboard = () => {
   return (
     <Wrapper>
       <Navbar />
-      <Dropdown />
       <Container>
         <Greeting />
         <CreateErrandLink />

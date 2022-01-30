@@ -19,8 +19,17 @@ const GlobalStyles = createGlobalStyle`
     min-height: 100vh;
   }
 
+  main {
+    padding-top: ${({ theme }) => theme.heights.header};
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   h1 {
-    color: ${({ theme }) => theme.colors.medium};
+    color: ${({ theme }) => theme.colors.dark};
   }
 `;
 

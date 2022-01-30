@@ -3,12 +3,11 @@ import styled from "styled-components";
 
 const Greeting = () => {
   const { user } = useSelector((state) => state.user);
-  // console.log(user);
 
   return (
     <Wrapper>
-      {/* {user && <Avatar src={user.avatar} alt="user.username" />} */}
-      <div>{user && <h1>Hi, {user.username}</h1>}</div>
+      {user && <Avatar src={user.avatar} alt="user.username" />}
+      {user && <Title>{user.username}'s errands</Title>}
     </Wrapper>
   );
 };
@@ -16,16 +15,24 @@ const Greeting = () => {
 const Wrapper = styled.header`
   width: 100%;
   display: flex;
-  padding: 1rem;
   gap: 20px;
   align-items: center;
+  margin: 10px 0;
 `;
 
 const Avatar = styled.img`
-  height: ${({ theme }) => theme.radii.avatar};
-  width: ${({ theme }) => theme.radii.avatar};
-  border-radius: 50%;
-  // border: 10px solid ${({ theme }) => theme.colors.medium};
+  height: 60px;
+  width: 60px;
+
+  &:hover {
+    -webkit-transofrm: scaleX(-1);
+    transform: scaleX(-1);
+  }
+`;
+
+const Title = styled.h1`
+  font-size: 1.5rem;
+  font-weight: 400;
 `;
 
 export default Greeting;
