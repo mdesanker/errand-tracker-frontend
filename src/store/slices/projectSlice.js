@@ -148,6 +148,31 @@ export const deleteProject = createAsyncThunk(
   }
 );
 
+export const removeSelfFromProject = createAsyncThunk(
+  "project/removeSelf",
+  async ({ id }, thunkAPI) => {
+    try {
+      const res = await axios.put(
+        `http://localhost:5000/api/project/${id}/removeself`
+      );
+
+      if (res.status === 200) {
+        thunkAPI.dispatch(
+          timedAlert({ msg: "Removed from project", type: "info" })
+        );
+        console.log(res.data);
+        return id;
+      }
+    } catch (err) {
+      const errors = err.response.data.errors;
+      for (let error of errors) {
+        thunkAPI.dispatch(timedAlert({ ...error, type: "danger" }));
+      }
+      return thunkAPI.rejectWithValue(err.response.data);
+    }
+  }
+);
+
 const initialState = {
   author: [],
   member: [],
@@ -194,6 +219,11 @@ const projectSlice = createSlice({
     });
     builder.addCase(deleteProject.fulfilled, (state, actions) => {
       state.author = state.author.filter(
+        (project) => project._id !== actions.payload
+      );
+    });
+    builder.addCase(removeSelfFromProject.fulfilled, (state, actions) => {
+      state.member = state.member.filter(
         (project) => project._id !== actions.payload
       );
     });
