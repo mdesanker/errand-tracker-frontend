@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { createErrand } from "../../store/slices/errandSlice";
 import ExitBtn from "../elements/ExitBtn";
-import OvalBtn from "../elements/OvalBtn";
 import Card from "../elements/Card";
+import Button from "../elements/Button";
 
 const CreateErrandForm = () => {
   const dispatch = useDispatch();
@@ -57,7 +57,7 @@ const CreateErrandForm = () => {
             type="text"
             name="title"
             id="title"
-            placeholder="Title (required)"
+            placeholder="Errand name (required)"
             value={title}
             onChange={formChangeHandler}
           />
@@ -85,15 +85,6 @@ const CreateErrandForm = () => {
                 );
               })}
           </ProjectSelect>
-          {/* <Description
-            name="description"
-            id="description"
-            cols="30"
-            rows="3"
-            placeholder="Description"
-            value={description}
-            onChange={formChangeHandler}
-          ></Description> */}
           <FormGroup>
             <label htmlFor="dueDate">Due date:</label>
             <Date
@@ -118,7 +109,7 @@ const CreateErrandForm = () => {
               <option value="High">High</option>
             </PrioritySelect>
           </FormGroup>
-          <OvalBtn text="Create errand" />
+          <Button type="submit" text="Create errand" />
         </Form>
       </Card>
     </main>
@@ -135,8 +126,9 @@ const Form = styled.form`
 
 const FormHeader = styled.h1`
   font-size: 1.5rem;
-  padding-bottom: 10px;
+  padding-bottom: 8px;
   border-bottom: 1px solid lightgray;
+  margin-bottom: 10px;
 `;
 
 const Title = styled.input`
@@ -156,12 +148,6 @@ const ProjectSelect = styled.select`
   border: 1px solid lightgray;
   background-color: #f5f5f5;
   border-radius: ${({ theme }) => theme.radii.small};
-`;
-
-const Description = styled.textarea`
-  font-size: 1rem;
-  font-family: inherit;
-  padding: 5px;
 `;
 
 const FormGroup = styled.div`
