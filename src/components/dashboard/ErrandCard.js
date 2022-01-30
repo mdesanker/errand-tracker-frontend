@@ -14,8 +14,8 @@ const ErrandCard = ({ errand }) => {
   };
 
   return (
-    <Card priority={priority} onClick={errandClickHandler}>
-      <CardGroup>
+    <Card priority={priority}>
+      <CardGroup onClick={errandClickHandler}>
         <Checkbox isComplete={isComplete}>
           <i className="fas fa-check" />
         </Checkbox>
@@ -29,7 +29,6 @@ const ErrandCard = ({ errand }) => {
 const Card = styled.div`
   flex-grow: 1;
   min-height: 40px;
-  padding: 8px;
   font-size: 1rem;
   background-color: white;
   display: flex;
@@ -64,9 +63,10 @@ const Card = styled.div`
 
 const CardGroup = styled.div`
   display: flex;
-  justify-content: space-between;
   align-items: center;
   gap: 10px;
+  padding: 8px;
+  flex-grow: 1;
 `;
 
 const Checkbox = styled.div`
