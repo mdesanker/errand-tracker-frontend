@@ -1,8 +1,6 @@
-import styled from "styled-components";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { loadUser } from "../../store/slices/userSlice";
-import { useSelector } from "react-redux";
 import Greeting from "./Greeting";
 import CreateErrandLink from "./CreateErrandLink";
 import { getUserErrands } from "../../store/slices/errandSlice";
@@ -12,18 +10,19 @@ import {
   getMemberProjects,
 } from "../../store/slices/projectSlice";
 import Navbar from "../navbar/Navbar";
+import Container from "../elements/Container";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
 
+  // Fetch user on load
   useEffect(() => {
     dispatch(loadUser());
   }, []);
 
   const { user } = useSelector((state) => state.user);
 
-  // console.log(user);
-
+  // Load user errands and projects
   useEffect(() => {
     if (user) {
       dispatch(getUserErrands({ id: user._id }));
@@ -33,26 +32,15 @@ const Dashboard = () => {
   }, [user]);
 
   return (
-    <Wrapper>
+    <main>
       <Navbar />
       <Container>
         <Greeting />
-        <CreateErrandLink />
         <ErrandContainer />
       </Container>
-    </Wrapper>
+      <CreateErrandLink />
+    </main>
   );
 };
-
-const Wrapper = styled.main`
-  // padding-top: ${({ theme }) => theme.heights.header};
-  min-height: 100vh;
-`;
-
-const Container = styled.div`
-  width: 100%;
-  max-width: ${({ theme }) => theme.widths.content};
-  margin: 0 auto;
-`;
 
 export default Dashboard;
