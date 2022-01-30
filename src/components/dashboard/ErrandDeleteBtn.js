@@ -7,20 +7,18 @@ const ErrandDeleteBtn = ({ id }) => {
   const dispatch = useDispatch();
   const { edit } = useSelector((state) => state.ui);
 
-  // console.log(id);
-
   const errandDeleteHandler = () => {
     dispatch(deleteErrand({ id }));
   };
 
   return (
-    <Wrapper active={edit} onClick={errandDeleteHandler}>
+    <Button active={edit} onClick={errandDeleteHandler}>
       Delete
-    </Wrapper>
+    </Button>
   );
 };
 
-const Wrapper = styled.button`
+const Button = styled.button`
   font-size: 12px;
   font-weight: bold;
   text-transform: uppercase;

@@ -1,5 +1,4 @@
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styled, { css } from "styled-components";
 import { toggleEdit } from "../../store/slices/uiSlice";
 
@@ -13,23 +12,19 @@ const EditBtn = () => {
   const { edit } = useSelector((state) => state.ui);
 
   return (
-    <Wrapper active={edit} onClick={clickHandler}>
+    <Button active={edit} onClick={clickHandler}>
       <i className="far fa-edit" />
-    </Wrapper>
+    </Button>
   );
 };
 
-const Wrapper = styled.button`
+const Button = styled.button`
   font-size: 25px;
   padding: 5px;
   cursor: pointer;
   background-color: transparent;
   border: none;
   color: gray;
-
-  // &:hover {
-  //   color: black;
-  // }
 
   ${({ active }) =>
     active &&
