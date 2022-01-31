@@ -49,7 +49,7 @@ export const getUserErrands = createAsyncThunk(
   async ({ id }, thunkAPI) => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/errand/user/${id}`
+        `http://localhost:5000/api/errand/user/${id}/all`
       );
       return res.data;
     } catch (err) {
