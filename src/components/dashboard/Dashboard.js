@@ -22,9 +22,11 @@ const Dashboard = () => {
 
   const { user } = useSelector((state) => state.user);
 
-  // Load user errands and projects
+  const { project } = useSelector((state) => state.projects);
+
+  // Initial load of user errands and projects
   useEffect(() => {
-    if (user) {
+    if (user && !project) {
       dispatch(getUserErrands({ id: user._id }));
       dispatch(getAuthorProjects({ id: user._id }));
       dispatch(getMemberProjects({ id: user._id }));

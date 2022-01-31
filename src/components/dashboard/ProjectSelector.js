@@ -12,9 +12,10 @@ const ProjectSelector = () => {
 
   const { _id } = useSelector((state) => state.user.user);
 
+  // Load errands depending on selection
   const projectSelectHandler = (e) => {
     const { value } = e.target;
-    if (value === "none") {
+    if (value === "all") {
       dispatch(getUserErrands({ id: _id }));
     } else if (value === "personal") {
       dispatch(getPersonalErrands({ id: _id }));
@@ -25,7 +26,7 @@ const ProjectSelector = () => {
 
   return (
     <Select onChange={projectSelectHandler}>
-      <option value="none">All errands</option>
+      <option value="all">All errands</option>
       <option value="personal">Personal errands</option>
       {author &&
         author.map((project) => {
