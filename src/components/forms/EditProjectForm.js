@@ -103,7 +103,12 @@ const EditProjectForm = () => {
               })}
           </MembersSelect>
           <Button type="submit" text="Edit project" />
-          <Button type="button" text="Delete project" />
+          <Button
+            type="button"
+            text="Delete project"
+            onClick={deleteProjectHandler}
+            secondary
+          />
         </Form>
       </Card>
     </main>
