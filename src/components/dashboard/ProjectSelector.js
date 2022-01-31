@@ -1,23 +1,35 @@
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import {
+  getPersonalErrands,
+  getProjectErrands,
+  getUserErrands,
+} from "../../store/slices/errandSlice";
 import { clearProject, getProject } from "../../store/slices/projectSlice";
 
 const ProjectSelector = () => {
   const dispatch = useDispatch();
   const { author, member } = useSelector((state) => state.projects);
 
+  const { _id } = useSelector((state) => state.user.user);
+
   const projectSelectHandler = (e) => {
     const { value } = e.target;
     if (value === "none") {
+      // dispatch(clearProject());
+      dispatch(getUserErrands({ id: _id }));
+    } else if (value === "personal") {
       dispatch(clearProject());
+      dispatch(getPersonalErrands({ id: _id }));
     } else {
-      dispatch(getProject({ id: value }));
+      dispatch(getProjectErrands({ id: value }));
     }
   };
 
   return (
     <Select onChange={projectSelectHandler}>
       <option value="none">All errands</option>
+      <option value="personal">Personal errands</option>
       {author &&
         author.map((project) => {
           return (

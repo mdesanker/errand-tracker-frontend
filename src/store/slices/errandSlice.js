@@ -135,7 +135,6 @@ export const deleteErrand = createAsyncThunk(
 
 const initialState = {
   errands: [],
-  errand: null,
 };
 
 const errandSlice = createSlice({
