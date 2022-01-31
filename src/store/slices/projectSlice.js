@@ -186,6 +186,9 @@ const projectSlice = createSlice({
     clearProject: (state, actions) => {
       state.project = null;
     },
+    setProject: (state, actions) => {
+      state.project = actions.payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(createProject.fulfilled, (state, actions) => {
@@ -230,6 +233,6 @@ const projectSlice = createSlice({
   },
 });
 
-export const { clearProject } = projectSlice.actions;
+export const { clearProject, setProject } = projectSlice.actions;
 
 export default projectSlice.reducer;

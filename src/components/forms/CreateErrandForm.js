@@ -20,7 +20,7 @@ const CreateErrandForm = () => {
     description: "",
     dueDate: "",
     priority: "",
-    project: currentProject ? currentProject._id : "",
+    project: currentProject.length > 10 ? currentProject._id : "",
   });
 
   const { title, description, dueDate, priority, project } = formData;
@@ -31,6 +31,8 @@ const CreateErrandForm = () => {
     setFormData((prevState) => {
       return { ...prevState, [name]: value };
     });
+
+    console.log(formData);
   };
 
   const formSubmitHandler = (e) => {

@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { timedAlert } from "./alertSlice";
-import { clearProject, getProject } from "./projectSlice";
+import { clearProject, getProject, setProject } from "./projectSlice";
 
 export const createErrand = createAsyncThunk(
   "post/create",
@@ -54,7 +54,7 @@ export const getUserErrands = createAsyncThunk(
       );
 
       if (res.status === 200) {
-        thunkAPI.dispatch(clearProject());
+        thunkAPI.dispatch(setProject({ _id: "all" }));
         return res.data;
       }
     } catch (err) {
@@ -74,7 +74,7 @@ export const getPersonalErrands = createAsyncThunk(
       );
 
       if (res.status === 200) {
-        thunkAPI.dispatch(clearProject());
+        thunkAPI.dispatch(setProject({ _id: "personal" }));
         return res.data;
       }
     } catch (err) {
