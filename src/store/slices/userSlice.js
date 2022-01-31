@@ -82,12 +82,12 @@ export const loadUser = createAsyncThunk("user/loadUser", async (thunkAPI) => {
     setAuthToken(localStorage.token);
   }
 
-  console.log("LOAD USER THUNK RUNNING");
+  // console.log("LOAD USER THUNK RUNNING");
 
   try {
     const res = await axios.get("http://localhost:5000/api/user/detail");
 
-    console.log(res.data);
+    // console.log(res.data);
     return res.data;
   } catch (err) {
     const errors = err.response.data.errors;

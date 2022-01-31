@@ -155,6 +155,9 @@ const errandSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
+    builder.addCase(createErrand.fulfilled, (state, actions) => {
+      state.errands.push(actions.payload);
+    });
     builder.addCase(getUserErrands.fulfilled, (state, actions) => {
       state.errands = actions.payload;
     });
