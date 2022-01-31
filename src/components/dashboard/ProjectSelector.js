@@ -5,7 +5,6 @@ import {
   getProjectErrands,
   getUserErrands,
 } from "../../store/slices/errandSlice";
-import { clearProject, getProject } from "../../store/slices/projectSlice";
 
 const ProjectSelector = () => {
   const dispatch = useDispatch();
@@ -16,10 +15,8 @@ const ProjectSelector = () => {
   const projectSelectHandler = (e) => {
     const { value } = e.target;
     if (value === "none") {
-      // dispatch(clearProject());
       dispatch(getUserErrands({ id: _id }));
     } else if (value === "personal") {
-      dispatch(clearProject());
       dispatch(getPersonalErrands({ id: _id }));
     } else {
       dispatch(getProjectErrands({ id: value }));

@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { timedAlert } from "./alertSlice";
+import { clearProject, getProject } from "./projectSlice";
 
 export const createErrand = createAsyncThunk(
   "post/create",
@@ -51,7 +52,11 @@ export const getUserErrands = createAsyncThunk(
       const res = await axios.get(
         `http://localhost:5000/api/errand/user/${id}/all`
       );
-      return res.data;
+
+      if (res.status === 200) {
+        thunkAPI.dispatch(clearProject());
+        return res.data;
+      }
     } catch (err) {
       const errors = err.response.data;
       console.error(errors);
@@ -67,7 +72,11 @@ export const getPersonalErrands = createAsyncThunk(
       const res = await axios.get(
         `http://localhost:5000/api/errand/user/${id}`
       );
-      return res.data;
+
+      if (res.status === 200) {
+        thunkAPI.dispatch(clearProject());
+        return res.data;
+      }
     } catch (err) {
       const errors = err.response.data;
       console.error(errors);
@@ -84,7 +93,11 @@ export const getProjectErrands = createAsyncThunk(
         `http://localhost:5000/api/errand/project/${id}`
       );
       // console.log(res.data);
-      return res.data;
+      if (res.status === 200) {
+        // Load project details into state
+        thunkAPI.dispatch(getProject({ id }));
+        return res.data;
+      }
     } catch (err) {
       const errors = err.response.data.errors;
       console.error(errors);
