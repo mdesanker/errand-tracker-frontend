@@ -57,7 +57,7 @@ const Register = () => {
   }, [isAuthenticated]);
 
   return (
-    <Wrapper>
+    <FormWrapper>
       <Card>
         <Header>Sign up.</Header>
         <SubHeader>Create an account.</SubHeader>
@@ -102,16 +102,13 @@ const Register = () => {
           Already have an account? <StyledLink to="/">Log in.</StyledLink>
         </Text>
       </Card>
-    </Wrapper>
+    </FormWrapper>
   );
 };
 
-const Wrapper = styled.main`
-  width: 100%;
-  height: 100vh;
-  display: flex;
+const FormWrapper = styled.main`
+  padding-top: 0;
   justify-content: center;
-  align-items: center;
   background-color: ${({ theme }) => theme.colors.light};
 `;
 

@@ -48,7 +48,7 @@ const CreateErrandForm = () => {
   };
 
   return (
-    <main>
+    <FormWrapper>
       <Card>
         <Form onSubmit={formSubmitHandler}>
           <FormHeader>Create new errand</FormHeader>
@@ -112,9 +112,15 @@ const CreateErrandForm = () => {
           <Button type="submit" text="Create errand" />
         </Form>
       </Card>
-    </main>
+    </FormWrapper>
   );
 };
+
+const FormWrapper = styled.main`
+  padding-top: 0;
+  justify-content: center;
+  background-color: ${({ theme }) => theme.colors.faint};
+`;
 
 const Form = styled.form`
   width: 100%;

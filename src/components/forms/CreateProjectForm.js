@@ -54,7 +54,7 @@ const CreateProjectForm = () => {
   };
 
   return (
-    <main>
+    <FormWrapper>
       <Card>
         <Form onSubmit={formSubmitHandler}>
           <FormHeader>Create new project</FormHeader>
@@ -87,9 +87,15 @@ const CreateProjectForm = () => {
           <Button type="submit" text="Create project" />
         </Form>
       </Card>
-    </main>
+    </FormWrapper>
   );
 };
+
+const FormWrapper = styled.main`
+  padding-top: 0;
+  justify-content: center;
+  background-color: ${({ theme }) => theme.colors.faint};
+`;
 
 const Form = styled.form`
   width: 100%;

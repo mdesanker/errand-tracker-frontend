@@ -72,7 +72,7 @@ const EditProjectForm = () => {
   // console.log(project);
 
   return (
-    <main>
+    <FormWrapper>
       <Card>
         <Form onSubmit={formSubmitHandler}>
           <FormHeader>Edit project</FormHeader>
@@ -111,9 +111,15 @@ const EditProjectForm = () => {
           />
         </Form>
       </Card>
-    </main>
+    </FormWrapper>
   );
 };
+
+const FormWrapper = styled.main`
+  padding-top: 0;
+  justify-content: center;
+  background-color: ${({ theme }) => theme.colors.faint};
+`;
 
 const Form = styled.form`
   width: 100%;

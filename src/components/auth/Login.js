@@ -42,7 +42,7 @@ const Login = () => {
   }, [isAuthenticated]);
 
   return (
-    <Wrapper>
+    <FormWrapper>
       <Card>
         <Header>Log in.</Header>
         <SubHeader>Log in to your account.</SubHeader>
@@ -70,17 +70,13 @@ const Login = () => {
           <StyledLink to="/register">Sign up.</StyledLink>
         </Text>
       </Card>
-    </Wrapper>
+    </FormWrapper>
   );
 };
 
-const Wrapper = styled.main`
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
+const FormWrapper = styled.main`
+  padding-top: 0;
   justify-content: center;
-  align-items: center;
   background-color: ${({ theme }) => theme.colors.light};
 `;
 
