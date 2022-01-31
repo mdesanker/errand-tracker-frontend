@@ -60,6 +60,22 @@ export const getUserErrands = createAsyncThunk(
   }
 );
 
+export const getPersonalErrands = createAsyncThunk(
+  "errand/getPersonalErrands",
+  async ({ id }, thunkAPI) => {
+    try {
+      const res = await axios.get(
+        `http://localhost:5000/api/errand/user/${id}`
+      );
+      return res.data;
+    } catch (err) {
+      const errors = err.response.data;
+      console.error(errors);
+      return thunkAPI.rejectWithValue(err.response.data);
+    }
+  }
+);
+
 export const getProjectErrands = createAsyncThunk(
   "errand/getProjectErrands",
   async ({ id }, thunkAPI) => {
@@ -131,6 +147,12 @@ const errandSlice = createSlice({
       state.errands = actions.payload;
     });
     builder.addCase(getUserErrands.rejected, (state, actions) => {
+      state.errands = [];
+    });
+    builder.addCase(getPersonalErrands.fulfilled, (state, actions) => {
+      state.errands = actions.payload;
+    });
+    builder.addCase(getPersonalErrands.rejected, (state, actions) => {
       state.errands = [];
     });
     builder.addCase(toggleErrandComplete.fulfilled, (state, actions) => {
