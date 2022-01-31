@@ -2,11 +2,15 @@ import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logout } from "../../store/slices/userSlice";
+import { clearProject } from "../../store/slices/projectSlice";
+import { clearErrands } from "../../store/slices/errandSlice";
 
 const Navbar = () => {
   const dispatch = useDispatch();
 
   const logoutHandler = () => {
+    dispatch(clearProject());
+    dispatch(clearErrands());
     dispatch(logout());
   };
 

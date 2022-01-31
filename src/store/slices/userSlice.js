@@ -58,9 +58,8 @@ export const loginUser = createAsyncThunk(
         config
       );
 
-      console.log(res.data);
-
       if (res.status === 200) {
+        console.log(res.data);
         return res.data.token;
       } else {
         return thunkAPI.rejectWithValue(res.data);
@@ -244,6 +243,7 @@ const userSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(registerUser.fulfilled, (state, actions) => {
       localStorage.setItem("token", actions.payload);
+      state.token = actions.payload;
       state.isAuthenticated = true;
       state.loading = false;
     });
@@ -257,6 +257,7 @@ const userSlice = createSlice({
     });
     builder.addCase(loginUser.fulfilled, (state, actions) => {
       localStorage.setItem("token", actions.payload);
+      state.token = actions.payload;
       state.isAuthenticated = true;
       state.loading = false;
     });

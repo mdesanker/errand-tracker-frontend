@@ -153,7 +153,11 @@ const initialState = {
 const errandSlice = createSlice({
   name: "errands",
   initialState,
-  reducers: {},
+  reducers: {
+    clearErrands: (state, actions) => {
+      state.errands = [];
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(createErrand.fulfilled, (state, actions) => {
       state.errands.push(actions.payload);
@@ -192,6 +196,6 @@ const errandSlice = createSlice({
   },
 });
 
-// export const {} = errandSlice.actions;
+export const { clearErrands } = errandSlice.actions;
 
 export default errandSlice.reducer;
