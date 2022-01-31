@@ -8,9 +8,10 @@ import {
   updateProject,
 } from "../../store/slices/projectSlice";
 import ExitBtn from "../elements/ExitBtn";
-import FormBtn from "../elements/FormBtn";
+import Card from "../elements/Card";
+import Button from "../elements/Button";
 
-const ProjectDetail = () => {
+const EditProjectForm = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -71,81 +72,65 @@ const ProjectDetail = () => {
   // console.log(project);
 
   return (
-    <Wrapper>
-      <ExitBtn to="/projects" />
-      <Form onSubmit={formSubmitHandler}>
-        <Title
-          type="text"
-          name="title"
-          id="title"
-          placeholder="Title (required)"
-          value={title}
-          onChange={formChangeHandler}
-        />
-        <Description
-          name="description"
-          id="description"
-          cols="30"
-          rows="3"
-          placeholder="Description"
-          value={description}
-          onChange={formChangeHandler}
-        ></Description>
-        <SelectLabel>Select friends to share your project with</SelectLabel>
-        <MembersSelect>
-          {friends &&
-            friends.map((friend) => {
-              return (
-                <MemberItem
-                  type="button"
-                  id={friend._id}
-                  key={friend._id}
-                  onClick={memberSelectHandler}
-                  selected={members.includes(friend._id)}
-                >
-                  {friend.username}
-                </MemberItem>
-              );
-            })}
-        </MembersSelect>
-        <BtnGroup>
-          <FormBtn type="submit" content="Update" />
-          <FormBtn
-            type="button"
-            content="Delete"
-            onClick={deleteProjectHandler}
-            red
+    <main>
+      <Card>
+        <Form onSubmit={formSubmitHandler}>
+          <FormHeader>Edit project</FormHeader>
+          <ExitBtn to="/projects" />
+          <Title
+            type="text"
+            name="title"
+            id="title"
+            placeholder="Title (required)"
+            value={title}
+            onChange={formChangeHandler}
           />
-        </BtnGroup>
-      </Form>
-    </Wrapper>
+          <SelectLabel>Share your project with friends:</SelectLabel>
+          <MembersSelect>
+            {friends &&
+              friends.map((friend) => {
+                return (
+                  <MemberItem
+                    type="button"
+                    id={friend._id}
+                    key={friend._id}
+                    onClick={memberSelectHandler}
+                    selected={members.includes(friend._id)}
+                  >
+                    {friend.username}
+                  </MemberItem>
+                );
+              })}
+          </MembersSelect>
+          <Button type="submit" text="Edit project" />
+          <Button type="button" text="Delete project" />
+        </Form>
+      </Card>
+    </main>
   );
 };
-
-const Wrapper = styled.main`
-  width: 100%;
-  height: 100vh;
-  background-color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
 
 const Form = styled.form`
   width: 100%;
   padding: 1rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 10px;
 `;
 
+const FormHeader = styled.h1`
+  font-size: 1.5rem;
+  padding-bottom: 8px;
+  border-bottom: 1px solid lightgray;
+  margin-bottom: 10px;
+`;
+
 const Title = styled.input`
-  width: 100%;
   font-size: 1rem;
-  padding: 5px;
-  border: none;
-  border-bottom: 1px solid gray;
+  padding: 8px;
+  border: 1px solid lightgray;
+  background-color: #f5f5f5;
+  border-radius: ${({ theme }) => theme.radii.small};
 `;
 
 const Description = styled.textarea`
@@ -155,17 +140,17 @@ const Description = styled.textarea`
   padding: 5px;
 `;
 
-const SelectLabel = styled.p``;
+const SelectLabel = styled.p`
+  padding-top: 10px;
+`;
 
 const MembersSelect = styled.div`
-  width: 100%;
-  height: 100px;
+  height: 72px;
   display: flex;
   flex-direction: column;
-  // align-items: center;
   overflow: auto;
-
-  border: 1px solid gray;
+  border: 1px solid lightgray;
+  border-radius: ${({ theme }) => theme.radii.small};
 `;
 
 const MemberItem = styled.button`
@@ -193,4 +178,4 @@ const BtnGroup = styled.div`
   margin-top: 50px;
 `;
 
-export default ProjectDetail;
+export default EditProjectForm;

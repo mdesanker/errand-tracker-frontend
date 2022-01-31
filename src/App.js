@@ -11,9 +11,9 @@ import ProtectedRoute from "./utils/ProtectedRoute";
 import CreateErrandForm from "./components/forms/CreateErrandForm";
 import AlertView from "./components/alerts/AlertView";
 import CreateProjectForm from "./components/forms/CreateProjectForm";
-import ProjectDetail from "./components/projects/ProjectDetail";
 import FriendView from "./components/friends/FriendView";
 import ProjectView from "./components/projects/ProjectView";
+import EditProjectForm from "./components/forms/EditProjectForm";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -67,7 +67,7 @@ const App = () => {
           path="/project/:id"
           element={
             <ProtectedRoute>
-              <ProjectDetail />
+              <EditProjectForm />
             </ProtectedRoute>
           }
         />
