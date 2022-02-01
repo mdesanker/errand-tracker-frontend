@@ -1,10 +1,21 @@
-# Errand Tracker App (Frontend)
+# Errand Tracker App
 
 An errand tracking app where you can share lists with friends.
 
-Live demo [here]()
+[Errand Tracker Demo]()
 
-### Description
+## Table of Contents
+
+- [Description](#Description)
+- [Motivation](#Motivation)
+- [Built with](#Built-with)
+  - [Frontend](#Frontend)
+  - [Backend](#Backend)
+- [Set up locally](#Set-up-locally)
+- [Key learnings](#Key-learnings)
+- [Next steps](#Next-steps)
+
+## Description
 
 This errand tracking app allows users to create accounts, where they can write and track errands, either freely or categorized into projects. Errands are only required to have a title, but users can also specify a project, due date, and priority. Errands with a specified priority are highlighted with a corresponding color on the dashboard. Clicking on an errand toggles its completion status. Errands can be deleted when no longer needed by toggling edit mode on the dashboard.
 
@@ -12,7 +23,7 @@ Users can create, edit, and delete projects to group errands together in the pro
 
 Users can send friend requests, unfriend, and manage requests from others in the friend view. Received friend requests are indicated with a counter on the friend icon of the nav bar. A search bar allows users to filter the list of all users to search for specific usernames.
 
-### Motivation
+## Motivation
 
 I created this app as a more efficient solution to using a whiteboard on my fridge as a way to track errands. Since the birth of my daughter, the number of errands I have has seemed to increase significantly. When something is getting low, my partner or I would make a note on the whiteboard. There were two significant problems with this approach:
 
@@ -22,11 +33,11 @@ I created this app as a more efficient solution to using a whiteboard on my frid
 
 This app would be accessible through a link on my phone which would allow me to track errands I needed to run, and categorize them by store/location. I wanted the project member and friend functionality so that I could create shared lists with my partner. This allows her to add items to the lists directly and I don't have to search through our message history to find things.
 
-### Built with
+## Built with
 
-This app is built with the MERN stack. These are the technologies that I have been learning and this was the first project where I created an app based off an idea of my own creation.
+This app is built with the MERN stack.
 
-**Frontend**
+### Frontend
 
 - React
 - React Router
@@ -34,7 +45,7 @@ This app is built with the MERN stack. These are the technologies that I have be
 - Axios
 - styled-components
 
-**Backend**
+### Backend
 
 - NodeJS
 - ExpressJS
@@ -42,7 +53,7 @@ This app is built with the MERN stack. These are the technologies that I have be
 - MongoDB/Mongoose
 - supertest
 
-### How to set up locally
+## Set up locally
 
 ```bash
 git clone git@github.com:mdesanker/errand-tracker-frontend.git
@@ -51,13 +62,14 @@ npm install
 npm start
 ```
 
-### Key Learnings
+## Key learnings
 
 My biggest take away from this project was the importance of planning out the project. I did not plan nearly thoroughly enough before starting to write any code. As a result, I wrote many API endpoints that I ended up not needing and fumbled around with the design and layout of the frontend. I am happy with where I ended up, but it would have been much more efficient with a thorough plan.
 
 Using test driven design (TDD) with the supertest module for the REST API really improved the the quality of my code in the backend. Not to mention what a rush it is to write out the tests first, then create the endpoints to turn the test conditions turn green.
 
-### Next Steps
+## Wish list
 
 - Implement errand sorting by priority
 - Implement testing of the frontend with react testing library
+- Support images in errands
