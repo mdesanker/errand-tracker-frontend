@@ -1,7 +1,12 @@
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 
 const RequestCounter = () => {
-  return <Wrapper>1</Wrapper>;
+  const user = useSelector((state) => state.user.user);
+
+  const requestCount = user && user.friendRequests.length;
+
+  return requestCount > 0 ? <Wrapper>{requestCount}</Wrapper> : null;
 };
 
 const Wrapper = styled.p`
