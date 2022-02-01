@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import styled from "styled-components";
 import AcceptDeclineBtn from "./AcceptDeclineBtn";
 import FriendRequestBtn from "./FriendRequestBtn";
+import RequestPending from "./RequestPending";
 import UnfriendBtn from "./UnfriendBtn";
 
 const FriendCard = ({ friend }) => {
@@ -31,6 +32,7 @@ const FriendCard = ({ friend }) => {
           )}
           {isRequested && <AcceptDeclineBtn id={_id} />}
           {isFriend && <UnfriendBtn id={_id} />}
+          {isPending && <RequestPending />}
         </ActionSection>
       </Card>
     </Container>
