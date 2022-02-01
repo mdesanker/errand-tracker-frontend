@@ -95,7 +95,7 @@ const EditProjectForm = () => {
                     id={friend._id}
                     key={friend._id}
                     onClick={memberSelectHandler}
-                    selected={members.includes(friend._id)}
+                    selected={members && members.includes(friend._id)}
                   >
                     {friend.username}
                   </MemberItem>

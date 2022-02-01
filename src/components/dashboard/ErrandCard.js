@@ -7,7 +7,9 @@ import ErrandDeleteBtn from "./ErrandDeleteBtn";
 const ErrandCard = ({ errand }) => {
   const dispatch = useDispatch();
 
-  const { _id, title, isComplete, priority } = errand;
+  console.log(errand);
+
+  const { _id, title, author, isComplete, dueDate, priority, project } = errand;
 
   const errandClickHandler = () => {
     dispatch(toggleErrandComplete({ id: _id }));
@@ -20,6 +22,12 @@ const ErrandCard = ({ errand }) => {
           <i className="fas fa-check" />
         </Checkbox>
         <Title isComplete={isComplete}>{title}</Title>
+        <ErrandText isComplete={isComplete}>
+          ({project && project.title})
+        </ErrandText>
+      </CardGroup>
+      <CardGroup>
+        <ErrandText isComplete={isComplete}>{dueDate && dueDate}</ErrandText>
       </CardGroup>
       <ErrandDeleteBtn id={_id} />
     </Card>
@@ -66,7 +74,7 @@ const CardGroup = styled.div`
   align-items: center;
   gap: 10px;
   padding: 8px;
-  flex-grow: 1;
+  // flex-grow: 1;
 `;
 
 const Checkbox = styled.div`
@@ -92,6 +100,18 @@ const Checkbox = styled.div`
 `;
 
 const Title = styled.p`
+  overflow: hidden;
+
+  ${({ isComplete }) =>
+    isComplete &&
+    css`
+      color: lightgray;
+      text-decoration: line-through;
+    `}
+`;
+
+const ErrandText = styled.p`
+  color: gray;
   overflow: hidden;
 
   ${({ isComplete }) =>
