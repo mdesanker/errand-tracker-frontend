@@ -12,11 +12,10 @@ const CreateProjectForm = () => {
 
   const [formData, setFormData] = useState({
     title: "",
-    description: "",
     members: [],
   });
 
-  const { title, description, members } = formData;
+  const { title, members } = formData;
 
   const formChangeHandler = (e) => {
     const { name, value } = e.target;
@@ -32,7 +31,6 @@ const CreateProjectForm = () => {
     dispatch(createProject(formData));
     setFormData({
       title: "",
-      description: "",
       members: [],
     });
   };
@@ -138,22 +136,19 @@ const MemberItem = styled.button`
   background-color: transparent;
   border: none;
   cursor: pointer;
-  padding: 0 10px;
-  display: flex;
-  align-items: center;
-  height: 36px;
+  padding: 5px 0;
 
   &:hover {
-    background-color: #f5f5f5;
+    background-color: #efefef;
   }
 
   ${({ selected }) =>
     selected &&
     css`
-      background-color: ${({ theme }) => theme.colors.light};
+      background-color: ${({ theme }) => theme.colors.verylight};
 
       &:hover {
-        background-color: ${({ theme }) => theme.hover.light};
+        background-color: ${({ theme }) => theme.colors.verylight};
       }
     `}
 `;
