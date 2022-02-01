@@ -4,14 +4,14 @@ import { timedAlert } from "./alertSlice";
 
 export const createProject = createAsyncThunk(
   "project/createProject",
-  async ({ title, description, members }, thunkAPI) => {
+  async ({ title, members }, thunkAPI) => {
     const config = {
       headers: {
         "Content-Type": "application/json",
       },
     };
 
-    const body = JSON.stringify({ title, description, members });
+    const body = JSON.stringify({ title, members });
 
     try {
       const res = await axios.post(
