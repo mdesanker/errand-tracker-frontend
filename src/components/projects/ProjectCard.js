@@ -32,14 +32,6 @@ const Card = styled.div`
   justify-content: space-between;
   align-items: center;
   cursor: default;
-
-  &:hover {
-    background-color: #e5e5e5;
-  }
-
-  &:active {
-    background-color: ${({ theme }) => theme.colors.light};
-  }
 `;
 
 const Title = styled.div`

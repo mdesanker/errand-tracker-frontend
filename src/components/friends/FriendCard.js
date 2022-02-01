@@ -43,8 +43,6 @@ const Container = styled.div`
   width: 100%;
   align-items: center;
   margin: 5px 0;
-
-  // border: 1px solid red;
 `;
 
 const Card = styled.div`
@@ -55,7 +53,6 @@ const Card = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  cursor: pointer;
 `;
 
 const NameSection = styled.div`

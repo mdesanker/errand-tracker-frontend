@@ -49,7 +49,6 @@ const FriendView = () => {
             </Header>
             {pendingRequests.length > 0 ? (
               pendingRequests.map((friend) => {
-                console.log(friend);
                 return <FriendCard key={friend._id} friend={friend} />;
               })
             ) : (

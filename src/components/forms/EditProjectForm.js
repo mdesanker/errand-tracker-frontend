@@ -107,12 +107,14 @@ const EditProjectForm = () => {
               })}
           </MembersSelect>
           <Button type="submit" text="Edit project" />
-          <Button
-            type="button"
-            text="Delete project"
-            onClick={deleteProjectHandler}
-            secondary
-          />
+          <BtnGroup>
+            <Button
+              type="button"
+              text="Delete project"
+              onClick={deleteProjectHandler}
+              secondary
+            />
+          </BtnGroup>
         </Form>
       </Card>
     </FormWrapper>
@@ -175,15 +177,19 @@ const MemberItem = styled.button`
   ${({ selected }) =>
     selected &&
     css`
-      background-color: ${({ theme }) => theme.colors.light};
+      background-color: ${({ theme }) => theme.colors.verylight};
+
+      &:hover {
+        background-color: ${({ theme }) => theme.colors.verylight};
+      }
     `}
 `;
 
 const BtnGroup = styled.div`
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
   width: 100%;
-  margin-top: 50px;
 `;
 
 export default EditProjectForm;

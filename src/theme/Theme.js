@@ -3,6 +3,7 @@ const Theme = {
     dark: "#1d3557",
     medium: "#457b9d",
     light: "#a8dadc",
+    verylight: "#e4f3f4",
     faint: "#f1faee",
     blue: "#1877f2",
     accent: "#e63946",
