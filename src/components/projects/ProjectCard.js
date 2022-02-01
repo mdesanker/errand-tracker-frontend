@@ -64,10 +64,6 @@ const InfoText = styled.p`
   text-overflow: ellipsis;
   padding: 0 10px;
   flex-grow: 1;
-
-  @media only screen and (max-width: 650px) {
-    display: none;
-  }
 `;
 
 export default ProjectCard;

@@ -38,7 +38,7 @@ const ProjectView = () => {
                 return <ProjectCard key={project._id} project={project} />;
               })
             ) : (
-              <EmptyMsg>No current projects</EmptyMsg>
+              <EmptyMsg>You are not a member of any projects</EmptyMsg>
             )}
           </Section>
         </Container>

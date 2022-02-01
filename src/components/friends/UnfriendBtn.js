@@ -33,8 +33,8 @@ const Button = styled.button`
   border: 1px solid gray;
 
   &:hover {
-    color: black;
-    border: 1px solid black;
+    color: red;
+    border: 1px solid red;
   }
 `;
 
