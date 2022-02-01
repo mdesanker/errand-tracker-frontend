@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { css } from "styled-components";
 import { toggleErrandComplete } from "../../store/slices/errandSlice";
@@ -8,7 +8,9 @@ import { DateTime } from "luxon";
 const ErrandCard = ({ errand }) => {
   const dispatch = useDispatch();
 
-  const { _id, title, author, isComplete, dueDate, priority, project } = errand;
+  const { edit } = useSelector((state) => state.ui);
+
+  const { _id, title, isComplete, dueDate, priority, project } = errand;
 
   const formatDate = dueDate && DateTime.fromISO(dueDate).toFormat("LLL dd");
 
@@ -27,11 +29,11 @@ const ErrandCard = ({ errand }) => {
           {project && `[${project.title}]`}
         </ErrandText>
       </CardGroup>
-      <CardGroup>
+      <DateGroup onClick={errandClickHandler}>
         <ErrandText isComplete={isComplete}>
-          {formatDate && formatDate}
+          {formatDate && !edit && formatDate}
         </ErrandText>
-      </CardGroup>
+      </DateGroup>
       <ErrandDeleteBtn id={_id} />
     </Card>
   );
@@ -77,7 +79,13 @@ const CardGroup = styled.div`
   align-items: center;
   gap: 10px;
   padding: 8px;
-  // flex-grow: 1;
+  flex-grow: 1;
+`;
+
+const DateGroup = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 8px 16px 8px 8px;
 `;
 
 const Checkbox = styled.div`
