@@ -4,9 +4,9 @@ import ProjectEditLink from "./ProjectEditLink";
 import ProjectRemoveBtn from "./ProjectRemoveBtn";
 
 const ProjectCard = ({ project }) => {
-  const { _id, title, description, author, members } = project;
+  console.log(project);
 
-  // const { project } = useSelector((state) => state.projects);
+  const { _id, title, author, members } = project;
 
   const { user } = useSelector((state) => state.user);
 

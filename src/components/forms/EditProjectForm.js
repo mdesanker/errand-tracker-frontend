@@ -34,7 +34,10 @@ const EditProjectForm = () => {
 
   useEffect(() => {
     if (project && project._id !== "all" && project._id !== "personal") {
-      setFormData({ ...project });
+      setFormData({
+        title: project.title,
+        members: project.members.map((member) => member._id),
+      });
     }
   }, [project]);
 
