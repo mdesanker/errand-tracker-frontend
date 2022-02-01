@@ -22,15 +22,22 @@ const EditProjectForm = () => {
 
   const { project } = useSelector((state) => state.projects);
 
+  console.log(project);
+
   const { friends } = useSelector((state) => state.user.user);
 
   const [formData, setFormData] = useState({
     title: "",
-    description: "",
-    members: project ? project.members : [],
+    members: [],
   });
 
-  const { title, description, members } = formData;
+  const { title, members } = formData;
+
+  useEffect(() => {
+    if (project && project._id !== "all" && project._id !== "personal") {
+      setFormData({ ...project });
+    }
+  }, [project]);
 
   const formChangeHandler = (e) => {
     const { name, value } = e.target;
@@ -42,7 +49,7 @@ const EditProjectForm = () => {
   const formSubmitHandler = (e) => {
     e.preventDefault();
     console.log(formData);
-    dispatch(updateProject({ id, title, description, members }));
+    dispatch(updateProject({ id, ...formData }));
   };
 
   const deleteProjectHandler = () => {
@@ -63,12 +70,6 @@ const EditProjectForm = () => {
     });
   };
 
-  useEffect(() => {
-    if (project) {
-      setFormData({ ...project });
-    }
-  }, [project]);
-
   // console.log(project);
 
   return (
@@ -81,9 +82,9 @@ const EditProjectForm = () => {
             type="text"
             name="title"
             id="title"
+            onChange={formChangeHandler}
             placeholder="Title (required)"
             value={title}
-            onChange={formChangeHandler}
           />
           <SelectLabel>Share your project with friends:</SelectLabel>
           <MembersSelect>
@@ -142,13 +143,6 @@ const Title = styled.input`
   border: 1px solid lightgray;
   background-color: #f5f5f5;
   border-radius: ${({ theme }) => theme.radii.small};
-`;
-
-const Description = styled.textarea`
-  width: 100%;
-  font-size: 1rem;
-  font-family: inherit;
-  padding: 5px;
 `;
 
 const SelectLabel = styled.p`
