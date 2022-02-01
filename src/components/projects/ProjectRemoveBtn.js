@@ -21,7 +21,6 @@ const Button = styled.button`
   border: 2px solid rgba(255, 0, 0, 0.3);
   background-color: transparent;
   border-radius: ${({ theme }) => theme.radii.small};
-  margin-right: 8px;
   cursor: pointer;
 
   &:hover {

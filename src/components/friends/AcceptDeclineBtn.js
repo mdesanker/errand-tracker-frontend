@@ -1,5 +1,4 @@
 import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
 import styled, { css } from "styled-components";
 import {
   declineFriendRequest,
@@ -22,10 +21,10 @@ const AcceptDeclineBtn = ({ id }) => {
   return (
     <Wrapper>
       <Button type="button" onClick={acceptRequestHandler} accept="true">
-        Accept
+        <i className="fas fa-check" />
       </Button>
       <Button type="button" onClick={declineRequestHandler} decline="true">
-        Decline
+        <i className="fas fa-times" />
       </Button>
     </Wrapper>
   );
@@ -33,21 +32,27 @@ const AcceptDeclineBtn = ({ id }) => {
 
 const Wrapper = styled.div`
   display: flex;
-  gap: 10px;
+  gap: 30px;
   align-items: center;
 `;
 
 const Button = styled.button`
-  font-size: 0.9rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
   padding: 2px 5px;
-  border-radius: ${({ theme }) => theme.radii.small};
+  border: none;
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  background-color: transparent;
   cursor: pointer;
 
   ${({ accept }) =>
     accept &&
     css`
       color: green;
-      border: 1px solid green;
 
       &:hover {
         color: white;
@@ -59,7 +64,6 @@ const Button = styled.button`
     decline &&
     css`
       color: red;
-      border: 1px solid red;
 
       &:hover {
         color: white;
