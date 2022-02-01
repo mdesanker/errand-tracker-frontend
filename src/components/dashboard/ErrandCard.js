@@ -3,13 +3,22 @@ import styled from "styled-components";
 import { css } from "styled-components";
 import { toggleErrandComplete } from "../../store/slices/errandSlice";
 import ErrandDeleteBtn from "./ErrandDeleteBtn";
+import { DateTime } from "luxon";
 
 const ErrandCard = ({ errand }) => {
   const dispatch = useDispatch();
 
-  console.log(errand);
+  // console.log(errand);
 
   const { _id, title, author, isComplete, dueDate, priority, project } = errand;
+
+  // const formatDate = DateTime.fromISO(dueDate).toLocaleString(
+  //   DateTime.DATE_MED
+  // );
+
+  const formatDate = dueDate && DateTime.fromISO(dueDate).toFormat("LLL dd");
+
+  console.log(formatDate);
 
   const errandClickHandler = () => {
     dispatch(toggleErrandComplete({ id: _id }));
@@ -27,7 +36,9 @@ const ErrandCard = ({ errand }) => {
         </ErrandText>
       </CardGroup>
       <CardGroup>
-        <ErrandText isComplete={isComplete}>{dueDate && dueDate}</ErrandText>
+        <ErrandText isComplete={isComplete}>
+          {formatDate && formatDate}
+        </ErrandText>
       </CardGroup>
       <ErrandDeleteBtn id={_id} />
     </Card>
@@ -113,6 +124,7 @@ const Title = styled.p`
 const ErrandText = styled.p`
   color: gray;
   overflow: hidden;
+  padding-right: 8px;
 
   ${({ isComplete }) =>
     isComplete &&
