@@ -10,6 +10,7 @@ import {
 import ExitBtn from "../elements/ExitBtn";
 import Card from "../elements/Card";
 import Button from "../elements/Button";
+import { getUserErrands } from "../../store/slices/errandSlice";
 
 const EditProjectForm = () => {
   const { id } = useParams();
@@ -22,9 +23,7 @@ const EditProjectForm = () => {
 
   const { project } = useSelector((state) => state.projects);
 
-  console.log(project);
-
-  const { friends } = useSelector((state) => state.user.user);
+  const { _id: userId, friends } = useSelector((state) => state.user.user);
 
   const [formData, setFormData] = useState({
     title: "",
@@ -50,6 +49,7 @@ const EditProjectForm = () => {
     e.preventDefault();
     console.log(formData);
     dispatch(updateProject({ id, ...formData }));
+    dispatch(getUserErrands({ id: userId }));
   };
 
   const deleteProjectHandler = () => {
