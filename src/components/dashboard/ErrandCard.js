@@ -8,17 +8,9 @@ import { DateTime } from "luxon";
 const ErrandCard = ({ errand }) => {
   const dispatch = useDispatch();
 
-  // console.log(errand);
-
   const { _id, title, author, isComplete, dueDate, priority, project } = errand;
 
-  // const formatDate = DateTime.fromISO(dueDate).toLocaleString(
-  //   DateTime.DATE_MED
-  // );
-
   const formatDate = dueDate && DateTime.fromISO(dueDate).toFormat("LLL dd");
-
-  console.log(formatDate);
 
   const errandClickHandler = () => {
     dispatch(toggleErrandComplete({ id: _id }));
@@ -32,7 +24,7 @@ const ErrandCard = ({ errand }) => {
         </Checkbox>
         <Title isComplete={isComplete}>{title}</Title>
         <ErrandText isComplete={isComplete}>
-          ({project && project.title})
+          {project && `[${project.title}]`}
         </ErrandText>
       </CardGroup>
       <CardGroup>
@@ -132,6 +124,10 @@ const ErrandText = styled.p`
       color: lightgray;
       text-decoration: line-through;
     `}
+
+  @media only screen and (max-width: 650px) {
+    display: none;
+  }
 `;
 
 export default ErrandCard;
