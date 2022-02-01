@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { logout } from "../../store/slices/userSlice";
 import { clearProject } from "../../store/slices/projectSlice";
 import { clearErrands } from "../../store/slices/errandSlice";
+import RequestCounter from "./RequestCounter";
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -31,6 +32,7 @@ const Navbar = () => {
         </NavItem>
         <NavItem>
           <StyledNavLink to="/friends">
+            <RequestCounter />
             <i className="fas fa-users" />
             <p>Friends</p>
           </StyledNavLink>
@@ -77,6 +79,7 @@ const NavItem = styled.li`
 `;
 
 const StyledNavLink = styled(NavLink)`
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 2px;
