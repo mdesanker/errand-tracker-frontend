@@ -12,13 +12,13 @@ const Wrapper = styled(Link)`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 5px;
-  // border: 1px solid lightgray;
-  font-size: 30px;
+  height: 45px;
+  width: 45px;
+  font-size: 35px;
+  border-radius: 50%;
   text-decoration: none;
   color: gray;
   background-color: white;
-  // box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   z-index: 100;
 

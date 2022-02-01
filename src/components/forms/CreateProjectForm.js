@@ -27,7 +27,6 @@ const CreateProjectForm = () => {
 
   const formSubmitHandler = (e) => {
     e.preventDefault();
-    console.log(formData);
     dispatch(createProject(formData));
     setFormData({
       title: "",
@@ -45,7 +44,6 @@ const CreateProjectForm = () => {
     } else {
       memberList = members.concat(id);
     }
-    console.log(memberList);
     setFormData((prevState) => {
       return { ...prevState, members: memberList };
     });
