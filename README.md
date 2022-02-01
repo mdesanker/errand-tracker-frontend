@@ -14,6 +14,7 @@ An errand tracking app where you can share lists with friends.
 - [Set up locally](#Set-up-locally)
 - [Key learnings](#Key-learnings)
 - [Next steps](#Next-steps)
+- [Credits](#Credits)
 
 ## Description
 
@@ -73,3 +74,7 @@ Using test driven design (TDD) with the supertest module for the REST API really
 - Implement errand sorting by priority
 - Implement testing of the frontend with react testing library
 - Support images in errands
+
+## Credits
+
+- favicon: [Flaticon](https://www.flaticon.com/free-icon/checked_190411?term=check&page=1&position=3&page=1&position=3&related_id=190411&origin=search)
