@@ -6,8 +6,6 @@ import ProjectRemoveBtn from "./ProjectRemoveBtn";
 const ProjectCard = ({ project }) => {
   const { _id, title, author, members } = project;
 
-  console.log(author);
-
   const memberString =
     members && members.map((member) => member.username).join(", ");
 

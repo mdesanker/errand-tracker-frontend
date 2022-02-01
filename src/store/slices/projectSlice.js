@@ -110,7 +110,7 @@ export const updateProject = createAsyncThunk(
         thunkAPI.dispatch(
           timedAlert({ msg: "Project updated", type: "success" })
         );
-        console.log(res.data);
+        // console.log(res.data);
         return res.data;
       }
     } catch (err) {
@@ -132,7 +132,7 @@ export const deleteProject = createAsyncThunk(
       );
 
       if (res.status === 200) {
-        console.log(res.data);
+        // console.log(res.data);
         thunkAPI.dispatch(
           timedAlert({ msg: "Project deleted", type: "success" })
         );

@@ -50,7 +50,6 @@ const EditProjectForm = () => {
 
   const formSubmitHandler = (e) => {
     e.preventDefault();
-    console.log(formData);
     dispatch(updateProject({ id, ...formData }));
     dispatch(getUserErrands({ id: userId }));
   };
@@ -72,8 +71,6 @@ const EditProjectForm = () => {
       return { ...prevState, members: memberList };
     });
   };
-
-  // console.log(project);
 
   return (
     <FormWrapper>
