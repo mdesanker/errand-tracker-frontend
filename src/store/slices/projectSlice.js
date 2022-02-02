@@ -117,13 +117,10 @@ export const deleteProject = createAsyncThunk(
     try {
       const res = await axios.delete(`/api/project/${id}/delete`);
 
-      if (res.status === 200) {
-        // console.log(res.data);
-        thunkAPI.dispatch(
-          timedAlert({ msg: "Project deleted", type: "success" })
-        );
-        return id;
-      }
+      thunkAPI.dispatch(
+        timedAlert({ msg: "Project deleted", type: "success" })
+      );
+      return id;
     } catch (err) {
       const errors = err.response.data.errors;
       for (let error of errors) {
