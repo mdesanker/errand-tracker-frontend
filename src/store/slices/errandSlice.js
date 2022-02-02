@@ -20,11 +20,7 @@ export const createErrand = createAsyncThunk(
     });
 
     try {
-      const res = await axios.post(
-        "http://localhost:5000/api/errand/create",
-        body,
-        config
-      );
+      const res = await axios.post("/api/errand/create", body, config);
 
       // console.log(res.data);
       if (res.status === 200) {
@@ -49,9 +45,7 @@ export const getUserErrands = createAsyncThunk(
   "errand/getUserErrands",
   async ({ id }, thunkAPI) => {
     try {
-      const res = await axios.get(
-        `http://localhost:5000/api/errand/user/${id}/all`
-      );
+      const res = await axios.get(`/api/errand/user/${id}/all`);
 
       if (res.status === 200) {
         thunkAPI.dispatch(setProject({ _id: "all" }));
@@ -69,9 +63,7 @@ export const getPersonalErrands = createAsyncThunk(
   "errand/getPersonalErrands",
   async ({ id }, thunkAPI) => {
     try {
-      const res = await axios.get(
-        `http://localhost:5000/api/errand/user/${id}`
-      );
+      const res = await axios.get(`/api/errand/user/${id}`);
 
       if (res.status === 200) {
         thunkAPI.dispatch(setProject({ _id: "personal" }));
@@ -89,9 +81,7 @@ export const getProjectErrands = createAsyncThunk(
   "errand/getProjectErrands",
   async ({ id }, thunkAPI) => {
     try {
-      const res = await axios.get(
-        `http://localhost:5000/api/errand/project/${id}`
-      );
+      const res = await axios.get(`/api/errand/project/${id}`);
       // console.log(res.data);
       if (res.status === 200) {
         // Load project details into state
@@ -110,9 +100,7 @@ export const toggleErrandComplete = createAsyncThunk(
   "errand/toggleComplete",
   async ({ id }, thunkAPI) => {
     try {
-      const res = await axios.put(
-        `http://localhost:5000/api/errand/${id}/toggle`
-      );
+      const res = await axios.put(`/api/errand/${id}/toggle`);
       // console.log(res.data);
       return res.data;
     } catch (err) {
@@ -127,9 +115,7 @@ export const deleteErrand = createAsyncThunk(
   "errand/delete",
   async ({ id }, thunkAPI) => {
     try {
-      const res = await axios.delete(
-        `http://localhost:5000/api/errand/${id}/delete`
-      );
+      const res = await axios.delete(`/api/errand/${id}/delete`);
 
       if (res.status === 200) {
         // console.log(res.data);

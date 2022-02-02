@@ -15,11 +15,7 @@ export const registerUser = createAsyncThunk(
     const body = JSON.stringify({ username, email, password });
 
     try {
-      const res = await axios.post(
-        "http://localhost:5000/api/user/register",
-        body,
-        config
-      );
+      const res = await axios.post("/api/user/register", body, config);
 
       // console.log(res.data);
 
@@ -52,11 +48,7 @@ export const loginUser = createAsyncThunk(
     const body = JSON.stringify({ email, password });
 
     try {
-      const res = await axios.post(
-        "http://localhost:5000/api/user/login",
-        body,
-        config
-      );
+      const res = await axios.post("/api/user/login", body, config);
 
       if (res.status === 200) {
         // console.log(res.data);
@@ -84,7 +76,7 @@ export const loadUser = createAsyncThunk("user/loadUser", async (thunkAPI) => {
   // console.log("LOAD USER THUNK RUNNING");
 
   try {
-    const res = await axios.get("http://localhost:5000/api/user/detail");
+    const res = await axios.get("/api/user/detail");
 
     // console.log(res.data);
     return res.data;
@@ -101,7 +93,7 @@ export const loadUser = createAsyncThunk("user/loadUser", async (thunkAPI) => {
 
 export const getAllUsers = createAsyncThunk("user/getAll", async (thunkAPI) => {
   try {
-    const res = await axios.get("http://localhost:5000/api/user/all");
+    const res = await axios.get("/api/user/all");
 
     // console.log(res.data);
     return res.data;
@@ -116,9 +108,7 @@ export const sendFriendRequest = createAsyncThunk(
   "user/sendFriendRequest",
   async ({ id }, thunkAPI) => {
     try {
-      const res = await axios.put(
-        `http://localhost:5000/api/user/sendrequest/${id}`
-      );
+      const res = await axios.put(`/api/user/sendrequest/${id}`);
 
       if (res.status === 200) {
         // console.log(res.data);
@@ -143,9 +133,7 @@ export const acceptFriendRequest = createAsyncThunk(
   "user/acceptRequest",
   async ({ id }, thunkAPI) => {
     try {
-      const res = await axios.put(
-        `http://localhost:5000/api/user/acceptrequest/${id}`
-      );
+      const res = await axios.put(`/api/user/acceptrequest/${id}`);
 
       if (res.status === 200) {
         thunkAPI.dispatch(
@@ -170,9 +158,7 @@ export const declineFriendRequest = createAsyncThunk(
   "user/declineRequest",
   async ({ id }, thunkAPI) => {
     try {
-      const res = await axios.put(
-        `http://localhost:5000/api/user/declinerequest/${id}`
-      );
+      const res = await axios.put(`/api/user/declinerequest/${id}`);
 
       if (res.status === 200) {
         thunkAPI.dispatch(
@@ -197,9 +183,7 @@ export const unfriendUser = createAsyncThunk(
   "user/unfriend",
   async ({ id }, thunkAPI) => {
     try {
-      const res = await axios.put(
-        `http://localhost:5000/api/user/unfriend/${id}`
-      );
+      const res = await axios.put(`/api/user/unfriend/${id}`);
 
       if (res.status === 200) {
         thunkAPI.dispatch(timedAlert({ msg: "User unfriended", type: "info" }));

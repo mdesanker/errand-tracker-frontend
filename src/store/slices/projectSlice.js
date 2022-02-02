@@ -14,11 +14,7 @@ export const createProject = createAsyncThunk(
     const body = JSON.stringify({ title, members });
 
     try {
-      const res = await axios.post(
-        "http://localhost:5000/api/project/create",
-        body,
-        config
-      );
+      const res = await axios.post("/api/project/create", body, config);
 
       if (res.status === 200) {
         thunkAPI.dispatch(
@@ -43,9 +39,7 @@ export const getAuthorProjects = createAsyncThunk(
   "project/getAuthorProjects",
   async ({ id }, thunkAPI) => {
     try {
-      const res = await axios.get(
-        `http://localhost:5000/api/project/author/${id}`
-      );
+      const res = await axios.get(`/api/project/author/${id}`);
       // console.log(res.data);
       return res.data;
     } catch (err) {
@@ -60,9 +54,7 @@ export const getMemberProjects = createAsyncThunk(
   "project/getMemberProjects",
   async ({ id }, thunkAPI) => {
     try {
-      const res = await axios.get(
-        `http://localhost:5000/api/project/member/${id}`
-      );
+      const res = await axios.get(`/api/project/member/${id}`);
       // console.log(res.data);
       return res.data;
     } catch (err) {
@@ -77,7 +69,7 @@ export const getProject = createAsyncThunk(
   "project/getProject",
   async ({ id }, thunkAPI) => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/project/${id}`);
+      const res = await axios.get(`/api/project/${id}`);
       // console.log(res.data);
       return res.data;
     } catch (err) {
@@ -100,11 +92,7 @@ export const updateProject = createAsyncThunk(
     const body = JSON.stringify({ title, description, members });
 
     try {
-      const res = await axios.put(
-        `http://localhost:5000/api/project/${id}/update`,
-        body,
-        config
-      );
+      const res = await axios.put(`/api/project/${id}/update`, body, config);
 
       if (res.status === 200) {
         thunkAPI.dispatch(
@@ -127,9 +115,7 @@ export const deleteProject = createAsyncThunk(
   "project/delete",
   async ({ id }, thunkAPI) => {
     try {
-      const res = await axios.delete(
-        `http://localhost:5000/api/project/${id}/delete`
-      );
+      const res = await axios.delete(`/api/project/${id}/delete`);
 
       if (res.status === 200) {
         // console.log(res.data);
@@ -152,9 +138,7 @@ export const removeSelfFromProject = createAsyncThunk(
   "project/removeSelf",
   async ({ id }, thunkAPI) => {
     try {
-      const res = await axios.put(
-        `http://localhost:5000/api/project/${id}/removeself`
-      );
+      const res = await axios.put(`/api/project/${id}/removeself`);
 
       if (res.status === 200) {
         thunkAPI.dispatch(

@@ -35,7 +35,7 @@ const Register = () => {
     e.preventDefault();
     // Check passwords match
     if (password !== password2) {
-      console.log("Passwords do not match");
+      // console.log("Passwords do not match");
       dispatch(
         timedAlert({
           msg: "Passwords do not match",
@@ -43,7 +43,6 @@ const Register = () => {
         })
       );
     } else {
-      console.log({ username, email, password });
       dispatch(registerUser({ username, email, password }));
     }
   };

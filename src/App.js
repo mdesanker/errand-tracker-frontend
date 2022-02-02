@@ -14,6 +14,9 @@ import CreateProjectForm from "./components/forms/CreateProjectForm";
 import FriendView from "./components/friends/FriendView";
 import ProjectView from "./components/projects/ProjectView";
 import EditProjectForm from "./components/forms/EditProjectForm";
+import axios from "axios";
+
+axios.defaults.baseURL = "https://errandtracker.herokuapp.com";
 
 const App = () => {
   const dispatch = useDispatch();
