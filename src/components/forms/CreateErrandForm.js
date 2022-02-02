@@ -5,6 +5,7 @@ import { createErrand } from "../../store/slices/errandSlice";
 import ExitBtn from "../elements/ExitBtn";
 import Card from "../elements/Card";
 import Button from "../elements/Button";
+import AlertText from "../alerts/AlertText";
 
 const CreateErrandForm = () => {
   const dispatch = useDispatch();
@@ -46,12 +47,20 @@ const CreateErrandForm = () => {
     });
   };
 
+  const alerts = useSelector((state) => state.alerts);
+
   return (
     <FormWrapper>
       <Card>
         <Form onSubmit={formSubmitHandler}>
           <FormHeader>Create new errand</FormHeader>
           <ExitBtn to="/dashboard" />
+          <AlertContainer>
+            {alerts.length > 0 &&
+              alerts.map((alert) => {
+                return <AlertText key={alert.id} alert={alert} />;
+              })}
+          </AlertContainer>
           <Title
             type="text"
             name="title"
@@ -134,6 +143,11 @@ const FormHeader = styled.h1`
   padding-bottom: 8px;
   border-bottom: 1px solid lightgray;
   margin-bottom: 10px;
+`;
+
+const AlertContainer = styled.div`
+  height: 20px;
+  width: 80%;
 `;
 
 const Title = styled.input`
