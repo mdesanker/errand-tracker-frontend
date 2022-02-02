@@ -15,6 +15,7 @@ import EditProjectForm from "./components/forms/EditProjectForm";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { loadUser } from "./store/slices/userSlice";
+import Page404 from "./components/page404/Page404";
 
 axios.defaults.baseURL = "https://errandtracker.herokuapp.com";
 
@@ -82,6 +83,7 @@ const App = () => {
             </ProtectedRoute>
           }
         />
+        <Route path="/*" element={<Page404 />} />
       </Routes>
     </Fragment>
   );
