@@ -4,9 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import Dashboard from "./components/dashboard/Dashboard";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { loadUser } from "./store/slices/userSlice";
+import { useSelector } from "react-redux";
 import ProtectedRoute from "./utils/ProtectedRoute";
 import CreateErrandForm from "./components/forms/CreateErrandForm";
 import AlertView from "./components/alerts/AlertView";
@@ -19,12 +17,6 @@ import axios from "axios";
 axios.defaults.baseURL = "https://errandtracker.herokuapp.com";
 
 const App = () => {
-  const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   dispatch(loadUser());
-  // }, []);
-
   const alerts = useSelector((state) => state.alerts);
 
   return (
