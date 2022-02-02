@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { timedAlert } from "./alertSlice";
-import { clearProject, getProject, setProject } from "./projectSlice";
+import { getProject, setProject } from "./projectSlice";
 
 export const createErrand = createAsyncThunk(
   "post/create",

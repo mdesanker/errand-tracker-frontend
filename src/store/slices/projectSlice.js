@@ -24,7 +24,7 @@ export const createProject = createAsyncThunk(
         thunkAPI.dispatch(
           timedAlert({ msg: "Project created", type: "success" })
         );
-        console.log(res.data);
+        // console.log(res.data);
         return res.data;
       }
     } catch (err) {
@@ -160,7 +160,7 @@ export const removeSelfFromProject = createAsyncThunk(
         thunkAPI.dispatch(
           timedAlert({ msg: "Removed from project", type: "info" })
         );
-        console.log(res.data);
+        // console.log(res.data);
         return id;
       }
     } catch (err) {

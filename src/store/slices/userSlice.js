@@ -21,7 +21,7 @@ export const registerUser = createAsyncThunk(
         config
       );
 
-      console.log(res.data);
+      // console.log(res.data);
 
       if (res.status === 200) {
         return res.data.token;
@@ -116,13 +116,12 @@ export const sendFriendRequest = createAsyncThunk(
   "user/sendFriendRequest",
   async ({ id }, thunkAPI) => {
     try {
-      console.log("Sending request...");
       const res = await axios.put(
         `http://localhost:5000/api/user/sendrequest/${id}`
       );
 
       if (res.status === 200) {
-        console.log(res.data);
+        // console.log(res.data);
         thunkAPI.dispatch(
           timedAlert({ msg: "Friend request sent", type: "success" })
         );
@@ -152,7 +151,7 @@ export const acceptFriendRequest = createAsyncThunk(
         thunkAPI.dispatch(
           timedAlert({ msg: "Request accepted", type: "success" })
         );
-        console.log(res.data);
+        // console.log(res.data);
         return res.data;
       }
     } catch (err) {
@@ -179,7 +178,7 @@ export const declineFriendRequest = createAsyncThunk(
         thunkAPI.dispatch(
           timedAlert({ msg: "Request declined", type: "info" })
         );
-        console.log(res.data);
+        // console.log(res.data);
         return res.data;
       }
     } catch (err) {
@@ -204,7 +203,7 @@ export const unfriendUser = createAsyncThunk(
 
       if (res.status === 200) {
         thunkAPI.dispatch(timedAlert({ msg: "User unfriended", type: "info" }));
-        console.log(res.data);
+        // console.log(res.data);
         return res.data;
       }
     } catch (err) {
