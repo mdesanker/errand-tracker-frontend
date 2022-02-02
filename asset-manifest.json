@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.js": "/errand-tracker-frontend/static/js/main.e5c850cf.js",
+    "main.js": "/errand-tracker-frontend/static/js/main.b82fe32c.js",
     "static/js/787.2389dd89.chunk.js": "/errand-tracker-frontend/static/js/787.2389dd89.chunk.js",
     "index.html": "/errand-tracker-frontend/index.html",
-    "main.e5c850cf.js.map": "/errand-tracker-frontend/static/js/main.e5c850cf.js.map",
+    "main.b82fe32c.js.map": "/errand-tracker-frontend/static/js/main.b82fe32c.js.map",
     "787.2389dd89.chunk.js.map": "/errand-tracker-frontend/static/js/787.2389dd89.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.e5c850cf.js"
+    "static/js/main.b82fe32c.js"
   ]
 }
