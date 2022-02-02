@@ -21,9 +21,9 @@ axios.defaults.baseURL = "https://errandtracker.herokuapp.com";
 const App = () => {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(loadUser());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(loadUser());
+  // }, []);
 
   const alerts = useSelector((state) => state.alerts);
 
