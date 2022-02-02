@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import GlobalStyles from "./theme/GlobalStyles";
 import { Routes, Route } from "react-router-dom";
 import Register from "./components/auth/Register";
@@ -13,10 +13,18 @@ import FriendView from "./components/friends/FriendView";
 import ProjectView from "./components/projects/ProjectView";
 import EditProjectForm from "./components/forms/EditProjectForm";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { loadUser } from "./store/slices/userSlice";
 
 axios.defaults.baseURL = "https://errandtracker.herokuapp.com";
 
 const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loadUser());
+  }, []);
+
   const alerts = useSelector((state) => state.alerts);
 
   return (

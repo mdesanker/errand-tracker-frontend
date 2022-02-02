@@ -17,7 +17,6 @@ const Dashboard = () => {
 
   // Fetch user on load
   useEffect(() => {
-    // console.log("LOADING USER");
     dispatch(loadUser());
   }, []);
 
