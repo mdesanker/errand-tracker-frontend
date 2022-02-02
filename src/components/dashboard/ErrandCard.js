@@ -14,7 +14,8 @@ const ErrandCard = ({ errand }) => {
 
   const { _id, title, isComplete, dueDate, priority, project } = errand;
 
-  const formatDate = dueDate && DateTime.fromISO(dueDate).toFormat("LLL dd");
+  const formatDate =
+    dueDate && DateTime.fromISO(dueDate).plus({ days: 1 }).toFormat("LLL dd");
 
   const errandClickHandler = () => {
     dispatch(toggleErrandComplete({ id: _id }));
