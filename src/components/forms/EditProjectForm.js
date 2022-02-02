@@ -56,6 +56,7 @@ const EditProjectForm = () => {
 
   const deleteProjectHandler = () => {
     dispatch(deleteProject({ id }));
+    dispatch(getUserErrands({ id: userId }));
     navigate("/projects");
   };
 
