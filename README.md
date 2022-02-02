@@ -2,7 +2,7 @@
 
 An errand tracking app where you can share lists with friends.
 
-[Errand Tracker Demo]()
+The [Errand Tracker App](https://mdesanker.github.io/errand-tracker-frontend)
 
 ## Table of Contents
 
