@@ -11,8 +11,7 @@ import store from "./store/store";
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <Router>
-        {/* <Router basename="/errand-tracker-frontend"> */}
+      <Router basename="/errand-tracker-frontend">
         <ThemeProvider theme={Theme}>
           <App />
         </ThemeProvider>
