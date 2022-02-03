@@ -4,10 +4,8 @@ import { Routes, Route } from "react-router-dom";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import Dashboard from "./components/dashboard/Dashboard";
-import { useSelector } from "react-redux";
 import ProtectedRoute from "./utils/ProtectedRoute";
 import CreateErrandForm from "./components/forms/CreateErrandForm";
-import AlertView from "./components/alerts/AlertView";
 import CreateProjectForm from "./components/forms/CreateProjectForm";
 import FriendView from "./components/friends/FriendView";
 import ProjectView from "./components/projects/ProjectView";
@@ -17,8 +15,8 @@ import { useDispatch } from "react-redux";
 import { loadUser } from "./store/slices/userSlice";
 import Page404 from "./components/page404/Page404";
 
-axios.defaults.baseURL = "http://localhost:5000";
-// axios.defaults.baseURL = "https://errandtracker.herokuapp.com";
+// axios.defaults.baseURL = "http://localhost:5000";
+axios.defaults.baseURL = "https://errandtracker.herokuapp.com";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -27,12 +25,9 @@ const App = () => {
     dispatch(loadUser());
   }, []);
 
-  const alerts = useSelector((state) => state.alerts);
-
   return (
     <Fragment>
       <GlobalStyles />
-      {/* <AlertView alerts={alerts} /> */}
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
