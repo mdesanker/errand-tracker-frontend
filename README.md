@@ -12,8 +12,7 @@ The [Errand Tracker App](https://mdesanker.github.io/errand-tracker-frontend)
 - [Built with](#Built-with)
   - [Frontend](#Frontend)
   - [Backend](#Backend)
-- [Set up locally](#Set-up-locally)
-- [Key learnings](#Key-learnings)
+- [Lessons learned](#Lessons-learned)
 - [Next steps](#Next-steps)
 - [Credits](#Credits)
 
@@ -61,20 +60,11 @@ This app is built with the MERN stack.
 - MongoDB/Mongoose
 - supertest
 
-## Set up locally
+## Lessons learned
 
-```bash
-git clone git@github.com:mdesanker/errand-tracker-frontend.git
-cd errand-tracker-frontend
-npm install
-npm start
-```
+- The importance of planning - I started this project with only a rough idea of what I wanted to be able to do with the app, and what the model schemas should include, and then started coding. I could have saved a lot of time and effort with a thorough plan of the functionality and UI.
 
-## Key learnings
-
-My biggest take away from this project was the importance of planning out the project. I did not plan nearly thoroughly enough before starting to write any code. As a result, I wrote many API endpoints that I ended up not needing and fumbled around with the design and layout of the frontend. I am happy with where I ended up, but it would have been much more efficient with a thorough plan.
-
-Using test driven design (TDD) with the supertest module for the REST API really improved the the quality of my code in the backend. Not to mention what a rush it is to write out the tests first, then create the endpoints to turn the test conditions turn green.
+- Test driven development of the REST API using the supertest library makes writing endpoints much more efficient.
 
 ## Wish list
 
