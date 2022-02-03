@@ -7,7 +7,7 @@ const Alert = ({ msg, type }) => {
 const Wrapper = styled.p`
   font-size: 1rem;
   font-weight: bold;
-  width: 80%;
+  width: 60%;
   padding: 5px;
   text-align: center;
   border-radius: ${({ theme }) => theme.radii.small};

@@ -32,7 +32,7 @@ const App = () => {
   return (
     <Fragment>
       <GlobalStyles />
-      <AlertView alerts={alerts} />
+      {/* <AlertView alerts={alerts} /> */}
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />

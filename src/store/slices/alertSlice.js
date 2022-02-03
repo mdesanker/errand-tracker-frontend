@@ -8,7 +8,7 @@ export const timedAlert = (error) => (dispatch) => {
 
   setTimeout(() => {
     dispatch(removeAlert(id));
-  }, 5000);
+  }, 3000);
 };
 
 const initialState = [];

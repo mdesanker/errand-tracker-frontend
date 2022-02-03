@@ -8,7 +8,7 @@ const AlertText = ({ alert }) => {
 
 const Wrapper = styled.p`
   font-size: 18px;
-  font-weight: bold;
+  // font-weight: bold;
   // width: 80%;
   // padding: 5px;
   text-align: center;
