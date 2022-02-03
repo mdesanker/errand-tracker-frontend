@@ -8,6 +8,7 @@ The [Errand Tracker App](https://mdesanker.github.io/errand-tracker-frontend)
 
 - [Description](#Description)
 - [Motivation](#Motivation)
+- [How to use](#How-to-use)
 - [Built with](#Built-with)
   - [Frontend](#Frontend)
   - [Backend](#Backend)
@@ -25,6 +26,20 @@ This errand tracking app allows users to create errands with titles, due dates, 
 This app was created to facilitate errand sharing with my partner. After the birth of our daughter, the number of errands we need to do has increased, while my ability to keep track of lists has decreased.
 
 Using a shared project on this app, we can keep each other updated in real time on what needs to be bought and where.
+
+## How to use app
+
+1. Log in or sign up for an account.
+
+   - Username is displayed in the app and how other users find you.
+
+   - Email is only used for logging in to your account and to generate you avatar. It needs to be a valid email format, but does not need to be a working email address.
+
+2. Home page - Toggle, create, delete errands. Select project from select menu to filter visible errands.
+
+3. Project page - Create and edit your own projects. Remove yourself as member from shared projects.
+
+4. Friends page - Respond to and send friend requests, search list of users. Unfriend users.
 
 ## Built with
 
