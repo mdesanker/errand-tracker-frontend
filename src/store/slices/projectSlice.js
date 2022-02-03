@@ -204,11 +204,13 @@ const projectSlice = createSlice({
       );
       // Replace with updated object
       state.author[index] = actions.payload;
+      state.project = actions.payload;
     });
     builder.addCase(deleteProject.fulfilled, (state, actions) => {
       state.author = state.author.filter(
         (project) => project._id !== actions.payload
       );
+      state.project = actions.payload;
     });
     builder.addCase(removeSelfFromProject.fulfilled, (state, actions) => {
       state.member = state.member.filter(
