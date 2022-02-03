@@ -5,6 +5,7 @@ import Button from "../elements/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../store/slices/userSlice";
 import { useEffect } from "react";
+import AlertView from "../alerts/AlertView";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -41,8 +42,11 @@ const Login = () => {
     }
   }, [isAuthenticated]);
 
+  const alerts = useSelector((state) => state.alerts);
+
   return (
     <FormWrapper>
+      <AlertView alerts={alerts} />
       <Card>
         <Header>Log in.</Header>
         <SubHeader>Log in to your account.</SubHeader>

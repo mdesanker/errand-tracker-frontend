@@ -6,6 +6,7 @@ import { createProject } from "../../store/slices/projectSlice";
 import ExitBtn from "../elements/ExitBtn";
 import Card from "../elements/Card";
 import Button from "../elements/Button";
+import AlertView from "../alerts/AlertView";
 
 const CreateProjectForm = () => {
   const dispatch = useDispatch();
@@ -49,8 +50,11 @@ const CreateProjectForm = () => {
     });
   };
 
+  const alerts = useSelector((state) => state.alerts);
+
   return (
     <FormWrapper>
+      <AlertView alerts={alerts} />
       <Card>
         <Form onSubmit={formSubmitHandler}>
           <FormHeader>Create new project</FormHeader>

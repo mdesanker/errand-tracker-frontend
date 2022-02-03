@@ -11,6 +11,7 @@ import ExitBtn from "../elements/ExitBtn";
 import Card from "../elements/Card";
 import Button from "../elements/Button";
 import { getUserErrands } from "../../store/slices/errandSlice";
+import AlertView from "../alerts/AlertView";
 
 const EditProjectForm = () => {
   const { id } = useParams();
@@ -73,8 +74,11 @@ const EditProjectForm = () => {
     });
   };
 
+  const alerts = useSelector((state) => state.alerts);
+
   return (
     <FormWrapper>
+      <AlertView alerts={alerts} />
       <Card>
         <Form onSubmit={formSubmitHandler}>
           <FormHeader>Edit project</FormHeader>

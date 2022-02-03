@@ -56,7 +56,6 @@ const CreateErrandForm = () => {
         <Form onSubmit={formSubmitHandler}>
           <FormHeader>Create new errand</FormHeader>
           <ExitBtn to="/dashboard" />
-
           <Title
             type="text"
             name="title"
