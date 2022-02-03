@@ -62,7 +62,7 @@ const Select = styled.select`
   background-color: transparent;
   border: none;
   cursor: pointer;
-  max-width: 60%;
+  max-width: 50%;
   border-bottom: 1px solid gray;
 
   overflow: hidden;

@@ -28,9 +28,9 @@ const ErrandCard = ({ errand }) => {
           <i className="fas fa-check" />
         </Checkbox>
         <Title isComplete={isComplete}>{title}</Title>
-        <ErrandText isComplete={isComplete}>
+        <ConditionalText isComplete={isComplete}>
           {project && !titleState && `[${project.title}]`}
-        </ErrandText>
+        </ConditionalText>
       </CardGroup>
       <DateGroup onClick={errandClickHandler}>
         <ErrandText isComplete={isComplete}>
@@ -134,8 +134,12 @@ const ErrandText = styled.p`
     css`
       color: lightgray;
       text-decoration: line-through;
-    `}
+    `}// @media only screen and (max-width: 650px) {
+  //   display: none;
+  // }
+`;
 
+const ConditionalText = styled(ErrandText)`
   @media only screen and (max-width: 650px) {
     display: none;
   }
