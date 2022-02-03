@@ -7,6 +7,7 @@ import { registerUser } from "../../store/slices/userSlice";
 import { timedAlert } from "../../store/slices/alertSlice";
 import { useSelector } from "react-redux";
 import AlertView from "../alerts/AlertView";
+import AuthWrapper from "../elements/AuthWrapper";
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -59,7 +60,7 @@ const Register = () => {
   const alerts = useSelector((state) => state.alerts);
 
   return (
-    <FormWrapper>
+    <AuthWrapper>
       <AlertView alerts={alerts} />
       <Card>
         <Header>Sign up.</Header>
@@ -105,15 +106,9 @@ const Register = () => {
           Already have an account? <StyledLink to="/">Log in.</StyledLink>
         </Text>
       </Card>
-    </FormWrapper>
+    </AuthWrapper>
   );
 };
-
-const FormWrapper = styled.main`
-  padding-top: 0;
-  justify-content: center;
-  background-color: ${({ theme }) => theme.colors.light};
-`;
 
 const Card = styled.div`
   width: 90%;

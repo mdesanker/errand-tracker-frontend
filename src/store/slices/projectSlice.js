@@ -121,8 +121,10 @@ export const deleteProject = createAsyncThunk(
       // thunkAPI.dispatch(
       //   timedAlert({ msg: "Project deleted", type: "success" })
       // );
-      thunkAPI.dispatch(removeProjectErrands(id));
-      return id;
+      if (res.status === 200) {
+        thunkAPI.dispatch(removeProjectErrands(id));
+        return id;
+      }
     } catch (err) {
       const errors = err.response.data.errors;
       for (let error of errors) {

@@ -7,6 +7,7 @@ import ExitBtn from "../elements/ExitBtn";
 import Card from "../elements/Card";
 import Button from "../elements/Button";
 import AlertView from "../alerts/AlertView";
+import FormWrapper from "../elements/FormWrapper";
 
 const CreateProjectForm = () => {
   const dispatch = useDispatch();
@@ -90,12 +91,6 @@ const CreateProjectForm = () => {
     </FormWrapper>
   );
 };
-
-const FormWrapper = styled.main`
-  padding-top: 0;
-  justify-content: center;
-  background-color: ${({ theme }) => theme.colors.faint};
-`;
 
 const Form = styled.form`
   width: 100%;

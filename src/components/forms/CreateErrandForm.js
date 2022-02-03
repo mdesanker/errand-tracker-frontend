@@ -6,6 +6,7 @@ import ExitBtn from "../elements/ExitBtn";
 import Card from "../elements/Card";
 import Button from "../elements/Button";
 import AlertView from "../alerts/AlertView";
+import FormWrapper from "../elements/FormWrapper";
 
 const CreateErrandForm = () => {
   const dispatch = useDispatch();
@@ -119,12 +120,6 @@ const CreateErrandForm = () => {
   );
 };
 
-const FormWrapper = styled.main`
-  padding-top: 0;
-  justify-content: center;
-  background-color: ${({ theme }) => theme.colors.faint};
-`;
-
 const Form = styled.form`
   width: 100%;
   padding: 1rem;
@@ -138,15 +133,6 @@ const FormHeader = styled.h1`
   padding-bottom: 8px;
   border-bottom: 1px solid lightgray;
   margin-bottom: 10px;
-`;
-
-const AlertContainer = styled.div`
-  height: 20px;
-  line-height: 18px;
-  width: 100%;
-  align-items: center;
-  // border: 1px solid green;
-  overflow: hidden;
 `;
 
 const Title = styled.input`

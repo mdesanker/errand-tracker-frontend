@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../store/slices/userSlice";
 import { useEffect } from "react";
 import AlertView from "../alerts/AlertView";
+import AuthWrapper from "../elements/AuthWrapper";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -45,7 +46,7 @@ const Login = () => {
   const alerts = useSelector((state) => state.alerts);
 
   return (
-    <FormWrapper>
+    <AuthWrapper>
       <AlertView alerts={alerts} />
       <Card>
         <Header>Log in.</Header>
@@ -74,15 +75,9 @@ const Login = () => {
           <StyledLink to="/register">Sign up.</StyledLink>
         </Text>
       </Card>
-    </FormWrapper>
+    </AuthWrapper>
   );
 };
-
-const FormWrapper = styled.main`
-  padding-top: 0;
-  justify-content: center;
-  background-color: ${({ theme }) => theme.colors.light};
-`;
 
 const Card = styled.div`
   width: 90%;

@@ -144,7 +144,6 @@ const errandSlice = createSlice({
       state.errands = [];
     },
     removeProjectErrands: (state, actions) => {
-      console.log(actions.payload);
       state.errands = state.errands.filter((errand) => {
         if (errand.project) {
           return errand.project._id !== actions.payload;
