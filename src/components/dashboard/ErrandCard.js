@@ -10,7 +10,9 @@ const ErrandCard = ({ errand }) => {
 
   const { edit } = useSelector((state) => state.ui);
 
-  const { title: titleState } = useSelector((state) => state.projects.project);
+  const currentProject = useSelector((state) => state.projects.project);
+
+  const projectSelected = currentProject && currentProject.title;
 
   const { _id, title, isComplete, dueDate, priority, project } = errand;
 
@@ -29,7 +31,7 @@ const ErrandCard = ({ errand }) => {
         </Checkbox>
         <Title isComplete={isComplete}>{title}</Title>
         <ProjectText isComplete={isComplete}>
-          {project && !titleState && `[${project.title}]`}
+          {project && !projectSelected && `[${project.title}]`}
         </ProjectText>
       </CardGroup>
       <DateGroup onClick={errandClickHandler}>

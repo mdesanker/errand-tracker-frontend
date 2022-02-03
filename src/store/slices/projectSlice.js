@@ -210,7 +210,7 @@ const projectSlice = createSlice({
       state.author = state.author.filter(
         (project) => project._id !== actions.payload
       );
-      state.project = actions.payload;
+      state.project = null;
     });
     builder.addCase(removeSelfFromProject.fulfilled, (state, actions) => {
       state.member = state.member.filter(
