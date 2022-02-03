@@ -18,21 +18,13 @@ The [Errand Tracker App](https://mdesanker.github.io/errand-tracker-frontend)
 
 ## Description
 
-This errand tracking app allows users to create accounts, where they can write and track errands, either freely or categorized into projects. Errands are only required to have a title, but users can also specify a project, due date, and priority. Errands with a specified priority are highlighted with a corresponding color on the dashboard. Clicking on an errand toggles its completion status. Errands can be deleted when no longer needed by toggling edit mode on the dashboard.
-
-Users can create, edit, and delete projects to group errands together in the project view. Friends can be added as members to user projects. Project members are able to create, complete, and delete errands associated with their project, but they cannot edit the project name or member list.
-
-Users can send friend requests, unfriend, and manage requests from others in the friend view. Received friend requests are indicated with a counter on the friend icon of the nav bar. A search bar allows users to filter the list of all users to search for specific usernames.
+This errand tracking app allows users to create errands with titles, due dates, and priorities. Errand completion status is toggled by clicking or pressing (mobile) the errand. Errands can be added to projects, which can be shared with and updated by friends.
 
 ## Motivation
 
-I created this app as a more efficient solution to using a whiteboard on my fridge as a way to track errands. Since the birth of my daughter, the number of errands I have has seemed to increase significantly. When something is getting low, my partner or I would make a note on the whiteboard. There were two significant problems with this approach:
+This app was created to facilitate errand sharing with my partner. After the birth of our daughter, the number of errands we need to do has increased, while my ability to keep track of lists has decreased.
 
-1. I often forget to take a picture of the white board before going on errands. I then either have to ask my partner to take a picture and send it to me, or try and remember what is on the board.
-
-2. I don't always plan when I run errands. Sometimes I'll drop by a store on the way home. If it's a spontaneous errand run, I am stuck without a list.
-
-This app would be accessible through a link on my phone which would allow me to track errands I needed to run, and categorize them by store/location. I wanted the project member and friend functionality so that I could create shared lists with my partner. This allows her to add items to the lists directly and I don't have to search through our message history to find things.
+Using a shared project on this app, we can keep each other updated in real time on what needs to be bought and where.
 
 ## Built with
 
