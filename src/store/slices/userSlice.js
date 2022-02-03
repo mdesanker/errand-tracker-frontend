@@ -17,8 +17,6 @@ export const registerUser = createAsyncThunk(
     try {
       const res = await axios.post("/api/user/register", body, config);
 
-      // console.log(res.data);
-
       if (res.status === 200) {
         return res.data.token;
       } else {
@@ -51,7 +49,6 @@ export const loginUser = createAsyncThunk(
       const res = await axios.post("/api/user/login", body, config);
 
       if (res.status === 200) {
-        // console.log(res.data);
         return res.data.token;
       } else {
         return thunkAPI.rejectWithValue(res.data);
@@ -73,12 +70,9 @@ export const loadUser = createAsyncThunk("user/loadUser", async (thunkAPI) => {
     setAuthToken(localStorage.token);
   }
 
-  // console.log("LOAD USER THUNK RUNNING");
-
   try {
     const res = await axios.get("/api/user/detail");
 
-    // console.log(res.data);
     return res.data;
   } catch (err) {
     const errors = err.response.data.errors;
@@ -95,7 +89,6 @@ export const getAllUsers = createAsyncThunk("user/getAll", async (thunkAPI) => {
   try {
     const res = await axios.get("/api/user/all");
 
-    // console.log(res.data);
     return res.data;
   } catch (err) {
     const errors = err.response.data.errors;
@@ -111,7 +104,6 @@ export const sendFriendRequest = createAsyncThunk(
       const res = await axios.put(`/api/user/sendrequest/${id}`);
 
       if (res.status === 200) {
-        // console.log(res.data);
         thunkAPI.dispatch(
           timedAlert({ msg: "Friend request sent", type: "success" })
         );
@@ -164,7 +156,6 @@ export const declineFriendRequest = createAsyncThunk(
         thunkAPI.dispatch(
           timedAlert({ msg: "Request declined", type: "info" })
         );
-        // console.log(res.data);
         return res.data;
       }
     } catch (err) {

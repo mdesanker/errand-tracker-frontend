@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { timedAlert } from "./alertSlice";
+import { removeProjectErrands } from "./errandSlice";
 
 export const createProject = createAsyncThunk(
   "project/createProject",
@@ -117,9 +118,10 @@ export const deleteProject = createAsyncThunk(
     try {
       const res = await axios.delete(`/api/project/${id}/delete`);
 
-      thunkAPI.dispatch(
-        timedAlert({ msg: "Project deleted", type: "success" })
-      );
+      // thunkAPI.dispatch(
+      //   timedAlert({ msg: "Project deleted", type: "success" })
+      // );
+      thunkAPI.dispatch(removeProjectErrands(id));
       return id;
     } catch (err) {
       const errors = err.response.data.errors;

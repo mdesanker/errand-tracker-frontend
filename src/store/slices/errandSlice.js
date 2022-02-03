@@ -143,6 +143,16 @@ const errandSlice = createSlice({
     clearErrands: (state, actions) => {
       state.errands = [];
     },
+    removeProjectErrands: (state, actions) => {
+      console.log(actions.payload);
+      state.errands = state.errands.filter((errand) => {
+        if (errand.project) {
+          return errand.project._id !== actions.payload;
+        } else {
+          return errand;
+        }
+      });
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(createErrand.fulfilled, (state, actions) => {
@@ -182,6 +192,6 @@ const errandSlice = createSlice({
   },
 });
 
-export const { clearErrands } = errandSlice.actions;
+export const { clearErrands, removeProjectErrands } = errandSlice.actions;
 
 export default errandSlice.reducer;
