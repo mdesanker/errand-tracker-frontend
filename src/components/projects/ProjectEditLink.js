@@ -13,6 +13,7 @@ const Wrapper = styled(Link)`
   text-transform: uppercase;
   text-decoration: none;
   padding: 5px 10px;
+  margin: 8px;
   color: gray;
   border: 2px solid gray;
   background-color: transparent;

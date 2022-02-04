@@ -1,9 +1,16 @@
+import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { getProjectErrands } from "../../store/slices/errandSlice";
+import { getProject } from "../../store/slices/projectSlice";
 import ProjectEditLink from "./ProjectEditLink";
 import ProjectRemoveBtn from "./ProjectRemoveBtn";
 
 const ProjectCard = ({ project }) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const { _id, title, author, members } = project;
 
   const memberString =
@@ -13,15 +20,20 @@ const ProjectCard = ({ project }) => {
 
   const isAuthor = author._id === user._id;
 
+  const projectClickHandler = () => {
+    dispatch(getProjectErrands({ id: _id }));
+    navigate("/dashboard");
+  };
+
   return (
     <Card>
-      <Section>
+      <Section onClick={projectClickHandler}>
         <Title>{title}</Title>
-        {isAuthor && <ProjectEditLink id={_id} />}
-        {!isAuthor && <ProjectRemoveBtn id={_id} />}
+        {author && !isAuthor && <InfoText>Author: {author.username}</InfoText>}
+        {memberString && <InfoText>Members: {memberString}</InfoText>}
       </Section>
-      {author && !isAuthor && <InfoText>Author: {author.username}</InfoText>}
-      {memberString && <InfoText>Members: {memberString}</InfoText>}
+      {isAuthor && <ProjectEditLink id={_id} />}
+      {!isAuthor && <ProjectRemoveBtn id={_id} />}
     </Card>
   );
 };
@@ -29,12 +41,11 @@ const ProjectCard = ({ project }) => {
 const Card = styled.div`
   flex-grow: 1;
   min-height: 40px;
-  padding: 8px;
+  padding-bottom: 8px;
   margin: 0.25rem 0;
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   cursor: default;
   border-bottom: 1px solid lightgray;
 `;
@@ -42,16 +53,23 @@ const Card = styled.div`
 const Section = styled.div`
   width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
+  // border: 1px solid red;
 `;
 
 const Title = styled.div`
   font-size: 1rem;
   font-weight: bold;
+  padding: 8px;
   color: black;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
 `;
 
 const InfoText = styled.p`

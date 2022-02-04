@@ -45,6 +45,7 @@ const ErrandCard = ({ errand }) => {
 };
 
 const Card = styled.div`
+  width: 100%;
   flex-grow: 1;
   min-height: 40px;
   font-size: 1rem;
