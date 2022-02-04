@@ -142,6 +142,7 @@ const ErrandText = styled.p`
 
 const ProjectText = styled.p`
   color: gray;
+  font-size: 0.8rem;
   overflow: hidden;
   padding-right: 8px;
 
@@ -153,7 +154,7 @@ const ProjectText = styled.p`
     `}
 
   @media only screen and (max-width: 650px) {
-    display: none;
+    // display: none;
   }
 `;
 
