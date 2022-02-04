@@ -55,7 +55,7 @@ const Section = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  // border: 1px solid red;
+  cursor: pointer;
 `;
 
 const Title = styled.div`
@@ -69,7 +69,6 @@ const Title = styled.div`
   flex-grow: 1;
   display: flex;
   align-items: center;
-  cursor: pointer;
 `;
 
 const InfoText = styled.p`

@@ -15,8 +15,8 @@ import { useDispatch } from "react-redux";
 import { loadUser } from "./store/slices/userSlice";
 import Page404 from "./components/page404/Page404";
 
-axios.defaults.baseURL = "http://localhost:5000";
-// axios.defaults.baseURL = "https://errandtracker.herokuapp.com";
+// axios.defaults.baseURL = "http://localhost:5000";
+axios.defaults.baseURL = "https://errandtracker.herokuapp.com";
 
 const App = () => {
   const dispatch = useDispatch();
