@@ -6,6 +6,7 @@ import ProjectSelector from "./ProjectSelector";
 import ErrandCard from "./ErrandCard";
 import { useDispatch } from "react-redux";
 import { deleteErrand } from "../../store/slices/errandSlice";
+import DeleteBtn from "./DeleteBtn";
 
 const Errands = () => {
   const dispatch = useDispatch();
@@ -24,8 +25,9 @@ const Errands = () => {
     <Fragment>
       <Header>
         <ProjectSelector />
-        <EditBtn />
-        <button onClick={deleteCompleteHandler}>Delete Complete</button>
+        {/* <EditBtn /> */}
+        {/* <button onClick={deleteCompleteHandler}>Delete Complete</button> */}
+        <DeleteBtn onClick={deleteCompleteHandler} />
       </Header>
       <ErrandContainer>
         {errands &&
