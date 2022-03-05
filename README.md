@@ -4,6 +4,10 @@ An errand tracking app where you can share lists with friends.
 
 The [Errand Tracker App](https://mdesanker.github.io/errand-tracker-frontend)
 
+### Demo
+
+<img src="./demo/errand_demo.gif" alt="demo video" width="auto" height="300px" />
+
 ## Table of Contents
 
 - [Description](#Description)
@@ -12,8 +16,7 @@ The [Errand Tracker App](https://mdesanker.github.io/errand-tracker-frontend)
 - [Built with](#Built-with)
   - [Frontend](#Frontend)
   - [Backend](#Backend)
-- [Lessons learned](#Lessons-learned)
-- [Next steps](#Next-steps)
+- [Challenges](#Challenges)
 - [Credits](#Credits)
 - [Links](#Links)
 
@@ -61,17 +64,11 @@ This app is built with the MERN stack.
 - MongoDB/Mongoose
 - supertest
 
-## Lessons learned
+## Challenges
 
 - The importance of planning - I started this project with only a rough idea of what I wanted to be able to do with the app, and what the model schemas should include, and then started coding. I could have saved a lot of time and effort with a thorough plan of the functionality and UI.
 
 - Test driven development of the REST API using the supertest library makes writing endpoints much more efficient.
-
-## Wish list
-
-- Implement errand sorting by priority
-- Implement testing of the frontend with react testing library
-- Support images in errands
 
 ## Credits
 
