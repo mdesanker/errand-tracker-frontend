@@ -66,9 +66,9 @@ This app is built with the MERN stack.
 
 ## Challenges
 
-- The importance of planning - I started this project with only a rough idea of what I wanted to be able to do with the app, and what the model schemas should include, and then started coding. I could have saved a lot of time and effort with a thorough plan of the functionality and UI.
+- The importance of planning - I started coding this project with only a rough idea of what I wanted to be able to do with the app, and what the model schemas should include. As a result, I spent a lot of time pausing to plan out the next few steps, and realized a lot of the decisions I was making would have been quicker if I had spent more time developing a solid plan in the beginning.
 
-- Test driven development of the REST API using the supertest library makes writing endpoints much more efficient.
+- Redux - it was challenging to wrap my mind around redux thunks, dispatching other thunks from a thunk, and using extrareducers to modify state with the return value from the thunk, but using it so much in this project really helped solidify the process. Redux made it much simpler to store the current project so it could be loaded as needed when user navigated through the app.
 
 ## Credits
 
