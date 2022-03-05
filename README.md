@@ -22,7 +22,7 @@ The [Errand Tracker App](https://mdesanker.github.io/errand-tracker-frontend)
 
 ## Description
 
-This errand tracking app allows users to create errands with titles, due dates, and priorities. Errand completion status is toggled by clicking or pressing (mobile) the errand. Errands can be added to projects, which can be shared with and updated by friends.
+This [errand tracking](https://mdesanker.github.io/errand-tracker-frontend) app allows users to create errands with titles, due dates, and priorities. Errand completion status is toggled by clicking or pressing (mobile) the errand. Errands can be added to projects, which can be shared with and updated by friends.
 
 ## Motivation
 
